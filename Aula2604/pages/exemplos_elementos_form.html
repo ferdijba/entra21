@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Cadastro de Clientes</legend>
+        <!-- Tipos de inputs -->
+        <label for="idNome" >Nome</label><br>
+        <input type="text" id="idNome" name="nmNome" size="30"><br>
+                
+        <!-- Tipos de inputs (caixa de texto) -->
+        <label for="idTexto">Digite aqui seu texto</label><br>        
+        <textarea name="nmTexto" id="idTexto" cols="30" rows="10"></textarea><br>
+        <button>Cadastrar</button>
+        </fieldset>      
+    </form>
+    <form action="">
+        <fieldset>
+            <legend>Cadastro de Produtos</legend>
+        <!-- Tipos de inputs -->
+        <label for="idNome" >Produto</label><br>
+        <input type="text" id="idNome" name="nmNome" size="30"><br>
+                
+        <!-- Tipos de inputs (caixa de texto) -->
+        <label for="idTexto">Digite aqui seu texto</label><br>        
+        <textarea name="nmTexto" id="idTexto" cols="30" rows="10"></textarea><br>
+        
+        <label for="idCarros">Escolha seu carro</label><br>
+        <select name="nmCarros" id="idCarros">
+        <option value="Volvo">Volvo XC90</option>
+        <option value="Ford KA">Ford Ka</option>
+        <option value="Fiat Siena">Fiat Siena</option>
+        <option value="Ford Mustang">Ford Mustang</option>
+        </select><br><br>
+
+        <!-- Lista de dados -->
+        <input list="idBrowsers">
+        <datalist id="idBrowsers">
+            <option value="IE">Internet Explorer</option>
+            <option value="edge">Edgr</option>
+            <option value="chrome">Chrome</option>
+            <option value="firefox">Firefox</option>
+            <option value="opera">Opera</option>
+            <option value="safari">Safari</option>
+        </datalist><br><br>
+
+
+        <!-- Tipos de botoes-->
+        <button type="button">Cadastrar</button>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+        </fieldset>      
+    </form>
+</body>
+</html>

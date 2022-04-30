@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Satisfação</title>
+</head>
+<body>
+    <form action="" method="get">
+    <h1 align="center">Pesquisa de satisfação</h1><br>
+    <fieldset>
+    <label for="idIdade">Informe sua idade</label><br>
+    <input type="number" name="nmIdade" id="idIdade" step="1" min="16" max="120"><br>
+
+    <label for="idSexo">Sexo</label><br>
+
+    <input type="radio" name="idSexo" id="idSexo">
+    <label for="idFem">Feminino</label>
+    
+    <input type="radio" name="idSexo" id="idMas">
+    <label for="idMas"></label>Masculino
+    
+    <input type="radio" name="idSexo" id="idLGBT">
+    <label for="idLGBT"></label>LGBT
+    
+    <br><br>
+
+    <fieldset><legend>Sua solcitação foi atendida ?</legend><br>
+
+        <input type="radio" id="idNaoAtend" name="nmSolicita">
+        <label for="idNaoFoiAtend">Não foi atendida</label>
+
+        <input type="radio" id="idParcAtend" name="nmSolicita">
+        <label for="idParcAtend">Parcialmente atendida</label>
+
+        <input type="radio" id="idTotAtend" name="nmSolicita">
+        <label for="idTotlAtend">Totalmente atendida</label>
+
+        <br><br>        
+    </fieldset><br>
+
+    <fieldset><legend>Qual nota você daria para o atendimento ?</legend><br>
+        <input type="radio" id="idPessimo" name="nmNota">
+        <label for="idPessimo">Péssimo</label>
+        <input type="radio" id="idRuim" name="nmNota">
+        <label for="idRuim">Ruim</label>
+        <input type="radio" id="idAceitavel" name="nmNota">
+        <label for="idAceitavel">Aceitavel</label>
+    </fieldset><br>
+
+    <fieldset><legend>Como você classificaria o comportamento do atendente ?</legend><br>
+        <input type="radio" id="idIndelicadp" name="nmCompart">
+        <label for="idIndelicado">Indelicado</label>
+
+        <input type="radio" id="idMamHumor" name="nmCompart">
+        <label for="idMalHumor">Mal-humorado</label>
+
+        <input type="radio" id="idNeutro" name="nmCompart">
+        <label for="idNeutro">Neutro</label>
+
+        <input type="radio" id="idEducado" name="nmCompart">
+        <label for="idEducado">Educado</label>
+
+        <input type="radio" id="idMuitoAtenc" name="nmCompart">
+        <label for="idMuitoAtenc">Muito Atencioso</label>
+    </fieldset><br>
+    <fieldset><legend>De 0 a 10, qual nota você daria para o produto ?</legend>
+        <input type="range" name="nmRangeNota" id="idRangeNota">
+    </fieldset>
+</fieldset>
+    </form>
+</body>
+</html>

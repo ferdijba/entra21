@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+</head>
+<body>
+    <h1 align="center">Bem vindo a Empresa XYZ</h1>
+    <h2 align="center">Formulário de contato</h2>
+    <hr>
+    <form action="" method="get">
+    <label for="idNome">Nome</label><br>
+    <input type="text" id="idNome" name="nmNome" size="50"><br>
+    <label for="idEmail">Email</label><br>
+    <input type="email" id="idEmail" name="nmEmail" size="50"><br>
+    <label for="idEmpresa">Empresa</label><br>
+    <input type="text" id="idEmpresa" name="nmEmpresa" size="50"><br>
+    <label for="idFone">Telefone</label><br>
+    <input type="text" id="idFone" name="nmFone" placeholder="(xx)x xxxx-xxxx" maxlength="15"><br><br>
+    <label for="idMotContato"><b>Motivo do contato</b></label><br>
+    <input type="checkbox" id="idComercial" name="nmComercial">
+    <label for="idComercial">Comercial</label><br>
+    <input type="checkbox" id="idReclamacao" name="nmReclamacao">
+    <label for="idComercial">Reclamação</label><br>
+    <input type="checkbox" id="idSugestao" name="nmSugestao">
+    <label for="idComercial">Sugestão</label><br>
+    <input type="checkbox" id="idCancelamento" name="nmCancelamento">
+    <label for="idComercial">Cancelamento de Assinatura</label><br>
+    <input type="checkbox" id="idDuvidas" name="nmDuvidas">
+    <label for="idComercial">Dúvidas</label><br>
+    <input type="checkbox" id="idOutros" name="nmOutros">
+    <label for="idComercial">Outros</label><br>
+    <fieldset width="300">
+        <legend>Comentário</legend>
+        <textarea name="nmComentario" id="idComentario" cols="85" rows="10" placeholder="Digite aqui seu comentário" maxlength="1000"></textarea>
+    </fieldset><br>
+    <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

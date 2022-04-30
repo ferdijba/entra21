@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola de Educação Básica XPTO</title>
+</head>
+<body>
+    <form action="" method="get">
+        <fieldset><legend>Cadastro de Aluno</legend>
+            <label for="idNomeAluno">Nome</label><br>
+            <input type="text" name="nmNomeAluno" id="idNomeAluno" size="50"><br>
+            <label for="idSobreNome">Sobrenome</label><br>
+            <input type="text" name="nmSobreNome" id="idSobreNome"size="50"><br>
+            <label for="idSexo">Sexo</label><br>
+            <input type="radio" name="nmSexo" id="idSexo">
+            <label for="idFem">Feminino</label>
+            <input type="radio" name="nmSexo" id="idSexo">
+            <label for="idMas">Masculino</label><br>
+            <label for="idDataNasc">Data Nascimento</label><br>
+            <input type="date" name="nmDataNasc" id="idDataNasc"size="50"><br>
+            <label for="idEndereco">Endereço</label><br>
+            <input type="text" name="nmEndereco" id="idEndereco"size="50"><br>
+            <label for="idNomeMae">Nome da Mãe</label><br>
+            <input type="text" name="nmNomeMae" id="idNomeMae"size="50"><br>
+            <label for="idNomePai">Nome do Pai</label><br>
+            <input type="text" name="nmNomePai" id="idNomePai"size="50"><br>
+            <label for="idEmail">Email</label><br>
+            <input type="email" name="nmEmail" id="idEmail"size="50"><br>
+            <label for="idSerie">Série atual</label><br>
+            <input list="idSerie">
+            <datalist id="idSerie">
+                <option value="1 serie">1ª Série</option>
+                <option value="2 serie">2ª Série</option>
+                <option value="3 serie">3ª Série</option>
+                <option value="4 serie">4ª Série</option>
+                <option value="5 serie">5ª Série</option>
+                <option value="6 serie">6ª Série</option>
+                <option value="7 serie">7ª Série</option>
+                <option value="8 serie">8ª Série</option>
+            </datalist><br>
+            <input type="button" value="Submeter">
+            <input type="reset" value="Reset">
+        </fieldset>
+    </form>
+</body>
+</html>
