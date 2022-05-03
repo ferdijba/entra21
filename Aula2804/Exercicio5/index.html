@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
 </head>
-<body bgcolor="#008B8B">
+<body style="background-color: #25a8f9;">
    <form action="" method="get">
-    <H1 align="center">Sistema Entra21</H1>
-    <table border="0" align="center" cellspacing="2" cellpadding="5">
+    <H1 style="color: rgb(255, 255, 255); text-align: center;">Sistema Entra21</H1>
+    <table style="color: rgb(255, 255, 255); border="0" align="center" cellspacing="2" cellpadding="5">
         <thead>
             <tr>
                 <th>Usuário<br><input type="text" name="nmUsuario" id="idUsuario" autocomplete="on"></th>
@@ -17,9 +17,9 @@
         </thead>
         <tbody>
             <tr>
-                <th>Senha<br><input type="password" id="idSenha" name="nmSenha" min="8" maxlength="15" autocomplete="off"></th>                
+                <th>Senha<br><input type="password" id="idSenha" name="nmSenha" attern="^.{6,10}$"  min="8" maxlength="15" autocomplete="off" required></th>                
             </tr>
-            <th><input type="submit" value="Login"><input type="reset" value="Recuperar senha"></th>
+            <th><input type="submit" value="Login"><input type="button" value="Recuperar senha"></th>
         </tbody>
     </table>
 </form>

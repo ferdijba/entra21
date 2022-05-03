@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="">
+
+            <label for="idNome">Nome</label><br>
+            <input type="text" name="nmNome" id="idNome" value="Pega o valor deste campo">
+            <br><br>
+            <input type="button" value="Clique Me" onclick="pegarNome()" >  <!--pegarNome é a função que chamada pelo -->
+
+        </form>
+         
+        <script>
+            
+            //comentario 
+            var nome //comentario 
+            var idade = 1
+            /*
+            dsfsdf
+            sdfsdf
+            sdfsdf
+            */
+           
+            idade = idade + 20
+            
+            //alert("Isso é um Alert")
+
+            function pegarNome(){
+                nome = document.getElementById("idNome").value
+                //console.log("Nome: " + nome + " Idade: " + idade)
+                //console.log("Nome 2: ")
+            }
+            
+        </script>    
+    </body>
+</html>

@@ -6,28 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escola de Educação Básica XPTO</title>
 </head>
-<body>
+<body style="background: rgb(145, 202, 255);">
     <form action="" method="get">
         <fieldset><legend>Cadastro de Aluno</legend>
+
             <label for="idNomeAluno">Nome</label><br>
             <input type="text" name="nmNomeAluno" id="idNomeAluno" size="50"><br>
+
             <label for="idSobreNome">Sobrenome</label><br>
             <input type="text" name="nmSobreNome" id="idSobreNome"size="50"><br>
+
             <label for="idSexo">Sexo</label><br>
             <input type="radio" name="nmSexo" id="idSexo">
+
             <label for="idFem">Feminino</label>
             <input type="radio" name="nmSexo" id="idSexo">
             <label for="idMas">Masculino</label><br>
+
             <label for="idDataNasc">Data Nascimento</label><br>
             <input type="date" name="nmDataNasc" id="idDataNasc"size="50"><br>
+
             <label for="idEndereco">Endereço</label><br>
             <input type="text" name="nmEndereco" id="idEndereco"size="50"><br>
+
             <label for="idNomeMae">Nome da Mãe</label><br>
             <input type="text" name="nmNomeMae" id="idNomeMae"size="50"><br>
+
             <label for="idNomePai">Nome do Pai</label><br>
             <input type="text" name="nmNomePai" id="idNomePai"size="50"><br>
+
             <label for="idEmail">Email</label><br>
             <input type="email" name="nmEmail" id="idEmail"size="50"><br>
+
             <label for="idSerie">Série atual</label><br>
             <input list="idSerie">
             <datalist id="idSerie">
@@ -40,9 +50,48 @@
                 <option value="7 serie">7ª Série</option>
                 <option value="8 serie">8ª Série</option>
             </datalist><br>
-            <input type="button" value="Submeter">
+
+            <input type="button" value="Submeter" onclick="pegaNome()">
             <input type="reset" value="Reset">
         </fieldset>
+
+        <script>
+            var nome
+            var sobreNome
+            var sexo
+            var datanasc 
+            var endereco 
+            var nomeMae 
+            var nomePai 
+            var email 
+            var serie 
+       
+
+            function pegaNome(){
+                nome = document.getElementById("idNomeAluno").value
+                console.log("Nome: " + nome)
+
+                sobreNome = document.getElementById("idSobreNome").value
+                console.log("Sobrenome: " + sobreNome)
+                
+                endereco = document.getElementById("idEndereco").value
+                console.log("Endereço " + endereco)
+
+                nomeMae = document.getElementById("idNomeMae").value
+                console.log("Nome Mãe: " + nomeMae)
+
+                nomePai = document.getElementById("idNomePai").value
+                console.log("Nome Pai: " + nomePai)
+
+                email = document.getElementById("idEmail").value
+                console.log("E-mail " + email)
+                
+
+
+            }
+
+
+        </script>
     </form>
 </body>
 </html>
