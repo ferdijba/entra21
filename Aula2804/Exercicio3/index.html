@@ -36,7 +36,66 @@
         <legend>Comentário</legend>
         <textarea name="nmComentario" id="idComentario" cols="85" rows="10" placeholder="Digite aqui seu comentário" maxlength="1000"></textarea>
     </fieldset><br>
-    <button type="submit">Enviar</button>
+    <button type="button" onclick="pegaDados()">Enviar</button>
     </form>
+    <script>
+
+        var nome 
+        var email  
+        var empresa 
+        var fone 
+        var op1
+        var op2
+        var op3
+        var op4
+        var op5
+        var op6
+        var comentario
+
+
+        function pegaDados() {
+            nome = document.getElementById('idNome').value
+            console.log('Nome: ' + nome)
+            
+            email = document.getElementById('idEmail').value
+            console.log('Email: ' + email)
+
+            empresa = document.getElementById('idEmpresa').value
+            console.log('Empresa: ' + empresa)
+
+            fone = document.getElementById('idFone').value
+            console.log('Telefone: ' + fone)
+
+            //Checkbox
+            op1 = document.getElementById('idComercial').value
+            console.log('Comercial: ' + op1)
+
+            op2 = document.getElementById('idReclamacao').value
+            console.log('Reclamação: ' + op2)
+
+            op3 = document.getElementById('idSugestao').value
+            console.log('Sugestão: ' + op3)
+
+            op4 = document.getElementById('idCancelamento').value
+            console.log('Cancelamento: ' + op4)
+
+            op5 = document.getElementById('idDuvidas').value
+            console.log('Dúvidas: ' + op5)
+
+            op6 = document.getElementById('idOutros').value
+            console.log('Outros: ' + op6)
+
+            comentario = document.getElementById('idComentario').value
+            console.log('Comentário: ' + comentario)
+
+
+
+
+
+        }
+
+
+
+    </script>
 </body>
 </html>

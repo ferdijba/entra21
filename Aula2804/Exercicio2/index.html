@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urna Eletrônica</title>
-</head>
-<body>
-    <form action="" method="get">
-    <h1 align="center">Bem vindo a Votação online</h1>   
-    <table border="1" align="center" cellspacing="0" cellpadding="40">
-        <thead>
-            <tr>
-                <th><label for="idNumCandidato">Digite o número do seu candidato</label></th><br>
-                <th><label for="idNumCandidato">Nome do candidato</label></th><br>
-                <th><label for="idNumCandidato">Foto</label></th><br>
-                 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th><input type="number" id="idNumcandidato" name="nmNumCand" size="40" onclick=""><br>
-                    <label for="idEsqNum"><h5>Caso você não lembra o número clica no campo abaixo</h5></label>
-                    <input list="idNumCand" >
-                <datalist id="idNumCand">
-                    <option value="12345">João do Caminhão</option>   
-                    <option value="17456">Joana Mattos</option>
-                    <option value="11580">Pedro Luis Cardoso</option>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="">
+            <fieldset>
+                <legend>Urna Eletrônica</legend>
+                <label for="idNumCand">Número Candidato</label><br>
+                  
+                <input list="idNumCan">
+                <datalist id="idNumCan">
+                    <option value="10">Joao Sorriso</option>
+                    <option value="20">Julia Feliz</option>
+                    <option value="30">Mikey Mouse</option>
+                    <option value="40">Mine</option>
                 </datalist>
-                </th>
-                <th><input type="text" id="idNomcandidato" name="nmNomeCand" size="60"></th>
-                <th><img src="assets/images/joana.png" alt="joao"></th>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <th><input type="button" value="Confirmar"></th>
-                <th><input type="button" value="Cancelar"></th>
-                <th><input type="button" value="Branco"></th>
-            </tr>
-        </tbody>
-    </table>
+                <br><br>             
+   
+                <label for="idNome">Candidato</label> <br>
+                <input type="text" id="idNome" name="nmNome" readonly value="Joao">
 
-    </form>
-</body>
+                <br><br>
+
+                <img src="assets/images/joana.png" alt="Candidato" width="250">
+
+                <br><br>
+                <input type="button" value="Confirmar" onclick="pegaDados()">
+                <input type="reset"  value="Cancelar">
+                <input type="button" value="Branco">
+            </fieldset>
+
+            <script>
+
+                var numeroCand
+                var nomeCand
+
+                function pegaDados() {
+                    numeroCand = document.getElementById('idNumCan').value
+                    console.log("Numero do Candidato " + numeroCand)
+                    
+                }
+
+            </script>
+
+
+        </form>
+    </body>
 </html>

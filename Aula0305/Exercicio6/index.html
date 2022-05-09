@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo da média</title>
+</head>
+<body>
+    <form action="" method="get">
+        <label for="nmNota1">Digite a nota 1</label><br>
+        <input type="text" name="nmNota1" id="idNota1"><br>
+
+        <label for="nmNota2">Digite a nota 2</label><br>
+        <input type="text" name="nmNota2" id="idNota2"><br>
+
+        <label for="nmNota3">Digite a nota 3</label><br>
+        <input type="text" name="nmNota3" id="idNota3"><br>
+
+        <label for="nmNota4">Digite a nota 4</label><br>
+        <input type="text" name="nmNota4" id="idNota4"><br><br>
+
+        <output id="idResultado">Resultado</output><br>
+
+         <input type="button" value="Calcular" onclick="calculaMedia()">
+
+
+        <script>
+            
+
+            function calculaMedia(){
+                
+                var nota1 = Number(document.getElementById("idNota1").value)
+                var nota2 = Number(document.getElementById("idNota2").value)
+                var nota3 = Number(document.getElementById("idNota3").value)
+                var nota4 = Number(document.getElementById("idNota4").value)
+                var media = (nota1 + nota2 + nota3 + nota4) / 4
+                         
+                document.getElementById("idResultado").value = "A média é " + media
+            }
+
+        </script>
+
+
+    </form>
+</body>
+</html>

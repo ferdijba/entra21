@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="idText1">Digite o valor</label><br>
+        <input type="text" name="nmText1" id="idText1"><br>
+
+        <label for="idText2">Valor copiado</label><br>
+        <input type="text" name="nmText2" id="idText2" readonly><br>
+
+        <button type="button" onclick="copiaTexto()">Copiar</button>
+        
+
+    </form>
+
+<script>
+
+    function copiaTexto(){
+       
+     var texto1 = document.getElementById("idText1").value 
+     console.log("Texto 1 " + texto1)
+
+     document.getElementById("idText2").value = texto1
+
+
+     
+
+    }
+    
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo do IMC</title>
+</head>
+<body>
+    <form action="" method="get">
+        <label for="idAltura" >Digite sua Altura</label><br>
+        <input type="number" id="idAltura" name="nmAltura" title="Digite sua altura com ponto, EX 1.75"><br>
+
+        <label for="idPeso">Digite seu peso</label><br>
+        <input type="number" id="idPeso" name="nmPeso" ><br><br>
+
+        <label for="idResultado">Resultado</label><br>
+        <input type="text" id="idResultado" name="nmResultado" readonly><br>
+
+        <input type="button" value="Calcular" onclick="calculaImc()">
+        <button type="reset">Limpar</button>
+
+        <script>
+            var altura = Number
+            var peso  = Number
+            var calculo = Number
+
+            function calculaImc() {
+                peso   = document.getElementById("idPeso").value
+                altura = document.getElementById("idAltura").value
+                calculo = Math.round((peso / (altura * altura)))
+                console.log("Calculo" + calculo)
+                document.getElementById("idResultado").value = calculo
+                //console.log("NUM1 "+ typeof(num1));
+            }
+        </script>
+
+
+    </form>
+</body>
+</html>

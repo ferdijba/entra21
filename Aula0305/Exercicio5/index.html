@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo do Peso Ideal</title>
+</head>
+<body>
+    <form action="" method="get">
+
+        <label for="idNome" >Digite seu nome</label><br>
+        <input type="text" id="idNome" name="nmNome" size="30"><br>
+
+        <label for="idSexo" >Sexo</label><br>
+
+        <input type="radio" id="idFeminino" name="nmSexo">
+        <label for="idSexo">Feminino</label>
+
+        <input type="radio" id="idMasculino" name="nmSexo" checked >
+        <label for="idSexo">Masculino</label><br>
+        
+        <label for="idAltura" >Digite sua Altura</label><br>
+        <input type="number" id="idAltura" name="nmAltura" title="Digite sua altura com ponto, EX 1.75" size="30" step="0.01"><br>
+
+        <label for="idResultado">Resultado</label><br>
+        <input type="text" id="idResultado" name="nmResultado" readonly size="30"><br>
+
+        <input type="button" value="Calcular" onclick="calcula()">
+        <button type="reset">Limpar</button>
+
+        <script>
+            //Variaveis
+            var nome
+            var altura = Number
+            var feminino = Boolean
+            var masculino = Boolean
+            var calculo = Number
+            
+            function calcula() {
+                nome = document.getElementById("idNome").value
+                altura = document.getElementById("idAltura").value
+                feminino = Boolean(document.getElementById("idFeminino").checked)
+                masculino = Boolean(document.getElementById("idMasculino").checked)
+                console.log("Masculino: " + masculino + " Feminino: " + feminino);
+                
+                //Valida o sexo e calcula o peso ideal conforme o sexo selecionado
+                if(masculino == true){
+                    calculo = (72.7*altura) - 58 
+                    Math.round(calculo) // -------------------->>>>> Ver com o professor não esta arredondando o valor do calculo.
+                    
+                    document.getElementById("idResultado").value = nome + " seu peso ideal é " + calculo 
+                    console.log("Calculo "+ calculo)              
+                }else {
+                    Math.round(calculo = (62.1 * altura) - 44.7 )
+                    document.getElementById("idResultado").value = nome + " Seu peso ideal é " + calculo
+                    console.log("Calculo "+ calculo)              
+                }
+            }
+        </script>
+
+
+    </form>
+</body>
+</html>

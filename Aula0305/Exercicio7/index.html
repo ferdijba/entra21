@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Venda</title>
+</head>
+<body>
+    <form action="" method="get">
+
+        <label for="idProduto">O valor do produto</label><br>
+        <input type="text" name="nmProduto" id="idProduto"><br><br>
+
+        <output id="idLucro">Lucro Liquido:</output><br><br>
+        <output id="idValorVenda">Valor de venda:</output><br>
+
+         <input type="button" value="Calcular" onclick="calculaValor()">
+
+
+        <script>            
+
+            function calculaValor(){
+            var vlrPerLuc = Number(35) 
+            var vlrProd = Number(document.getElementById("idProduto").value)
+                        
+            var lucro = (vlrProd * vlrPerLuc) / 100 
+            var vlrVenda = (vlrProd * vlrPerLuc) / 100 + vlrProd
+            document.getElementById("idLucro").value = "Lucro Liquido: "+ lucro
+            document.getElementById("idValorVenda").value = "Valor de venda: " + vlrVenda
+
+            console.log("Valor de venda "+vlrVenda)
+            }
+
+        </script>
+
+
+    </form>
+</body>
+</html>

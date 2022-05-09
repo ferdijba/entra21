@@ -67,8 +67,40 @@
     </fieldset><br>
     <fieldset><legend>De 0 a 10, qual nota você daria para o produto ?</legend>
         <input type="range" name="nmRangeNota" id="idRangeNota">
+        <br>
+        <br>
+        <button type="button" onclick="pegaDados()">Enviar</button>
     </fieldset>
 </fieldset>
     </form>
+
+
+    <script>
+
+        var idade
+        var feminino
+        var masculino 
+        var lgbt
+        var solAtend
+        var nota 
+        var classificaria 
+
+        function pegaDados() {
+        idade = document.getElementById('idIdade').value    
+        console.log('Idade: ' + idade)
+
+        feminino = document.getElementById("idFem").checked
+        masculino = document.getElementById("idMas").checked
+        console.log("Masculino: " + masculino + " Feminino: " + feminino);
+
+        naoAtendida = document.getElementById("idNaoAtend").value
+        console.log("Solicitação foi atendida? "+ idNaoFoiAtend)
+
+
+
+
+    }
+
+    </script>
 </body>
 </html>

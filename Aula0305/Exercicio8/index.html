@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular formas geometrica</title>
+</head>
+<body>
+    <form action="" method="get">
+
+        <fieldset><legend>Calcular o Raio de um circulo</legend>
+            <label for="idCirculo">Informe o raio</label><br>
+            <input type="text" name="nmCirculo" id="idCirculo"><br>
+            <output id="idResultRaio">Valor da circunferência: </output><br>
+            <input type="button" name="btCalcRaio" value="calcular" onclick="calculaRaio()"><br>
+
+        </fieldset>
+        
+        <fieldset><legend>Calcular o Retangulo</legend>
+            <label for="idRetanguloBase">Digite o valor da base</label><br>
+            <input type="text" name="nmBase" id="idRetanguloBase"><br>
+
+            <label for="idRetanguloAltura">Digite o valor da altura</label><br>
+            <input type="text" name="nmAltura" id="idRetanguloAltura"><br>
+
+            <input type="button" name="btTriReg" value="calcular"><br>
+
+        </fieldset>
+        
+        <fieldset><legend> Calcular Triangulo Retangulo</legend>
+            <label for="idTriRetangulo">Informe a base</label><br>
+            <input type="text" name="nmCirculo" id="idCirculo"><br>
+    
+            <label for="idTriRetAltura">Informe a altura</label><br>
+            <input type="text" name="nmTriRetAltura" id="idTriRetAltura"><br>
+            <input type="button" name="btCalcTriRet" value="calcular"><br>
+
+        </fieldset>
+        
+        <fieldset><legend>Calcular Triangulo Equilatero</legend>
+            <label for="idCirculo">Informe o lado calcular a área</label><br>
+            <input type="text" name="nmCirculo" id="idCirculo"><br>
+            <input type="button" name="btCalcTriRet" value="calcular"><br>
+
+
+        </fieldset>
+        
+
+        <script>            
+
+            function calculaRaio(){
+            
+                var raio = Number(document.getElementById("idCirculo").value)
+                var calculoRaio =  2 * raio
+                document.getElementById("idResultRaio").value = "Valor da circunferência: " + calculoRaio
+            }
+     
+
+        </script>
+
+
+    </form>
+</body>
+</html>

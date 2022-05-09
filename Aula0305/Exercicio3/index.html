@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get">
+        <label for="idNum1">Digite o número 1</label><br>
+        <input type="number" id="idNum1" name="nmNum1"><br>
+
+        <label for="idNum2">Digite o número 2</label><br>
+        <input type="number" id="idNum2" name="nmNum2"><br><br>
+
+        <label for="idResultado">Resultado</label><br>
+        <input type="text" id="idResultado" name="nmResultado" readonly><br>
+
+        <input type="button" value="Somar" onclick="calculaSoma()">
+        <input type="button" value="Subtrair" onclick="calculaSubtracao()">
+        <input type="button" value="Multiplicar" onclick="calculaMultiplicacao()">
+        <input type="button" value="Dividir" onclick="calculaDivisao()">
+        <button type="reset">Limpar</button>
+
+        <script>
+            var num1 = Number
+            var num2 = Number
+
+            function calculaSoma() {
+                num1 = number(document.getElementById('idNum1').value)
+                num2 = number(document.getElementById('idNum2').value)
+                adicao = parseInt(num1) + parseInt(num2)
+                document.getElementById("idResultado").value = adicao
+
+
+                //console.log("NUM1 "+ typeof(num1));
+            }
+
+            function calculaSubtracao() {
+                num1 = document.getElementById('idNum1').value
+                num2 = document.getElementById('idNum2').value
+                subtracao = parseInt(num1) - parseInt(num2)
+                document.getElementById("idResultado").value = subtracao
+            }
+
+            function calculaMultiplicacao() {
+                num1 = document.getElementById('idNum1').value
+                num2 = document.getElementById('idNum2').value
+                multiplicacao = parseInt(num1) * parseInt(num2)
+                document.getElementById("idResultado").value = multiplicacao
+            }
+
+            function calculaDivisao() {
+                num1 = document.getElementById('idNum1').value
+                num2 = document.getElementById('idNum2').value
+                divisao = parseInt(num1) / parseInt(num2)
+                document.getElementById("idResultado").value = divisao
+            }
+
+        </script>
+
+
+    </form>
+</body>
+</html>

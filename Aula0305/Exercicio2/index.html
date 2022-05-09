@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get">
+        <label for="idNum1">Digite o número 1:</label><br>
+        <input type="number" id="idNum1" name="nmNum1"><br>
+
+        <label for="idNum2">Digite o número 2:</label><br>
+        <input type="number" id="idNum2" name="nmNum2"><br><br>
+
+        <label for="idResultado">Resultado</label><br>
+        <input type="text" id="idResultado" name="nmResultado" readonly><br>
+
+        <input type="button" value="Calcular" onclick="calculaDoisNumeros()">
+        <button type="reset">Limpar</button>
+
+        <script>
+            var num1 = Number
+            var num2 = Number
+
+            function calculaDoisNumeros() {
+                num1 = document.getElementById('idNum1').value
+                num2 = document.getElementById('idNum2').value
+                
+                calculo = parseInt(num1) +parseInt(num2)                
+
+                document.getElementById("idResultado").value = calculo
+
+            }
+
+        </script>
+
+
+    </form>
+</body>
+</html>

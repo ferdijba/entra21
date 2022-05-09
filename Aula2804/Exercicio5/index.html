@@ -19,9 +19,28 @@
             <tr>
                 <th>Senha<br><input type="password" id="idSenha" name="nmSenha" attern="^.{6,10}$"  min="8" maxlength="15" autocomplete="off" required></th>                
             </tr>
-            <th><input type="submit" value="Login"><input type="button" value="Recuperar senha"></th>
+            <th><input type="submit" value="Login" ondblclick="pegaDados()">
+                <input type="button" value="Recuperar senha"></th>
         </tbody>
     </table>
 </form>
+
+
+<script>
+
+    var usuario 
+    var senha   
+
+
+    function pegaDados() {
+        usuario = document.getElementById("idUsuario").value 
+        console.log('Usuário: '+ usuario)
+
+        senha = document.getElementById('idSenha').value 
+        console.log('Senha: '+ senha)
+    
+    }
+
+</script>
 </body>
 </html>
