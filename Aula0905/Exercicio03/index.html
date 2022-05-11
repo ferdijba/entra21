@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperaturas</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <label for="nmTemp1">Temperatura 1º dia</label><br>
+        <input type="number" name="nmTemp1" id="idTemp1"><br>
+
+        <label for="nmTemp2">Temperatura 2º dia</label><br>
+        <input type="number" name="nmTemp2" id="idTemp2"><br>
+
+        <label for="nmTemp3">Temperatura 3º dia</label><br>
+        <input type="number" name="nmTemp3" id="idTemp3"><br>
+
+        <output id="idOut">Resultado: </output><br>
+        <input type="button" value="Verificar temperatura" onclick="verificaTemp()">
+
+
+        <script>
+
+            function verificaTemp() {
+
+                var temp1 = Number(document.getElementById("idTemp1").value)
+                var temp2 = Number(document.getElementById("idTemp2").value)
+                var temp3 = Number(document.getElementById("idTemp3").value)
+                var media = Number((temp1 + temp2 + temp3) / 3).toFixed(2)
+
+                if (media > temp3) {
+                    document.getElementById("idOut").value = "A temperatura de hoje esta abaixo da média do ultimos 3 dias."
+
+                } else {
+                    document.getElementById("idOut").value = "A temperatura de hoje esta acima da média do ultimos 3 dias."
+                }
+
+            }
+
+
+        </script>
+
+
+
+    </form>
+</body>
+
+</html>

@@ -23,7 +23,7 @@
         <label for="idAltura" >Digite sua Altura</label><br>
         <input type="number" id="idAltura" name="nmAltura" title="Digite sua altura com ponto, EX 1.75" size="30" step="0.01"><br>
 
-        <label for="idResultado">Resultado</label><br>
+        <label for="idResultado">Peso ideal:</label><br>
         <input type="text" id="idResultado" name="nmResultado" readonly size="30"><br>
 
         <input type="button" value="Calcular" onclick="calcula()">
@@ -46,16 +46,11 @@
                 
                 //Valida o sexo e calcula o peso ideal conforme o sexo selecionado
                 if(masculino == true){
-                    calculo = (72.7*altura) - 58 
-                    Math.round(calculo) // -------------------->>>>> Ver com o professor não esta arredondando o valor do calculo.
-                    
-                    document.getElementById("idResultado").value = nome + " seu peso ideal é " + calculo 
-                    console.log("Calculo "+ calculo)              
+                    calculo = (72.7*altura) - 58                   
                 }else {
-                    Math.round(calculo = (62.1 * altura) - 44.7 )
-                    document.getElementById("idResultado").value = nome + " Seu peso ideal é " + calculo
-                    console.log("Calculo "+ calculo)              
+                    calculo = (62.1 * altura) - 44.7                     
                 }
+                document.getElementById("idResultado").value = nome + " Seu peso ideal é " + calculo.toFixed(2)
             }
         </script>
 

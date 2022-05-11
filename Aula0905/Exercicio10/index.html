@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <label for="nmReta1">Digite a reta 1 </label><br>
+        <input type="number" name="nmReta1" id="idReta1"><br>
+
+        <label for="nmReta2">Digite a reta 2</label><br>
+        <input type="number" name="nmReta2" id="idReta2"><br>
+
+        <label for="nmReta3">Digite a reta 3</label><br>
+        <input type="number" name="nmReta3" id="idReta3"><br>
+
+        <output id="idOut"> Resultado </output><br>
+        <input type="button" value="Verificar" onclick="verificarTriangulo()">
+
+
+        <script>
+
+            var maior = Number
+            var soma = Number
+
+            function verificarTriangulo() {
+                var reta1 = Number(document.getElementById("idReta1").value)
+                var reta2 = Number(document.getElementById("idReta2").value)
+                var reta3 = Number(document.getElementById("idReta3").value)
+
+                if ((reta1 > reta2) && (reta1 > reta3)) {
+                    var maior = Number(reta1)
+                    var soma = Number(reta2) + Number(reta3)
+
+                } else if (reta2 > reta3) {
+                    var maior = Number(reta2)
+                    var soma = Number(reta1) + Number(reta3)
+
+                } else {
+                    var maior = Number(reta3)
+                    var soma = Number(reta1) + Number(reta2)
+                }
+            }
+
+
+            if (maior < soma) {
+                document.getElementById("idOut").value = "Com essas medidas é possível formar um triângulao!!!"
+            } else {
+                document.getElementById("idOut").value = "Com essas medidas NÃO é possível formar um triângulao!!!"
+            }
+
+            console.log("Reta 1" + reta1)
+            console.log("Reta 2" + reta2)
+            console.log("Reta 3" + reta3)
+            console.log("Maior" + maior)
+            console.log("Soma" + soma)
+
+            console.log(typeof (reta1))
+            console.log(typeof (reta2))
+            console.log(typeof (reta3))
+
+        </script>
+
+    </form>
+</body>
+
+</html>

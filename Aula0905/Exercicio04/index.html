@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>SAQUE DIGITAL</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <div class="titulo-banco">
+            <h1>SAQUE DIGITAL</h1>
+        </div>
+
+        <div class="conteudo">
+            <label for="nmBanco">Digite o nome do Banco</label><br>
+            <input type="text" name="nmBanco" id="idBanco"> <br>
+
+            <label for="nmCliente">Nome do cliente</label><br>
+            <input type="text" name="nmNomeCliente" id="idNomeCliente"><br>
+
+            <label for="nmConta">Digite a conta</label><br>
+            <input type="number" name="nmConta" id="idConta"><br>
+
+            <input type="radio" name="nmOperacao" id="idCredito">
+            <label for="nmOperacao">Crédito</label>
+
+            <input type="radio" id="idDebito" name="nmOperacao">
+            <label for="nmOperacao">Débito</label><br>
+
+            <label for="nmEntraSaldo">Digite o valor</label><br>
+            <input type="number" name="nmEntraSaldo" id="idAtualizaSaldo"><br><br>
+
+            <label for="nmLimite">Crédito Disponível</label><br>
+            <input type="number" name="nmLimite" id="idLimit" readonly value="90000" class="valores"><br>
+
+            <label for="nmSaldo">Saldo Atual</label><br>
+            <input type="number" name="nmSaldo" id="idSaldo" readonly value="1700000" class="valores">
+            <br>
+            <input type="button" value="Confirmar" class="enviar" onclick="calcular()"><br><br>
+        </div>
+
+        <div class="extrato">
+            <output id="idSaldoFinal">EXTRATO DA CONTA</output><br>
+
+            <label for="idNomeCliente">Cliente</label><br>
+            <input type="text" name="nmExtNomeCli" id="idExtNomeCli" readonly><br>
+
+            <label for="Conta">Conta</label><br>
+            <input type="text" name="nmConta" id="idExtConta" readonly><br>
+
+            <label for="idSaldo">Saldo atual</label><br>
+            <input type="text" name="nmCliente" id="idExtSaldo" readonly class="valores"><br>
+        </div>
+
+        <script>
+
+
+            function calcular() {
+                var banco = document.getElementById("idBanco").value
+                var nomeCli = document.getElementById("idNomeCliente").value
+                var conta = document.getElementById("idConta").value
+                var opCredito = document.getElementById("idCredito").checked
+                var opDebito = document.getElementById("idDebito").checked
+                var vlrOperacao = Number(document.getElementById("idAtualizaSaldo").value)
+                var saldoEmConta = Number(document.getElementById("idSaldo").value)
+                var creditoDisp = Number(document.getElementById("idLimit").value)
+
+                if (opCredito == true) {
+                    var atualizaSaldo = Number((vlrOperacao + saldoEmConta).toFixed("2"))
+                    document.getElementById("idExtSaldo").value = atualizaSaldo.toFixed("2")
+                } else {
+                    var atualizaSaldo = Number((saldoEmConta - vlrOperacao).toFixed("2"))
+                    document.getElementById("idExtSaldo").value = atualizaSaldo.toFixed("2")
+
+                }
+                document.getElementById("idExtNomeCli").value = nomeCli
+                document.getElementById("idExtConta").value = conta
+
+
+
+
+
+
+
+
+            }
+
+
+
+        </script>
+
+
+
+    </form>
+</body>
+
+</html>

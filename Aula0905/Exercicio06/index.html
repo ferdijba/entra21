@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <h1>Qual é capital do Brasil ?</h1><br>
+        <label for="nmCapital">Digite o nome da capital do Brasil</label><br>
+        <input type="text" name="nmCapital" id="idCapital"><br><br>
+        <input type="text" name="nmResultado" id="idResultado"><br>
+        <input type="button" value="Verificar capital" onclick="verificaCapital()">
+
+
+        <script>
+            function verificaCapital() {
+                var capital = document.getElementById("idCapital").value
+
+                if (capital == "Brasilia") {
+                    document.getElementById("idResultado").value = "Parabéns você acertou!!!"
+
+                } else {
+                    document.getElementById("idResultado").value = "Você errou!!!"
+                }
+
+            }
+
+        </script>
+
+
+
+        <script>
+
+        </script>
+
+    </form>
+</body>
+
+</html>

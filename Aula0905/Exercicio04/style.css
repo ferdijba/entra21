@@ -1,0 +1,50 @@
+body{
+    background: #3b0b3f;
+}
+
+.titulo-banco{
+    text-align: center;
+    color: rgb(253, 253, 253);
+}
+
+.conteudo{
+    border: 1px solid #5f5b5b;
+    width: 30%;
+    margin: 1px auto;
+    text-align: center;
+    padding: 5px 10px 2px 10px;
+    color: aliceblue;
+}
+
+.enviar{
+	width: 35%;
+	padding: 12px 0;
+	background: rgb(248, 179, 51);
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+	border: none;
+    border-radius: 5px;
+    transition: 1s all;
+    cursor: pointer;
+    margin: 8px 0px;
+}
+
+.enviar:hover{
+	background: rgb(78, 76, 240);
+	transform: scale(1.1);
+}
+
+.valores{
+    text-align: right;
+}
+
+.extrato{
+    border: 1px solid #5f5b5b;
+    width: 30%;
+    margin: 1px auto;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    color: aliceblue;
+
+}

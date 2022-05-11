@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+
+        <label for="nmNumero">Digite um número</label><br>
+        <input type="number" name="nmNumero" id="idNumero"><br>
+
+        <output id="idOut">Resultado</output><br>
+
+        <input type="button" value="Calcular" onclick="calcular()">
+
+
+        <script>
+            function calcular() {
+                var numero = Number(document.getElementById("idNumero").value)
+
+                if (numero > 20) {
+                    var resultado = (numero / 2)
+                    console.log(resultado)
+                    document.getElementById("idOut").value = "Resultado é " + resultado
+                } else
+                    document.getElementById("idOut").value = "O valor final é " + numero
+            }
+        </script>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste para dirigir</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <label for="nmIdade">Digite sua idade</label><br>
+        <input type="number" name="nmIdade" id="idIdade"><br>
+
+        <output id="idOut">Resultado</output><br>
+        <input type="button" value="Verificar Idade" onclick="verificaIdade()">
+
+
+        <script>
+
+            function verificaIdade() {
+                var idade = Number(document.getElementById("idIdade")).value
+                console.log(typeof(idade))
+
+                if (idade < 18) {
+                    document.getElementById("idOut").value = "Você não pode dirigir!!"
+
+                }else{
+                    document.getElementById("idOut").value = "Uhull legal, Você pode dirigir!!"
+                }
+            }
+
+
+        </script>
+
+
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <h1>Alistamento Militar </h1><br>
+        <label for="nmDataNasc"></label><br>
+        <input type="text" name="nmDataNasc" id="iddataNasc" size="40px" maxlength="4"><br><br>
+        <input type="text" name="nmResultado" id="idResultado" size="40px"><br>
+        <input type="button" value="Alistamento" onclick="verificaAlistamento()">
+
+
+        <script>
+
+            function verificaAlistamento() {
+
+                var dataNasc = Number(document.getElementById("iddataNasc").value)
+                var idadeAtual = 2022 - dataNasc
+                var qtoAnosPassou =  idadeAtual - 18
+                var qtoAnosFalta = 18 - idadeAtual
+
+                if (idadeAtual > 18) {
+                    document.getElementById("idResultado").value = "Você tem " + idadeAtual + " e passou "+ qtoAnosPassou + " anos do alistamento!"
+
+                } else {
+                    document.getElementById("idResultado").value = "Tem " + idadeAtual + " anos e falta "+qtoAnosFalta + " anos para o alistamento!!"
+                }
+
+            }
+
+        </script>
+
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <h1>Descobrir se o Ano é Bisexto</h1><br>
+        <label for="nmAno">Digite o Ano</label><br>
+        <input type="text" name="nmAno" id="idAno"><br><br>
+        <input type="text" name="nmResultado" id="idResultado"><br>
+        <input type="button" value="Verificar Ano" onclick="verificaAno()">
+
+
+        <script>
+
+            function verificaAno(){
+
+                var ano = document.getElementById("idAno").value
+
+                if ((ano % 4 == 0 ) && ( ano % 100 != 0)  || (ano%4 == 0 && ano % 400 == 0 )) {
+                    document.getElementById("idResultado").value = "é ano bisexto"
+                    
+                } else {
+                    document.getElementById("idResultado").value = "Não é ano bisexto"
+                    
+                }
+
+            }
+
+        </script>
+
+
+
+
+
+    </form>
+</body>
+
+</html>
