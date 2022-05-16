@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <label for="nmSalario">Informe o salário bruto</label><br>
+        <input type="number" name="nmSlBruto" id="idSlBruto" step="0.1" style="text-align: right;"><br><br>
+
+        <label for="nmSalLiquido">Salário liquido</label><br>
+        <input type="text" name="nmSaLLiquido" id="idSalLiquido" disabled style="text-align: right;"><br><br>
+
+        <input type="button" value="Calcular Salário" onclick="calculaSalario()"><br><br>
+
+        <div>
+            <table style="border: 1px solid #4b4a4a; margin: 0 10px; padding: 1px 1px; text-align: left;">
+                <thead style="background-color:#CCCCCC ; color: rgb(57, 100, 0); font-weight: bold;">
+                    <tr>
+                        <th>Salário Bruto</th>
+                        <th>INSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th>
+                        <tr>
+                            <th style="border: 1px solid #4b4a4a; margin: 0 10px;">Menor ou igual a R$600,00</th>
+                            <th style="border: 1px solid #4b4a4a; margin: 0 10px;">ISENTO</th>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid #4b4a4a; margin: 0 10px;">Maior que R$600,00 e menor ou igual a R$1200,00 </th>
+                            <th style="border: 1px solid #4b4a4a; margin: 0 10px;">25%</th>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid #4b4a4a; margin: 0 10px;">Maior que R$1200,00 e menor ou igual a R$2000,00 </th>
+                            <th style="border: 1px solid #4b4a4a; margin: 0 10px;">30%</th>
+                        </tr>
+                        <tr>
+                            <th style="border: 1px solid #4b4a4a; margin: 0 10px;">Maior que R$2000,00 </th>
+                            <th style="border: 1px solid #4b4a4a; margin: 0 10px;">35</th>
+                        </tr>
+                    </th>
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+
+
+            function calculaSalario() {
+
+                let salBruto = Number(document.getElementById("idSlBruto").value)
+
+                if (salBruto < 600) {
+                    document.getElementById("idSalLiquido").value = salBruto.toFixed(2)
+                } else if (salBruto > 600 && salBruto <= 1200) {
+                    document.getElementById("idSalLiquido").value = (salBruto - (salBruto * 0.25)).toFixed(2)
+                } else if (salBruto > 1200 && salBruto <= 2000) {
+                    document.getElementById("idSalLiquido").value = (salBruto - (salBruto * 0.30)).toFixed(2)
+                } else if (salBruto > 2000) {
+                    document.getElementById("idSalLiquido").value = (salBruto - (salBruto * 0.35)).toFixed(2)
+                }
+            }
+
+        </script>
+
+    </form>
+</body>
+
+</html>

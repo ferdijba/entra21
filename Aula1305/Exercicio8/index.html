@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <label for="nmVlrProd">Valor do produto</label><br>
+        <input type="number" name="nmVlrProd" id="idVlrProd"><br><br>
+
+        <label for="nmVlrVenda">Valor de Venda</label><br>
+        <input type="number" name="nmVlrVenda" id="idVlrVenda" disabled style="text-align:right;"><br><br>
+        <input type="button" value="Calcular Valor" onclick="calculaValorVenda()">
+
+        <script>
+            function calculaValorVenda() {
+
+                let idVlrProd = Number(document.getElementById("idVlrProd").value)
+
+                if (idVlrProd < 20 || idVlrProd == "") {
+                    document.getElementById("idVlrVenda").value = (idVlrProd + (idVlrProd * 0.50)).toFixed(2)
+                    alert("Favor digitar o valor!!!")
+
+                } else {
+                    document.getElementById("idVlrVenda").value = (idVlrProd + (idVlrProd * 0.35)).toFixed(2)
+                }
+
+            }
+        </script>
+
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica intervalo entre 30 e 90</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <label for="nmNumero">Digite número</label><br>
+        <input type="number" name="nmNumero" id="idNumero"><br>
+
+        <output id="idOut"> Resultado:</output><br>
+        <input type="button" value="Validar" onclick="validaRangeDeNumeros()">
+
+        <script>
+
+            function validaRangeDeNumeros() {
+
+                var numero = Number(document.getElementById("idNumero").value)
+
+                if (numero >= 30 && numero <=90 ) {
+                    document.getElementById("idOut").value = "O número digitado está entre 30 e 90"
+                    console.log("Valor "+numero);
+                } else {
+                    document.getElementById("idOut").value = "O número digitado está fora 30 e 90"
+                    console.log("Valor "+numero);
+                }
+            }
+        </script>
+
+    </form>
+</body>
+
+</html>

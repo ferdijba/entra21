@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Numero ordenados</title>
+</head>
+
+<body>
+    <form action="" method="get">
+
+        <label for="nmNumero1">Digitel número 1</label><br>
+        <input type="number" name="nmNumero1" id="idNumero1"><br>
+
+        <label for="nmNumero2">Digite número 2 </label><br>
+        <input type="number" name="nmNumero2" id="idNumero2"><br>
+
+        <label for="nmNumero3">Digite número 3</label><br>
+        <input type="number" name="nmNumero3" id="idNumero3"><br>
+
+        <output id="idOut">Resultado:</output><br>
+        <input type="button" value="Imprimir" onclick="imprimirNumeros()">
+
+        <script>
+
+
+            function imprimirNumeros() {
+                var numero1 = Number(document.getElementById("idNumero1").value)
+                var numero2 = Number(document.getElementById("idNumero2").value)
+                var numero3 = Number(document.getElementById("idNumero3").value)
+                
+
+                //num1 maior, num2 é maior que num3
+                if (numero1 > numero2 && numero1 > numero3 && numero2 > numero3) {
+                    var primeiro = Number(numero1)
+                    var segundo = Number(numero2)
+                    var terceiro = Number(numero3)
+                    document.getElementById("idOut").value = primeiro + " " + segundo + " " + terceiro
+                    console.log("Primeiro " + numero1);
+                    console.log("Primeiro " + numero2);
+                    console.log("Primeiro " + numero3);
+
+                    //num2 maior, num1 é maior que num3
+                } else if (numero2 > numero1 && numero2 > numero3 && numero1 > numero3) {
+                    var primeiro = Number(numero2)
+                    var segundo = Number(numero1)
+                    var terceiro = Number(numero3)
+                    document.getElementById("idOut").value = primeiro + " " + segundo + " " + terceiro
+
+                    //num3 maior, num1 é maior que num2
+                } else if (numero3 > numero1 && numero3 > numero2 && numero1 > numero2) {
+                    var primeiro = Number(numero3)
+                    var segundo = Number(numero1)
+                    var terceiro = Number(numero2)
+                    document.getElementById("idOut").value = primeiro + " " + segundo + " " + terceiro
+
+                    //num1 maior, num3 é maior que num2
+                } else if (numero1 > numero2 && numero1 > numero3 && numero2 < numero3) {
+                    var primeiro = Number(numero1)
+                    var segundo = Number(numero3)
+                    var terceiro = Number(numero2)
+                    document.getElementById("idOut").value = primeiro + " " + segundo + " " + terceiro
+
+                    //num2 maior, num3 é maior que num1
+                } else if (numero2 > numero1 && numero2 > numero3 && numero1 < numero3) {
+                    var primeiro = Number(numero2)
+                    var segundo = Number(numero3)
+                    var terceiro = Number(numero1)
+                    document.getElementById("idOut").value = primeiro + " " + segundo + " " + terceiro
+
+                    //num3 maior, num2 é maior que num1
+                } else if (numero3 > numero1 && numero3 > numero2 && numero1 < numero2) {
+                    var primeiro = Number(numero3)
+                    var segundo = Number(numero2)
+                    var terceiro = Number(numero1)
+                    document.getElementById("idOut").value = primeiro + " " + segundo + " " + terceiro
+
+                }
+       
+            }
+
+       
+
+        </script>
+
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <fieldset style="width:40%; font-weight: bold; text-align: center; background-color: rgb(236, 214, 15);">
+            <h3><label for="idOpcao">Escolha a forma geométrica que deseja calcular</label></h3><br>
+            <div style="border: 1px solid rgb(0, 0, 0); color: rgb(63, 63, 65); background-color: rgb(255, 251, 20);">
+
+                <input type="radio" name="nmOpcao" id="idCirculo" checked>
+                <label for="idCirculo">Circulo</label>
+
+                <input type="radio" name="nmOpcao" id="idRetangulo">
+                <label for="idRetangulo">Retangulo</label>
+
+                <input type="radio" name="nmOpcao" id="idTriRet">
+                <label for="idTriRet">Triângulo Retangulo</label>
+
+                <input type="radio" name="nmOpcao" id="idTriEq">
+                <label for="idTriEq">Triangulo Equilátero</label>
+            </div>
+        </fieldset>
+
+        <fieldset style="width:40%; font-weight: bold; background-color: rgb(245, 229, 86)">
+            <label for=" nmRaio">Informe o raio</label><br>
+            <input type="number" name="nmRaio" id="idRaio" step="0.01"><br>
+
+            <label for=" nmLado1">Informe Lado 1</label><br>
+            <input type="number" name="nmLado1" id="idLado1" step="0.01"><br>
+
+            <label for=" nmLado2">Informe Lado 2</label><br>
+            <input type="number" name="nmLado2" id="idLado2" step="0.01"><br>
+
+            <label for=" nmBase">Informe o valor da base</label><br>
+            <input type="number" name="nmBase" id="idBase" step="0.01"><br>
+
+            <label for=" nmAltura">Informe o valor da altura</label><br>
+            <input type="number" name="nmAltura" id="idAltura" step="0.01"><br>
+
+
+
+            <label for="nmOutRaio">Resultado do calculo</label><br>
+            <input type="number" name="nmOutRaio" id="idOutRaio" disabled><br><br>
+            <input type="button" value="Calcular" onclick="calcularRaio()">
+
+        </fieldset>
+
+        <script>
+
+            function calcularRaio() {
+                let opCirculo = document.getElementById("idCirculo").checked
+                let opRetangulo = document.getElementById("idRetangulo").checked
+                let opRetTriangulo = document.getElementById("idTriRet").checked
+                let opTrianEq = document.getElementById("idTriEq").checked
+
+                if (opCirculo == true) {
+                    let raio = Number(document.getElementById("idRaio").value)
+                    document.getElementById("idOutRaio").value = (Math.PI * (raio * raio)).toFixed(0)
+
+                    //Desabilitar campos quando opção circulo estiver selecionada
+                    var retangulo = document.querySelector("#idLado1")
+                    retangulo.disable = false;
+                    console.log(retangulo);
+
+                } else if (opRetangulo == true) {
+                    let lado1 = document.getElementById("idLado1").value
+                    let lado2 = document.getElementById("idLado2").value
+
+                    document.getElementById("idOutRaio").value = (lado1 * lado2)
+
+                } else if (opRetTriangulo == true) {
+                    let base = Number(document.getElementById("idBase").value)
+                    let altura = Number(document.getElementById("idAltura").value)
+
+                    document.getElementById("idOutRaio").value = ((base * altura) / 2).toFixed(0)
+                } else {
+                     
+                    console.log(retangulo);
+
+                }
+
+            }
+
+
+        </script>
+
+
+    </form>
+</body>
+
+</html>
