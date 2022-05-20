@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio10</title>
+</head>
+
+<body>
+    <P>Crie um programa que leia os valores inicial e final de um intervalo e imprima todos os valores impares ou pares
+        contidos no intervalo.</P>
+    <Ul>
+        <li>O usuário deve poder escolher entre impares e pares.</li>
+        <li>Mostre o resultado na tela (não no console.log).</li>
+        <li>Mostre também quantos números da sequencia são pares e quantos são impares.</li>
+    </Ul>
+
+    <label for="nmNumero1">Informe numero 1</label><br>
+    <input type="number" name="nmNumero1" id="idNumero1"><br>
+
+    <label for="nmNumero2">Informe o numero 2</label><br>
+    <input type="number" name="nmNumero2" id="idNumero2"><br>
+
+    <input type="radio" name="nmRadio" id="idPar">
+    <label for="radio">Par</label>
+
+    <input type="radio" name="nmRadio" id="idImpar">
+    <label for="radio">Impar</label>
+
+
+
+    <br>
+
+    <output id="idOutWhile"> Resultado While</output><br>
+    <output id="idContapar">Qtos par</output><br>
+    <output id="idContaImpar">Qtos impar</output><br>
+    <input type="button" value="Validar" onclick="validarNumeros()"><br>
+
+    <script>
+
+        function validarNumeros() {
+
+            let par = document.getElementById("idPar").checked
+            let impar = document.getElementById("idImpar").checked
+            var numero1 = Number(document.getElementById("idNumero1").value)
+            var numero2 = Number(document.getElementById("idNumero2").value)
+            var outWhile = document.getElementById("idOutWhile")
+            var contador = Number(numero1)
+            var textoWhile = ""
+            let numerosPares = ""
+            let numerosImpares = ""
+            let contPar = 0
+            let contImpar = 0
+
+            // num % 2 == 0 par
+            while (contador < numero2) {
+
+                if ((contador % 2) == 0) {
+                    numerosPares = numerosPares + contador + " - "
+                    contPar++
+                } else {
+                    numerosImpares = numerosImpares + contador + " - "
+                    contImpar++
+                }
+                contador++
+
+                if (par) {
+                    document.getElementById("idOutWhile").value = "Numeros pares: " + numerosPares
+
+                } else {
+                    document.getElementById("idOutWhile").value = "Numeros ímpares: " + numerosImpares
+
+                }
+                document.getElementById("idContaImpar").value = "Qtde de Nuúmeros Impares:" + contImpar
+                document.getElementById("idContapar").value = "Qtde de Nuúmeros pares:" + contPar
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

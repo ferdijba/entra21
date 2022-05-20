@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio7</title>
+</head>
+
+<body>
+    <p>Crie um programa que calcule e mostre na tela o resultado da soma entre 6 + 8 + 10 + 12 + 14 + ... + 98 + 100.
+    </p>
+    <output id="idOutWhile">Resultado While</output><br><br><br><br>
+    <output id="idOutFor" style="background-color: rgb(116, 233, 116) ;">Resultado For</output><br>
+
+    <script>
+        var contador = Number(6)
+        var textoWhile = ""
+        var textoFor = ""
+        var x = Number(0)
+        var y = Number(0)
+        var outWhile = document.getElementById("idOutWhile")
+        var outFor = document.getElementById("idOutFor")
+
+        while (contador <= 100) {
+            x = x + contador
+            //console.log("Resultado " + contador + " > " + x)
+            textoWhile = (textoWhile + " " + x + " - ")
+            contador += 2
+        }
+        outWhile.value = "Resultado do While: " + textoWhile
+
+
+        for (let i = 6; i <= 100; i += 2) {
+            y = y + i
+            console.log("Soma " + y);
+            textoFor = textoFor + " " + y + " - "
+        }
+        outFor.value = "Resultado do for: " + textoFor
+
+    </script>
+
+</body>
+
+</html>

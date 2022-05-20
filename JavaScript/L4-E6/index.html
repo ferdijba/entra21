@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio6</title>
+</head>
+
+<body>
+    <p>Desenvolva um algoritmo que mostre uma contagem regressiva de 30 até 1, marcando os números que forem divisíveis
+        por 4, exatamente como mostrado abaixo:
+        30 29 [28] 27 26 25 [24] 23 22 21 [20] 19 18 17 [16]...</p>
+
+    <output id="idOutWhile">Resultado do While</output><br>
+    <output id="idOutFor">Resultado do For</output><br>
+
+    <script>
+        var contador = Number(30)
+        var textoWhile = ""
+        var textoFor = ""
+        outWhile = document.getElementById("idOutWhile")
+        outFor = document.getElementById("idOutFor")
+
+        while (contador >= 0) {
+
+            if (contador % 4 == 0) {
+                textoWhile = textoWhile + " [" + contador + "]" + " "
+            } else {
+                textoWhile = textoWhile + contador + " "
+            }
+            contador--
+        }
+        outWhile.value = "Resultado do While: Inicio " + textoWhile + " Fim."
+
+        for (let i = 30; i >= 0; i--) {
+            if (i % 4 == 0) {
+                textoFor = textoFor + "[" + i + "]" + " "
+            } else {
+                textoFor = textoFor + i + " "
+
+            }
+            outFor.value = "Resultado do For: Inicio " + textoFor + " Fim."
+
+        }
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

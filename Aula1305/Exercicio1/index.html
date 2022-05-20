@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="get">
+
+        <label for="nmNumero1">Digite número 1</label><br>
+        <input type="text" name="nmNumero1" id="idNumero1"><br>
+
+        <label for="nmNumero2">Digite número 2</label><br>
+        <input type="text" name="nmNumero2" id="idNumero2"><br>
+
+        <label for="nmNumero3">Digite número 3</label><br>
+        <input type="text" name="nmNumero3" id="idNumero3"><br>
+
+        <output id="idOut">Resultado:</output><br>
+        <input type="button" value="Validar" onclick="validaNumeroMaior()">
+
+        <script>
+            function validaNumeroMaior() {
+                var numero1 = Number(document.getElementById("idNumero1").value)
+                var numero2 = Number(document.getElementById("idNumero2").value)
+                var numero3 = Number(document.getElementById("idNumero3").value)
+
+
+                if (numero1 > numero2 && numero1 > numero3) {
+                    document.getElementById("idOut").value = "O número 1 é o maior!!"
+                } else if (numero2 > numero3) {
+                    document.getElementById("idOut").value = "O número 2 é o maior!!"
+                } else {
+                    document.getElementById("idOut").value = "O número 3 é o maior!!"
+                }
+            }
+        </script>
+    </form>
+</body>
+
+</html>

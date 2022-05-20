@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio2</title>
+</head>
+<body>
+    <p style="font-weight: bold;">Faça um algoritmo que mostre na tela a seguinte contagem: "Inicio 15 14 13 12 11 10 9 8 7 6 5 4 3 Acabou!"</p>
+    <output id="idOut">Resultado While:</output><br>
+    <output id="idOut1">Resultado for:</output><br>
+
+    <script>
+
+        var contador = Number(15)
+        var textoWhile = ""
+        var textoFor = ""
+        outWhile = document.getElementById("idOut")
+        outFor = document.getElementById("idOut1")
+
+        while (contador >= 3) {
+            textoWhile = textoWhile + contador + " "
+            contador--
+        }
+        outWhile.value = "Resultado do While: Inicio " + textoWhile + " Fim."
+
+        for (let i = 15; i >= 3; i--) {
+            textoFor = textoFor + i + " "
+        }
+        outFor.value = "Resultado do For: Inicio " + textoFor + " Fim."
+
+        
+    </script>
+    
+</body>
+</html>

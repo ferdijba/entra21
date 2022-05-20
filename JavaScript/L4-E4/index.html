@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici4</title>
+</head>
+
+<body>
+    <P>Desenvolva um programa que mostre na tela a seguinte contagem: "Inicio 100 95 90 85 80 ... 0 Acabou!"</P>
+    <output id="idOutWhile">Resultado While</output><br>
+    <output id="idOutFor">Resultado For</output><br>
+
+    <script>
+
+        var contador = Number(100)
+        var textoWhile = ""
+        var textoFor = ""
+        var outWhile = document.getElementById("idOutWhile")
+        var idOutFor = document.getElementById("idOutFor")
+
+        while (contador >= 0) {
+            textoWhile = textoWhile + contador + " - "
+            contador -= 5
+        }
+        outWhile.value = "Resultado While: Inicio " + textoWhile + "  Fim."
+
+        for(let i = 100; i >= 0; i -= 5 ){
+            textoFor = textoFor + i + " - "
+        }
+        idOutFor.value = "Resultado do for: Inicio " + textoFor + " Fim."
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercio5</title>
+</head>
+
+<body>
+    <P>Faça um algoritmo que pergunte ao usuário um número inteiro e positivo qualquer e mostre uma contagem até esse
+        valor:
+        Ex: Digite um valor: 77
+        Contagem: "Inicio 1 2 3 4 5 6 7 ... 75 76 77 Acabou!"</P>
+
+    <label for="nmNumero">Digite o numero:</label><br>
+    <input type="number" name="nmNumero" id="idNumero"><br>
+    <output id="idOutWhile">Saida do While</output><br>
+    <output id="idOutFor">Saída do For</output><br>
+    <input type="button" value="Contar" onclick="contarNumeros()">
+
+
+    <script>
+        var contador = Number(0)
+        var textoWhile = ""
+        var textoFor = ""
+        var numero = Number
+        outWhile = document.getElementById("idOutWhile")
+        outFor = document.getElementById("idOutFor")
+
+        function contarNumeros() {
+            numero = document.getElementById("idNumero").value
+            while (contador <= numero) {
+                textoWhile = textoWhile + contador + " - "
+                contador++
+            }
+            outWhile.value = "Contagem While: Inicio " + textoWhile + " Fim."
+
+            for(let i = 0; i <= numero; i++){
+                textoFor = textoFor + i + " - "
+            }
+            outFor.value = "Contagem For: Inicio " + textoFor + " Fim."
+        }
+
+
+
+    </script>
+</body>
+
+</html>

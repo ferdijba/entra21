@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio8</title>
+</head>
+
+<body>
+    <p>Crie um algoritmo que leia o valor inicial da contagem, o valor final e o incremento, mostrando em seguida todos
+        os valores no intervalo:
+        Exemplo: Digite o primeiro Valor: 3
+        Digite o último Valor: 10
+        Digite o incremento: 2
+        Contagem: 3 5 7 9 Acabou!</p>
+
+    <label for="nmNumero1">Digite valor 1</label><br>
+    <input type="number" name="nmNumero1" id="idNum1"><br>
+
+    <label for="nmNumero2">Digite valor 2</label><br>
+    <input type="number" name="nmNumero2" id="idNum2"><br>
+
+    <label for="nmIncremento">Informe o valor de incremento</label><br>
+    <input type="number" name="nmIncremento" id="idIncremento"><br>
+
+    <output id="idOutWhile">Resultado do While:</output><br>
+    <output id="idFor">Resultado do For:</output><br>
+
+    <input type="button" value="Gerar sequencial" onclick="geraSequencial()">
+
+    <script>
+        function geraSequencial() {
+
+            outWhile = document.getElementById("idOutWhile")
+            outFor   = document.getElementById("idFor")
+
+            var num1 = Number(document.getElementById("idNum1").value)
+            var num2 = Number(document.getElementById("idNum2").value)
+            var incremento = Number(document.getElementById("idIncremento").value)
+            var contador = Number(0)
+            var textoWhile = ""
+            var textoFor = ""
+
+            while (num1 <= num2) {
+                textoWhile = textoWhile + num1 + " - "
+                num1 += incremento
+            }
+            outWhile.value = "Resultado do While: Inicio " + textoWhile + " Fim."
+
+            for(num1 = incremento; num1 <= num2; num1 += incremento){
+                textoFor = textoFor + num1 + " - "                
+
+            }
+            outFor.value = "Resultado For: Inicio " + textoFor + " Fim."
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

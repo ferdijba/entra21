@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <p>Escreva um programa que mostre na tela a seguinte contagem: "Inicio 5 6 7 8 9 10 11 12 Acabou!" </p>
+        <output id="idOut">Resultado do While</output><br>
+        <output id="idOut1">Resultado do While</output><br>
+
+        <script>
+
+            var contador = Number(5)
+            var textoContador = ""
+            var out  = document.getElementById("idOut")
+            var out1 = document.getElementById("idOut1")
+
+            //Laço de repetição While
+            while (contador <= 12) {
+                textoContador = textoContador + contador + " "
+                contador++
+            }
+
+            out.value = "Resultado do While: Inicio " + textoContador + " Fim!!"
+
+
+            //Laço de repetição FOR    
+            textoContador = ""
+            for (let i = 5; i <= 12; i++) {
+                textoContador = textoContador + i + " "
+            }
+            out1.value = "Resultado do For: Inicio " + textoContador + " Fim!!"
+
+
+
+        </script>
+
+    </form>
+</body>
+
+</html>

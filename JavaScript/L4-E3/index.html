@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio3</title>
+</head>
+
+<body>
+    <P>Crie um aplicativo que mostre na tela a seguinte contagem: "Inicio 0 4 8 12 16 20 Acabou!"</P><br>
+    <output id="idOutWhile">Resultado do While</output><br>
+    <output id="idOutFor">Resultado do For</output>
+
+    <script>
+
+        var contador = Number(0)
+        var textoFor = ""
+        var textoWhile = ""
+        var outFor = document.getElementById("idOutFor")
+        var outWhile = document.getElementById("idOutWhile")
+
+        while (contador <= 20) {
+            textoWhile = textoWhile + contador + " "
+            contador += 2
+        }
+        outWhile.value = "Resultado do While: Inicio " + textoWhile + " Fim"
+
+
+        for (let i = 0 ; i <= 20; i+=2) {
+            textoFor = textoFor + i + " "
+        }
+        outFor.value = "Resultado do for: Inicio " + textoFor + " Fim."
+
+    </script>
+
+</body>
+
+</html>
