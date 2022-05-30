@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio1</title>
+</head>
+
+<body>
+    <p>Crie um algoritmo que mostre na tela todos os números entre 1 e 100 que sejam múltiplos de 3 ou 5.(Console.log)
+    </p>
+
+    <output id="idOut">Resutado do Números</output><br>
+    <output id="idOutFor">Resutado do Números</output>
+    <script>
+        let n1 = 0
+        let n2 = 100
+        let cont = n1
+        let textoWhile = ""
+        let outResultado = document.querySelector("#idOut")
+        let outFor = document.querySelector("#idOutFor")
+
+        outResultado.value = "Números multiplos de 3 e 5"
+
+        while (cont <= n2) {
+            if (cont % 3 == 0) {
+                textoWhile = textoWhile + cont + " "
+
+            } else if (cont % 5 == 0) {
+                textoWhile = textoWhile + cont + " "
+            }
+            cont++
+            outResultado.value = "Resultado : " + textoWhile + " "
+            console.log("Resultado: " + textoWhile);
+        }
+
+        //Feito com FOR
+        for (let index = 1; index < 101; index++) {
+            
+            if ((index % 3 == 0) || (index % 5 == 0)) {
+                outFor.valeu = "Multiplos de 3 e 5 " + index + " "
+            } 
+            
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

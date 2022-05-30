@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio8</title>
+</head>
+
+<body>
+    
+        <label for="idNumero">Digite o número:</label><br>
+        <input type="number" name="nmNumero" id="idNumero"><br>
+
+        <input type="button" value="Enviar" onclick="insereNumeros()"><br>
+        <textarea name="nmTextNumeros" id="idTextNumeros" cols="30" rows="10"></textarea>
+
+    
+
+    <script>
+
+        function insereNumeros() {
+            let numero = document.getElementById("idNumero").value
+            let numeros = []
+
+            for (let i = 0; i < 15; i++) {
+               numeros.push(numero) 
+               
+            }
+            console.log("Numero: " + numeros);
+
+
+
+        }
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+<p>Faça um programa que leia 7 nomes de pessoas e guarde-os em um vetor. No final, mostre uma listagem com todos os
+    nomes informados, na ordem inversa daquela em que eles foram informados.</p>
+
+<body>
+    <form action="" method="get">
+        <label for="idNome">Nome</label><br>
+        <input type="text" name="nmNome" id="idNome"><br>
+        <input type="button" value="Inserir" onclick="insereNomes()"><br>
+        <input type="button" value="Imprimir" onclick="imprimir()"><br>
+
+
+        <hr>
+        <textarea name="nmTextNomes" id="idTextNomes" cols="30" rows="10"></textarea>
+
+    </form>
+
+
+    <script>
+
+        let nomes = []
+
+        function insereNomes() {
+
+            let nome = document.getElementById("idNome").value
+            let textNomes = document.getElementById("idTextNomes")
+
+            nomes.push(nome)
+            document.getElementById("idTextNomes").value = ""
+            console.log(nomes)
+
+
+        }
+
+        function imprimir(){
+
+            let nomeInvertido = []
+            for (let i = 0; i < nomes.length; i++) {
+                 nomeInvertido.unshift(nomes[i])
+                 console.log(nomeInvertido);
+                
+            }
+
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

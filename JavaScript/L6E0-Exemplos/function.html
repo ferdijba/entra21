@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+
+<body>
+
+
+    <input type="button" value="Nome" onclick="calcularPesoIdeal()">
+
+    <script>
+
+
+        function calcularPesoIdeal(genero, altura) {
+            let pesoIdeal = 0
+            if (genero = 'F') {
+                pesoIdeal = (62.1 * altura) - 44.7
+
+            } else if (genero = 'M') {
+
+                pesoIdeal = (72.7 * altura) - 58
+
+            }
+            return pesoIdeal
+        }
+
+        var resultado = calcularPesoIdeal('F', 1.98)
+
+        console.log(resultado);
+
+
+
+    </script>
+
+
+</body>
+
+</html>
