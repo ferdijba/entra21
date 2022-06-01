@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exericio8</title>
+</head>
+
+<body>
+
+    <form action="" method="get">
+
+        <label for="idTempC">Informe a temperatura em graus Cº</label><br>
+        <input type="number" name="nmTempC" id="idTempC"><br>
+        <output id="idOutTemp">Conversão:</output><br><br>
+        <input type="button" value="Converter" onclick="converteTemp()">
+
+        <script>
+
+            function converteTemp() {
+
+                let tempC = document.getElementById("idTempC").value
+                let tempF = ((9 * tempC + 160) / 5)
+                document.getElementById("idOutTemp").value = "Conversão de Celsius " + tempC + "º para farehnheit " + tempF + "f"
+
+                console.log("Temp em F: ", tempF)
+            }
+
+
+
+
+
+        </script>
+
+
+
+
+    </form>
+</body>
+
+</html>

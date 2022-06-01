@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio10</title>
+
+    <style>
+        body {
+            background: linear-gradient(90deg, #340157 40%, #321463 60%, #5a1097 100%)
+        }
+
+        h1 {
+            font-size: 38pt;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgb(255, 255, 255);
+            font-display: inherit;
+            /*text-shadow:0.1em 0.1em 0.05em rgb(0, 0, 0);*/
+            text-shadow: 0 0 0.5em rgb(21, 245, 1), 0 0 1em rgb(60, 255, 0), 0 0 1em rgb(53, 255, 3)
+        }
+
+
+        #idCotacao {
+            width: 180px;
+
+        }
+
+        #tb-moeda {
+            border: 0px solid;
+            padding: 1px;
+            margin-left: 10px;
+        }
+
+        #dv-cotacao {
+            background-color: #70726f;
+            width: 500px;
+            padding: 1px 1px 10px 10px;
+            margin-left: 15px;
+            height: 60px;
+            text-align: center;
+        }
+
+        #lb-moedaCotacao {
+            font-weight: bold;
+            color: #35e213;
+            font-size: 20px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-shadow: 0 0 0.2em rgb(29, 34, 19), 0 0 0.5em rgb(99, 98, 98), 0 0 0.5em rgb(128, 127, 127)
+        }
+
+        #dv-cotacao {
+            font-weight: bold;
+            color: #000000;
+            font-size: 14px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+
+
+
+        .sub-texto {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #f8df00;
+            margin: 0 0 0 15px;
+            text-shadow: 0 0 0.2em rgb(29, 34, 19), 0 0 0.5em rgb(99, 98, 98), 0 0 0.5em rgb(128, 127, 127)
+        }
+
+        tr {
+            border: 1px solid;
+        }
+
+        td {
+            border: 1px solid;
+
+        }
+
+        #btn-converte {
+            background: #707070;
+            width: 150px;
+            height: 30px;
+            color: azure;
+            font-size: 16px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            border-radius: 20px;
+            display: block;
+            transition: all 700ms;
+            padding: 5px, 2px 0px 1px;
+            border: 1px solid;
+            margin-left: 10px;
+            margin-top: 1px;
+        }
+
+        #btn-converte:hover {
+            background: #56df07;
+            width: 150px;
+            height: 30px;
+            color: azure;
+            font-size: 16px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            transform: scale(1.1);
+
+        }
+
+
+        .dv-outConversao {
+            border: 2px solid;
+            color: #adafafa2;
+            width: 15%;
+            height: 50px;
+            text-align: center;
+            margin-left: 50%;
+            padding-top: 10px;
+            transform: translate(-50%, -150%);
+            background: linear-gradient(90deg, #969695 40%, #a3a3a2 60%, #818178 100%);
+
+
+        }
+
+        .dv-outConversao label {
+            text-align: center;
+            font-size: 18px;
+            text-shadow: 0 0 0.2em rgb(2, 2, 2), 0 0 0.5em rgb(61, 60, 60), 0 0 0.5em rgb(14, 13, 13);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #e4e708;
+        }
+
+        #idOutConversao {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 0.2em rgb(240, 237, 237), 0 0 0.5em rgb(250, 250, 250), 0 0 0.5em rgb(240, 239, 239);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #0e9909;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <form action="" method="get">
+        <h1>Bem vindo a Casa de Câmbio online</h1><br>
+
+
+        <div id="dv-cotacao">
+            <label id="lb-moedaCotacao" for="">Selecione a moeda</label><br>
+
+
+            <input type="radio" name="nmSelMoeda" id="idSelReal" checked>
+            <label for="nmMoedaReal">Real</label>
+
+            <input type="radio" name="nmSelMoeda" id="idSelDolar">
+            <label for="nmMoedaDolar">U$ Americano</label>
+
+
+            <input type="radio" name="nmSelMoeda" id="idSelEuro">
+            <label for="nmMoedaEuro">Euro</label>
+
+            <input type="radio" name="nmSelMoeda" id="idSelLibra">
+            <label for="nmMoedaLibra">Libra</label>
+
+            <input type="radio" name="nmSelMoeda" id="idSelCanada">
+            <label for="nmMoedaCanada">U$ Canadense</label><br>
+
+            <input type="number" name="nmCotacao" id="idCotacao"><br><br>
+
+        </div>
+
+        <label class="sub-texto" for="nmMoeda">Selecione a moeda que deseja converter</label><br>
+
+        <div>
+            <table id="tb-moeda">
+                <tr>
+                    <td>
+                        <input type="number" id="idInputMoeda1">
+                    </td>
+                    <td>
+                        <select name="nmMoedaSel" id="idMoeda">
+                            <option value="real">Real</option>
+                            <option value="dolar">Dólar</option>
+                            <option value="euro">Euro</option>
+                            <option value="libra">Libra Esterlina</option>
+                            <option value="dl">Dólar Canadense</option>
+                        </select>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="btn">
+            <input id="btn-converte" type="button" value="Converter" onclick="converteMoeda()">
+        </div>
+        <div class="dv-outConversao">
+            <label for="idOutConversao">Resultado da Conversão</label><br>
+            <output id="idOutConversao"></output>
+        </div>
+
+        <script>
+
+
+            //Exemplo 007 - Select 
+            /*itemSelected = document.getElementById("idSelect")
+            estado = itemSelected.value
+            console.log("UF " + estado);
+            console.log("Estado " + itemSelected.options[itemSelected.selectedIndex].innerText);
+            
+            
+               //Exemplo 006 - Radio button
+            feminino = document.getElementById("idFeminino").checked
+            masculino = document.getElementById("idMasculino").checked
+            console.log("Masculino: " + masculino + " Feminino: " + feminino);
+            
+            */
+
+
+
+            function converteMoeda() {
+
+
+                let real = document.getElementById("idSelReal").checked
+                let dolar = document.getElementById("idSelDolar").checked
+                let euro = document.getElementById("idSelEuro").checked
+                let libra = document.getElementById("idSelLibra").checked
+                let canada = document.getElementById("idSelCanada").checked
+
+                let moedaConv = document.getElementById("idInputMoeda1").value
+                let valorDia = Number(document.getElementById("idCotacao").value)
+                let tipoMoeda = document.getElementById("idMoeda")
+                let moedaSel = tipoMoeda.value
+                let conversao = 0
+
+                console.log("Item selecionado " + moedaSel);
+
+                //CONVERSÃO DE REAL PARA OUTRAS MOEDAS
+                if ((real == true) && (moedaSel == 'real')) {
+                    document.getElementById("idOutConversao").innerHTML = "Conversão Não Permitida!"
+                    alert("Não é possível converter Real para Real..!")
+                }
+
+                if ((real == true) && (moedaSel == 'dolar')) {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "U$ " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                if (real == true && moedaSel == "euro") {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "EUR " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                if (real == true && moedaSel == "libra") {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "GBP " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                if (real == true && moedaSel == "dl") {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "CAD " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                //CONVERSÃO DE DOLAR AMERICANO PARA OUTRAS
+                if ((dolar == true) && (moedaSel == 'dolar')) {
+                    document.getElementById("idOutConversao").innerHTML = "Conversão Não Permitida!"
+                    alert("Não é possível converter Real para Real..!")
+                }
+
+                if ((dolar == true) && (moedaSel == 'real')) {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "U$ " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                if (dolar == true && moedaSel == "euro") {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "EUR " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                if (dolar == true && moedaSel == "libra") {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "GBP " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                if (dolar == true && moedaSel == "dl") {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "CAD " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                //CONVERSÃO DE EURO PARA OUTRAS MOEDAS
+                if ((euro == true) && (moedaSel == 'euro')) {
+                    document.getElementById("idOutConversao").innerHTML = "Conversão Não Permitida!"
+                    alert("Não é possível converter Real para Real..!")
+                }
+
+                if ((euro == true) && (moedaSel == 'dolar')) {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "U$ " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                if (euro == true && moedaSel == "real") {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "EUR " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                if (euro == true && moedaSel == "libra") {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "GBP " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+                if (euro == true && moedaSel == "dl") {
+                    conversao = (valorDia / moedaConv)
+                    document.getElementById("idOutConversao").innerHTML = "CAD " + conversao.toFixed(4)
+                    console.log("Conversao " + conversao);
+                }
+
+
+
+
+
+
+
+            }
+
+
+
+
+        </script>
+
+
+
+
+
+
+
+
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio9</title>
+    <style>
+        body {
+            background-color: rgb(16, 27, 77);
+        }
+
+        h1 {
+            background-color: rgb(37, 69, 70);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 20pt;
+            font-weight: bold;
+            color: rgb(218, 243, 79);
+            text-align: center;
+        }
+
+        #label-radio {
+            color: rgb(255, 255, 255);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            font-size: 10pt;
+        }
+
+        #label-titulo {
+            color: rgb(255, 255, 255);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            font-size: 15pt;
+        }
+
+        #label-input {
+            color: rgb(247, 211, 9);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            font-size: 15pt;
+        }
+
+        #idOutTemp {
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgb(205, 218, 21);
+            font-size: 22pt;
+        }
+
+        #idBtn {
+            background-color: rgb(138, 142, 143);
+            border: none;
+            color: rgb(218, 243, 79);
+            padding: 11px 50px;
+            text-align: center;
+            font-size: 16px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            border: 1px solid rgb(94, 243, 7);
+        }
+
+        #idBtn:hover {
+            background-color: rgb(247, 135, 60);
+            border: none;
+            color: rgb(102, 104, 101);
+            padding: 11px 50px;
+            text-align: center;
+            font-size: 16px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: bold;
+            border: 1px solid rgb(0, 137, 250);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Conversor de temperaturas (C= Celsius, F= Fahrenheit e K = Kelvin)</h1>
+    <form action="" method="get">
+
+
+        <label id="label-radio" for="nmTipoTemp">Selecione a Unidade de Medida</label><br>
+
+        <input type="radio" name="nmTipoTemp" id="idC" unchecked ">
+        <label id="label-radio" for="nmTipoTemp">C - Celsius </label>
+
+        <input type="radio" name="nmTipoTemp" id="idF">
+        <label id="label-radio" for="nmTipoTemp">F - Fahrenheit</label>
+
+        <input type="radio" name="nmTipoTemp" id="idK">
+        <label id="label-radio" for="nmTipoTemp">K - Kelvin</label><br><br>
+
+
+
+        <label id="label-input" for="idTempC">Informe a temperatura</label><br>
+        <input type="number" name="nmTempC" id="idTempC"><br>
+        <output id="idOutTemp">Conversão:</output><br><br>
+        <input id="idBtn" type="button" value="Converter" onclick="converteTemp()">
+
+        <script>
+               function converteTemp() {
+
+                let temperatura = Number(document.getElementById("idTempC").value)
+                let conversao = document.getElementById("idOutTemp")
+                let c = document.getElementById("idC").checked
+                let f = document.getElementById("idF").checked
+                let k = document.getElementById("idK").checked
+                let tipoTemp = 0
+
+
+                if (c == true) {
+                    convF = Number((9 * temperatura + 160) / 5)
+                    convK = Number((temperatura + 273.15))
+                    conversao.value = "Conversao de Celsius para Fahrenheit " + convF + " e Conversão de Celsius para Kelvin " + convK
+
+
+                } else if (f == true) {
+                    convC = Number((temperatura - 32) / 1.8)
+                    convK = Number((temperatura - 32) * 5 / 9 + 273.15)
+                    conversao.value = "Conversao de Fahrenheit para Celsius " + convC + " e Conversão de Fahrenheit para Kelvin " + convK
+
+                } else if (k == true) {
+                    convC = Number((temperatura - 273.15))
+                    convF = Number((temperatura - 273.15) * 9 / 5 + 32)
+                    conversao.value = "Conversao de Kelvin para Celsius " + convC + " e Conversão de Kelvin para Fahrenheit " + convF
+
+                }
+
+
+
+
+
+
+            }
+
+
+
+
+
+        </script>
+
+
+    </form>
+</body>
+
+</html>
