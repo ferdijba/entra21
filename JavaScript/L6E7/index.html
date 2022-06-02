@@ -6,48 +6,138 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 7</title>
+
+    <style>
+        body {
+            background: linear-gradient(90deg, rgba(155, 155, 155, 0.849) 40%, rgb(255, 218, 11) 60%, rgb(43, 1, 82) 100%, rgb(255, 255, 255) 80%);
+        }
+
+        p {
+            background-color: rgba(199, 255, 70, 0.801);
+            font-size: 16px;
+            color: purple;
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #lb-campo {
+            font-size: 18px;
+            color: rgb(96, 6, 119);
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            text-shadow: 0 0 1em rgb(212, 212, 211), 0 0 0.5em rgb(150, 149, 149), 0 0 0.5em rgb(241, 220, 23)
+        }
+
+        .inp-campo {
+            width: 300px;
+            height: 22px;
+            background-color: rgba(196, 192, 192, 0.842);
+            margin-bottom: 3px;
+        }
+
+        #btn-inserir {
+            border-radius: 15px;
+            border: 0ch;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            width: 120px;
+            height: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: rgb(255, 218, 11);
+        }
+
+        #btn-inserir:hover {
+            border-radius: 15px;
+            background-color: rgb(43, 1, 82);
+            color: cornsilk;
+
+        }
+
+        #btn-imprimir {
+            border: 0ch;
+            border-radius: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            width: 120px;
+            height: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: rgb(255, 218, 11);
+        }
+
+        #btn-imprimir:hover {
+            border-radius: 15px;
+            background-color: rgb(43, 1, 82);
+            color: cornsilk;
+
+        }
+
+
+        .text-area {
+            width: 300px;
+            background-color: rgba(196, 192, 192, 0.842);
+        }
+    </style>
 </head>
 <p>Faça um programa que leia 7 nomes de pessoas e guarde-os em um vetor. No final, mostre uma listagem com todos os
     nomes informados, na ordem inversa daquela em que eles foram informados.</p>
 
 <body>
     <form action="" method="get">
-        <label for="idNome">Nome</label><br>
-        <input type="text" name="nmNome" id="idNome"><br>
-        <input type="button" value="Inserir" onclick="insereNomes()"><br>
-        <input type="button" value="Imprimir" onclick="imprimir()"><br>
 
+        <label id="lb-campo" for="idNome">Nome</label><br>
+        <input class="inp-campo" type="text" name="nmNome" id="idNome"><br>
 
-        <hr>
-        <textarea name="nmTextNomes" id="idTextNomes" cols="30" rows="10"></textarea>
+        <div id="dv-btns">
+            <input id="btn-inserir" type="button" value="Inserir" onclick="insereNomes()">
+            <input id="btn-imprimir" type="button" value="Imprimir" onclick="imprimir()"><br>
+        </div>
+
+        <textarea class="text-area" name="nmTextNomes" id="idTextNomes" cols="30" rows="10"></textarea>
 
     </form>
-
-
     <script>
-
+        //vetor de nomes
         let nomes = []
-
+        var limiteNomes = 0
+        //Função para inserir os nomes
         function insereNomes() {
 
             let nome = document.getElementById("idNome").value
             let textNomes = document.getElementById("idTextNomes")
 
-            nomes.push(nome)
-            document.getElementById("idTextNomes").value = ""
-            console.log(nomes)
+            if (limiteNomes < 7) {
+                nomes.push(nome)
+                document.getElementById("idTextNomes").value = ""
+                console.log(nomes)
+                limpaCampos();
+                limiteNomes++
+            } else {
+                alert("Você atingiu o limite máximo de nomes...!")
+                limpaCampos();
+            }
+
 
 
         }
 
-        function imprimir(){
+        //Função limpa campos
+        function limpaCampos() {
+            document.getElementById("idNome").value = ""
+        }
+
+        //Função para imprimir os nomes do vetor
+        function imprimir() {
 
             let nomeInvertido = []
             for (let i = 0; i < nomes.length; i++) {
-                 nomeInvertido.unshift(nomes[i])
-                 console.log(nomeInvertido);
-                
+                nomeInvertido.unshift(nomes[i])
+                console.log(nomeInvertido);
+                document.getElementById("idTextNomes").value = nomeInvertido
+
             }
+
 
         }
 
