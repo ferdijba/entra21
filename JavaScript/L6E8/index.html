@@ -7,36 +7,206 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio8</title>
 </head>
+<style>
+    body {
+        background-image: url(fundo.jpg);
+        background-repeat: no-repeat;
+        background-size: 100vw;
+        background-color: blue;
+        background-attachment: fixed;
+        background-position: right top;
+    }
+
+    p {
+        background-color: red;
+        font-size: 18px;
+        font-weight: bold;
+        height: 25px;
+        padding-top: 5px;
+        text-align: center;
+        color: aliceblue;
+        text-shadow: 1px 2px #252525;
+        /*text-decoration-line: line-through;*/
+        /*//text-decoration-color: rgb(2, 8, 75);*/
+        text-decoration-style: solid;
+        text-decoration-thickness: 1px;
+    }
+
+    .lb-numero {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-shadow: 0 0 0.5em rgb(229, 227, 229), 0 0 0.5em rgb(253, 234, 22), 0 0 0.5em;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .inpt-numero {
+        background-color: rgba(236, 64, 12, 0.918);
+        width: 250px;
+        height: 25px;
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .btn {
+        background-color: rgb(32, 64, 93);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        border: none;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding-top: 2px;
+        width: 150px;
+        height: 25px;
+        color: whitesmoke;
+        width: 100px;
+        border-radius: 15px;
+
+
+    }
+
+    .btn:hover {
+        background-color: rgb(248, 6, 10);
+        text-decoration: underline solid rgb(2, 2, 2) 50%;
+        font-style: oblique;
+    }
+
+    .btn1 {
+        background-color: rgb(32, 64, 93);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        border: none;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding-top: 2px;
+        width: 150px;
+        height: 25px;
+        color: whitesmoke;
+        width: 100px;
+        border-radius: 15px;
+
+
+    }
+
+    .btn1:hover {
+        background-color: rgb(248, 6, 10);
+        text-decoration: underline solid rgb(2, 2, 2) 50%;
+        font-style: oblique;
+    }
+
+
+    .text-area {
+        width: 250px;
+        background-color: rgba(236, 64, 12, 0.918);
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: whitesmoke;
+        font-weight: bold;
+        font-size: 15px;
+
+    }
+
+    .dv-outs {
+        background-color: aliceblue;
+        border: 2px solid;
+        border-color: rgb(255, 60, 0);
+        width: 500px;
+        height: 30px;
+        padding: 10px;
+        opacity: .9;
+
+    }
+
+    .vetor-numeros {
+
+        font-size: 15px;
+        font-weight: bold;
+        color: rgb(6, 6, 6);
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+    }
+
+    .vetor-multiplos {
+
+        font-size: 15px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    }
+</style>
 
 <body>
-    
-        <label for="idNumero">Digite o número:</label><br>
-        <input type="number" name="nmNumero" id="idNumero"><br>
+    <P>Escreva um programa que leia 15 números e guarde-os em um vetor. No final, mostre o vetor
+        inteiro na tela e em seguida mostre em que posições foram digitados valores que são
+        múltiplos de 10.</P>
+    <label class="lb-numero" for="idNumero">Digite o número:</label><br>
+    <input class="inpt-numero" type="number" name="nmNumero" id="idNumero"><br>
 
-        <input type="button" value="Enviar" onclick="insereNumeros()"><br>
-        <textarea name="nmTextNumeros" id="idTextNumeros" cols="30" rows="10"></textarea>
+    <input class="btn" type="button" value="Inserir" onclick="insereNumeros()">
 
-    
+    <input class="btn1" type="button" value="Imprimir" onclick="imprimirNumeros()">
+    <br>
+    <div class="dv-outs">
+        <output class="vetor-numeros" id="idOutVetor">Aqui sai o resultado do vetor</output><br>
+        <output class="vetor-multiplos" id="idOutMultiplos">Aqui sai o resultad dos multiplos de 10</output </div>
 
-    <script>
 
-        function insereNumeros() {
-            let numero = document.getElementById("idNumero").value
+
+
+        <script>
+
+
             let numeros = []
+            var limiteNum = 0
 
-            for (let i = 0; i < 15; i++) {
-               numeros.push(numero) 
-               
+
+            function insereNumeros() {
+                let numero = document.getElementById("idNumero").value
+                let textoSaida = document.getElementById("idOutVetor").value
+
+                if (limiteNum < 15 - 1) {
+                    numeros.push(numero)
+                    document.getElementById("idNumero").value = ""
+                    limiteNum++
+
+                } else {
+                    alert("Limite máximo atingido!!")
+                    limpaCampos();
+
+                }
             }
-            console.log("Numero: " + numeros);
+            //Função limpa campos
+            function limpaCampos() {
+                document.getElementById("idNumero").value = ""
+            }
+
+            //Função para imprimir os nomes do vetor
+            function imprimirNumeros() {
+                let numerosOrdanado = []
+                let numerosMultiplos = []
+
+                for (let i = 0; i < numeros.length; i++) {
+                    numerosOrdanado.push(numeros[i])
+                    document.getElementById("idOutVetor").innerHTML = numerosOrdanado
+
+                    if (numerosOrdanado[i] % 10 == 0) {
+                        for (let j = 0; j < numerosOrdanado.length; j++) {
+                            numerosMultiplos.push(numerosOrdanado[i])                            
+                        }
+                        console.log("Multiplo de 10 na posição -> " + j+ " :" + numerosOrdanado[i]);
+                        
+
+                    } else {
+                        console.log("All " + numerosOrdanado)
+                    }
 
 
+                }
+            }
 
-        }
-
-
-
-    </script>
+        </script>
 
 
 
