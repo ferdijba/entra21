@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio10</title>
+    <style>
+        body {
+            background: linear-gradient(90deg, rgb(247, 244, 207) 1%, rgb(177, 144, 1) 40%, rgb(133, 97, 0) 80%);
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="" method="get">
+
+        <label for="idNumero">Digite a chave para validar:</label><br>
+        <input type="number" name="nmNumero" id="idNumero"><br>
+        <output id="idOutResultado">Resultado:</output><br>
+        <input type="button" value="Validar" onclick="validar()"><br>
+
+        <script>
+            var numerosSorteados = []
+            var posicao = []
+            var chaves = []
+            var outResultado = ""
+
+            //Sorteio de numeros aleatórios
+            for (let i = 0; i < 30; i++) {
+                numerosSorteados.push(Math.round(Math.random() * 15))
+                console.table(numerosSorteados[i]);
+            }
+            //Função para validar a chave sorteada
+            function validar() {
+                var numeroValidar = Number(document.getElementById("idNumero").value)
+
+                
+                for (let index = 0; index < numerosSorteados.length; index++) {
+
+                    if ((numeroValidar != "") && (numeroValidar == numerosSorteados[index])) {
+                        posicao.push(index)
+                        chaves.push(numerosSorteados[index])
+                        console.log("Posição " + posicao)
+                    }
+                }
+                document.getElementById("idOutResultado").value = "A chave " + chaves + " foi sorteado" + chaves.length + " vezes e estão nas posições [" + posicao + "]"
+            }
+        </script>
+    </form>
+</body>
+
+</html>
