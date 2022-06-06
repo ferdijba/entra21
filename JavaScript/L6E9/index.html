@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio9</title>
+</head>
+<style>
+    body {
+        background: radial-gradient(rgba(136, 83, 2, 0.973) 20%, rgb(0, 57, 90) 50%, rgb(3, 58, 83) 100%);
+        background-repeat: no-repeat;
+        background-size: 100vw;
+        background-color: blue;
+        background-attachment: fixed;
+        background-position: right top;
+    }
+
+    p {
+        background-color: rgb(105, 10, 129);
+        font-size: 13px;
+        font-weight: bold;
+        height: 25px;
+        padding-top: 5px;
+        text-align: center;
+        color: aliceblue;
+        text-shadow: 1px 2px #252525;
+        /*text-decoration-line: line-through;*/
+        /*//text-decoration-color: rgb(2, 8, 75);*/
+        text-decoration-style: solid;
+        text-decoration-thickness: 1px;
+    }
+
+    .lb-numero {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-shadow: 0 0 0.5em rgb(229, 227, 229), 0 0 0.5em rgb(253, 234, 22), 0 0 0.5em;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .inpt-numero {
+        background-color: rgba(236, 64, 12, 0.918);
+        width: 250px;
+        height: 25px;
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .btn {
+        background-color: rgb(91, 145, 5);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        border: none;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding-top: 2px;
+        width: 150px;
+        height: 25px;
+        color: whitesmoke;
+        width: 100px;
+        border-radius: 15px;
+
+
+    }
+
+    .btn:hover {
+        background-color: rgb(99, 6, 248);
+        text-decoration: underline solid rgb(2, 2, 2) 50%;
+        font-style: oblique;
+    }
+
+    .btn1 {
+        background-color: rgb(91, 145, 5);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        border: none;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding-top: 2px;
+        width: 150px;
+        height: 25px;
+        color: whitesmoke;
+        width: 100px;
+        border-radius: 15px;
+
+
+    }
+
+    .btn1:hover {
+        background-color: rgb(99, 6, 248);
+        text-decoration: underline solid rgb(2, 2, 2) 50%;
+        font-style: oblique;
+    }
+
+
+    .text-area {
+        width: 250px;
+        background-color: rgb(255, 0, 0));
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: whitesmoke;
+        font-weight: bold;
+        font-size: 15px;
+
+    }
+
+    .dv-outs {
+        background-color: aliceblue;
+        border: 2px solid;
+        border-color: rgb(0, 102, 255);
+        width: 500px;
+        height: 30px;
+        padding: 10px;
+        opacity: .9;
+
+    }
+
+    .vetor-numeros {
+
+        font-size: 15px;
+        font-weight: bold;
+        color: rgb(6, 6, 6);
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+    }
+
+    .vetor-pares {
+
+        font-size: 15px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    }
+</style>
+
+<body>
+    <P>Desenvolva um programa que leia 10 números inteiros e guarde-os em um vetor. No final, mostre quais são os
+        números pares que foram digitados e em que posições eles estão armazenados.</P>
+    <label class="lb-numero" for="idNumero">Digite o número:</label><br>
+    <input class="inpt-numero" type="number" name="nmNumero" id="idNumero"><br>
+
+    <input class="btn" type="button" value="Inserir" onclick="insereNumeros()">
+
+    <input class="btn1" type="button" value="Imprimir" onclick="imprimirNumeros()">
+    <br>
+    <div class="dv-outs">
+        <output class="vetor-numeros" id="idOutVetor">Aqui sai o resultado do vetor</output><br>
+        <output class="vetor-pares" id="idOutPares"></output </div>
+
+        <script>
+            var numeros = []
+            var limiteNum = 0
+            var outNumVetor = document.getElementById("idOutVetor")
+            var outNumPares = document.getElementById("idOutPares")
+
+            outNumVetor.value = "Números do Vetor: "
+            outNumPares.value = "Posição dos números Pares: "
+
+
+
+            //Função insere números no vetor
+            function insereNumeros() {
+                let numero = document.getElementById("idNumero").value
+                document.getElementById("idNumero").focus();
+
+                if (limiteNum < 10) {
+                    numeros.push(numero)
+                    document.getElementById("idNumero").value = ""
+                    limiteNum++
+
+                } else {
+                    alert("Limite máximo atingido!!")
+                    limpaCampos();
+                }
+                document.getElementById("idNumero").focus();
+            }
+            //Função limpa campos
+            function limpaCampos() {
+                document.getElementById("idNumero").value = ""
+            }
+
+            //Função para imprimir os nomes do vetor
+            let numerosOrdanado = []
+            let numerosMultiplos = []
+
+            function imprimirNumeros() {
+
+                for (let i = 0; i < numeros.length; i++) {
+
+                    outNumVetor.value = outNumVetor.value + " " + numeros[i]
+
+                    if (numeros[i] % 2 == 0) {
+                        outNumPares.value = outNumPares.value + " " + i
+
+                    }
+
+
+                }
+            }
+
+        </script>
+
+
+
+</body>
+
+</html>
