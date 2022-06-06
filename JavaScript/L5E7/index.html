@@ -10,13 +10,14 @@
 
 <body>
     <form action="">
-        <label for="idNumeroApostado">Aposte um Número:</label><br>
+        <label for="idNumeroApostadoo">Aposte um Número:</label><br>
         <input type="number" id="idNumeroApostado" name="nmNumeroApostadoe">
         <br><br>
-        <input type="button" value="Enviar" onclick="enviar()">
+        <input type="button" value="Enviar" onclick="enviar()" id="idBtn">
         <br><br>
-        <label for="idOutMensagem">Resultado: </label>
-        <output id="idOutMensagem"></output>
+        <label for="idMensagem">Resultado: </label>
+        <output id="idOutMensagem"></output><br>
+        <output id="idOutTentativas">Tentativa:</output>
         <br>
     </form>
 
@@ -26,34 +27,38 @@
         if (numeroSorteado == 0) {
             numeroSorteado = 1
         }
-        console.log(numeroSorteado);
+        console.log("Numero Sorteado: " + numeroSorteado);
 
         var tentativa = 0
         var msnSaida = document.getElementById("idOutMensagem")
+        var msnTentativas = document.getElementById("idOutTentativas")
 
         function enviar() {
 
-
-            //- adquirir o número digitado 
             let numeroApostado = Number(document.getElementById("idNumeroApostado").value)
-            //- somar a tentativa do jogador (tentativa++)
+            let input = document.querySelectorAll('#idNumeroApostado')
+            let btn = document.querySelectorAll('#idBtn')
+
             tentativa++
-            //- testar se a quantidade de tentativas é superior a 3, se for dar saída fim de jogo (jogo perdido)
             if (tentativa <= 3) {
-                //- descobrir se o número digitado é igual ao número sorteado, dar saída de acordo com as regras abaixo 
-                //    - "Vc Venceu!" se o numeroSorteado == numeroDigitado
-                //    - "O Apostado é menor que sorteado" se o numeroSorteado > numeroDigitado
-                //    - "O Apostado é maior que sorteado" se o numeroSort
                 if (numeroApostado == numeroSorteado) {
-                    msnSaida.value = "Parabéns vc acertou!"
+                    msnSaida.value = "Parabéns você acertou!!!"
+                    tentativa = 4
+
                 } else if (numeroApostado > numeroSorteado) {
-                    msnSaida.value = "O número apostado é maior que sorteado"
+                    msnSaida.value = "Numero apostado é maior que o sorteado!!"
+
                 } else if (numeroApostado < numeroSorteado) {
-                    msnSaida.value = "O número apostado é menor que sorteado"
+                    msnSaida.value = "Numero apostado é menor que o sorteado!!"
                 }
-            } else {
-                msnSaida.value = "Jogo encerrado, você perdeu, mais sorte da próxima vez!"
+                msnTentativas.value = "Tentativa: " + tentativa
+                console.log("Tentativa: " + tentativa);
+                if (tentativa >= 3) {
+                    alert("Número máximos de tentativas é 3.!!")
+                }
             }
+
+
         }
 
         /*
