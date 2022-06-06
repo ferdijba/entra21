@@ -152,21 +152,24 @@
         <output class="vetor-numeros" id="idOutVetor">Aqui sai o resultado do vetor</output><br>
         <output class="vetor-multiplos" id="idOutMultiplos">Aqui sai o resultad dos multiplos de 10</output </div>
 
-
-
-
         <script>
-
-
-            let numeros = []
+            var numeros = []
             var limiteNum = 0
+            var outNumVetor = document.getElementById("idOutVetor")
+            var outNumMult = document.getElementById("idOutMultiplos")
+
+            outNumVetor.value = "Números do Vetor: "
+            outNumMult.value = "Posição dos números multiplos de 10: "
 
 
+
+            //Função insere números no vetor
             function insereNumeros() {
                 let numero = document.getElementById("idNumero").value
-                let textoSaida = document.getElementById("idOutVetor").value
+                document.getElementById("idNumero").focus();
+                //let textoSaida = document.getElementById("idOutVetor").value
 
-                if (limiteNum < 15 - 1) {
+                if (limiteNum < 15) {
                     numeros.push(numero)
                     document.getElementById("idNumero").value = ""
                     limiteNum++
@@ -174,8 +177,8 @@
                 } else {
                     alert("Limite máximo atingido!!")
                     limpaCampos();
-
                 }
+                document.getElementById("idNumero").focus();
             }
             //Função limpa campos
             function limpaCampos() {
@@ -183,23 +186,19 @@
             }
 
             //Função para imprimir os nomes do vetor
+            let numerosOrdanado = []
+            let numerosMultiplos = []
+
             function imprimirNumeros() {
-                let numerosOrdanado = []
-                let numerosMultiplos = []
+
 
                 for (let i = 0; i < numeros.length; i++) {
-                    numerosOrdanado.push(numeros[i])
-                    document.getElementById("idOutVetor").innerHTML = numerosOrdanado
 
-                    if (numerosOrdanado[i] % 10 == 0) {
-                        for (let j = 0; j < numerosOrdanado.length; j++) {
-                            numerosMultiplos.push(numerosOrdanado[i])                            
-                        }
-                        console.log("Multiplo de 10 na posição -> " + j+ " :" + numerosOrdanado[i]);
-                        
+                    outNumVetor.value = outNumVetor.value + " " + numeros[i]
 
-                    } else {
-                        console.log("All " + numerosOrdanado)
+                    if (numeros[i] % 10 == 0) {
+                        outNumMult.value = outNumMult.value + " " + i
+
                     }
 
 
