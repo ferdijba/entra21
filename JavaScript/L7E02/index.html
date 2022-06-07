@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio1</title>
+
+    <style>
+        body {
+            background: linear-gradient(90deg, rgb(29, 28, 28) 10%, rgb(58, 58, 63) 60%, rgb(43, 39, 37) 100%);
+        }
+
+        h1 {
+            color: rgb(105, 3, 83);
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 45px;
+            text-decoration: underline;
+            text-shadow: 0 0 0.5em rgb(255, 231, 10), 0 0 0.5em rgb(252, 243, 166), 0 0 0.5em;
+
+        }
+
+        .label-nome,
+        .label-idade {
+            color: azure;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .input-nome {
+            width: 400px;
+            background-color: rgba(241, 239, 107, 0.884);
+
+        }
+
+        .input-idade {
+            background-color: rgba(241, 239, 107, 0.884);
+            margin-left: 4px;
+            width: 400px;
+        }
+
+        .dv-entrada {
+            padding: 10px;
+
+        }
+
+        .dv-out {
+            background-image: linear-gradient(to left, rgb(70, 70, 69) 10%, rgb(88, 86, 85) 60%, rgb(151, 147, 142) 100%);
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid;
+            color: aqua;
+            width: 30%;
+            height: 100px;
+        }
+
+        .outSaida {
+            font-size: 20px;
+            color: chartreuse;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .btn {
+            background-color: rgb(219, 6, 95);
+            width: 120px;
+            height: 30px;
+            padding-top: 3px;
+            font-size: 15px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+        }
+
+        .btn:hover {
+            background-color: rgb(131, 3, 56);
+            width: 120px;
+            height: 30px;
+            padding-top: 3px;
+            font-size: 15px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Exercício L7 E2</h1>
+    <form action="" method="get">
+        <div class="dv-entrada">
+            <label class="label-nome" for="nmNome">Nome:</label>
+            <input class="input-nome" type="text" name="nmNome" id="idNome"><br>
+
+            <label class="label-idade" for="nmIdade">Idade:</label>
+            <input class="input-idade" type="number" name="nmIdade" id="idIdade"><br>
+        </div>
+        <div class="dv-out">
+            <output class="outSaida">Resultado</output>
+        </div>
+        <div>
+            <input class="btn" type="button" value="Gravar" onclick="insereNomes()">
+            <input class="btn" type="button" value="Exibir" onclick="exibeDados()"><br>
+        </div>
+
+
+        <script>
+            var nomes  = []
+            var idades = []
+            var contador = 0
+            var nomeSaida = ""
+
+
+            //Função para inserir nomes
+            function insereNomes() {
+                var nome = document.getElementById("idNome").value
+                var idade = document.getElementById("idIdade").value
+                if (contador < 9) {
+                    nomes.push(nome)
+                    idades.push(idade)
+                    contador++
+                    limpaCampos()
+                } else {
+                    alert("Número máximo de " + contador)
+                    limpaCampos()
+                }
+                console.log(nomes);
+                console.log(idades);
+                document.getElementById("idNome").focus();
+            }
+
+            //Funçao para exibir dados em tela
+            function exibeDados() {
+                
+                outSaida = document.getElementById("outSaida")
+                for (let i = 0; i < idades.length; i++) {
+                    if (idades[i] < 18) {
+                        for (let j = 0; j < nomes.length; j++) {
+                            nomeSaida = nomes[j]                                                        
+                        }                        
+                        
+                    }                                    
+                }
+                console.log("Menores " + nomeSaida);
+                
+
+            }
+
+            function limpaCampos() {
+                document.getElementById("idNome").value = ""
+                document.getElementById("idIdade").value = ""
+            }
+
+        </script>
+    </form>
+</body>
+
+</html>
