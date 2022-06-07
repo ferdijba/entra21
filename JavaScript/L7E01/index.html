@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio1</title>
+
+    <style>
+        body {
+            background: linear-gradient(90deg, rgb(107, 1, 66) 10%, rgb(5, 5, 78) 60%, rgb(184, 87, 32) 100%);
+        }
+
+        label {
+            color: azure;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .input-numero {
+            width: 250px;
+            height: 25px;
+            background-color: rgb(100, 114, 122);
+            color: azure;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .input-out {
+            color: azure;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        .input-btn {
+            color: rgb(236, 69, 2);
+            background-color: rgb(0, 0, 0);
+            font-size: 15px;
+            width: 125px;
+            border-radius: 20px;
+            border: none;
+        }
+
+        .input-btn:hover {
+            color: rgb(255, 255, 255);
+            background-color: rgb(105, 9, 134);
+            font-size: 15px;
+            width: 125px;
+            border-radius: 20px;
+            border: none;
+        }
+
+
+        .dv-btn {
+            background: radial-gradient(rgb(152, 206, 4) 20%, rgb(100, 4, 95) 30%, rgb(32, 7, 32)80%);
+            margin-top: 5px;
+            padding: 10px;
+            width: 300px;
+            border: 0px solid;
+            text-align: center;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="get">
+        <label for="nmNota">Digite a nota:</label><br>
+        <div>
+            <input class="input-numero" type="number" name="nmNota" id="idNota" min="0" max="10"><br>
+            <output class="input-out" id="idOutMediaT">Média da turma:</output><br>
+            <output class="input-out" id="idOutAluAcima">Qtde Alunos acima da média da turma:</output><br>
+            <output class="input-out" id="idOutMaiorN">Maior Nota digitada:</output><br>
+            <output class="input-out" id="idOutPosN">Posição da maior nota digitada:</output><br>
+        </div>
+        <div class="dv-btn">
+            <input class="input-btn" type="button" value="Inserir" onclick="InserirNotas()">
+            <input class="input-btn" type="button" value="Relatório" onclick="relatorioNotas()">
+        </div>
+
+        <script>
+            var limiteNotas = 0
+            var notas = []
+
+
+            //Função para inserir as notas
+            function InserirNotas() {
+                var notaDigitada = Number(document.getElementById("idNota").value)
+                if (limiteNotas < 10) {
+                    notas.push(notaDigitada)
+                    document.getElementById("idNota").value = ""
+                    limiteNotas++
+                } else {
+                    alert("Número máximo de notas é " + limiteNotas)
+                    limpaCampos()
+                }
+                console.log(notas);
+                document.getElementById("idNota").focus();
+            }
+
+            //Função para calcular a media da turma
+            function relatorioNotas() {
+                //SAIDAS de resultados
+                outMediaTurma = document.getElementById("idOutMediaT")
+                outMaiorNota = document.getElementById("idOutMaiorN")
+                outQtdeAcimaM = document.getElementById("idOutAluAcima")
+                outPosicaoN = document.getElementById("idOutPosN")
+
+                //Variaveis Global
+                let media = 0
+                let aux = 0
+                let aux1 = 0
+                let contaAlunos = 0
+                let maiorNota = 0
+                let maior = 0
+                let posicaoM = 0
+
+                //a) Qual é a média da turma
+                for (let i = 0; i < notas.length; i++) {
+                    aux += notas[i]
+                }
+                media = aux / notas.length
+                outMediaTurma.value = "Média da Turma é: " + media.toFixed(1)
+                console.table(media);
+
+                //b) Quantos alunos estão acima da média da turma                
+                for (let i = 0; i < notas.length; i++) {
+                    if (notas[i] > media) {
+                        contaAlunos++
+                    }
+                }
+                outQtdeAcimaM.value = "Qtde Alunos acima de média: " + contaAlunos
+
+                //c) Qual foi a maior nota digitada
+                aux1 = notas.filter(function (value, index, array) {
+                    if (value > maior) {
+                        maior = value
+                    }
+                    return maior
+                })
+                outMaiorNota.value = "Maior nota digitada: " + maior
+
+                //d) Em que posições a maior nota aparece
+                for (let i = 0; i < notas.length; i++) {
+                    console.log("AQUI maior " + maior);
+                    if (notas[i] >= maior) {
+                        posicaoM = i                        
+                    }
+                }
+                outPosicaoN.value = "Posição da maior nota: " + posicaoM
+            }
+
+            function limpaCampos() {
+                document.getElementById("idNota").value = ""
+            }
+
+        </script>
+
+    </form>
+
+
+
+</body>
+
+</html>
