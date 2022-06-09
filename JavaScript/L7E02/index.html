@@ -96,7 +96,7 @@
             <input class="input-idade" type="number" name="nmIdade" id="idIdade"><br>
         </div>
         <div class="dv-out">
-            <output class="outSaida">Resultado</output>
+            <output class="outSaida" id="idOutSaida">Resultado</output>
         </div>
         <div>
             <input class="btn" type="button" value="Gravar" onclick="insereNomes()">
@@ -107,6 +107,8 @@
         <script>
             var nomes  = []
             var idades = []
+            var menoresIdade = []
+            var nomesMenoresIdade = []
             var contador = 0
             var nomeSaida = ""
 
@@ -132,17 +134,25 @@
             //Funçao para exibir dados em tela
             function exibeDados() {
                 
-                outSaida = document.getElementById("outSaida")
-                for (let i = 0; i < idades.length; i++) {
-                    if (idades[i] < 18) {
-                        for (let j = 0; j < nomes.length; j++) {
-                            nomeSaida = nomes[j]                                                        
-                        }                        
-                        
-                    }                                    
-                }
-                console.log("Menores " + nomeSaida);
-                
+                outSaida = document.getElementById("idOutSaida")
+
+                /**
+                 * Iteração do forEach no array de idades 
+                 * Verificar as menores idades
+                 */
+            
+        
+                idades.forEach((idade, index) => {
+                    if(idade < 18){
+                        menoresIdade.push[index]
+                    }
+                });
+
+                menoresIdade.forEach(iMenorIdade => {
+                    nomesMenoresIdade.push(nomes[iMenorIdade])
+                    
+                });
+                outSaida.value = "Alunos menores de idade: "+ nomesMenoresIdade
 
             }
 
