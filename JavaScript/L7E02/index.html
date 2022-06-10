@@ -116,7 +116,7 @@
             //Função para inserir nomes
             function insereNomes() {
                 var nome = document.getElementById("idNome").value
-                var idade = document.getElementById("idIdade").value
+                var idade = Number(document.getElementById("idIdade").value)
                 if (contador < 9) {
                     nomes.push(nome)
                     idades.push(idade)
@@ -140,21 +140,22 @@
                  * Iteração do forEach no array de idades 
                  * Verificar as menores idades
                  */
-            
-        
                 idades.forEach((idade, index) => {
                     if(idade < 18){
                         menoresIdade.push[index]
+   
                     }
                 });
-
+               
                 menoresIdade.forEach(iMenorIdade => {
                     nomesMenoresIdade.push(nomes[iMenorIdade])
                     
                 });
-                outSaida.value = "Alunos menores de idade: "+ nomesMenoresIdade
+                console.log(nomesMenoresIdade);
+                outSaida.value = "Alunos menores de idade: " + nomesMenoresIdade.toString()
 
             }
+
 
             function limpaCampos() {
                 document.getElementById("idNome").value = ""
