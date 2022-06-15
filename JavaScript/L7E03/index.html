@@ -5,176 +5,115 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exerciio L7E03</title>
+    <title>Exercicio L7E03</title>
+
     <style>
-        body {
-            background: linear-gradient(90deg, rgb(128, 148, 17) 30%, rgb(23, 143, 151) 90%);
-
-        }
-
-        .lb {
-            color: rgb(255, 243, 81);
-            font-size: 25px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-weight: 700;
-        }
-
-        .inp-nome {
-            width: 400px;
-            height: 25px;
-            border: 3px solid;
-            border-color: rgb(63, 59, 2);
-            font-size: 20px;
-        }
-
-        .inp-nome:hover {
-            width: 400px;
-            height: 25px;
-            border: 3px solid;
-            border-color: rgb(63, 59, 2);
-            background-color: aqua;
-        }
-
-        .lb-sexo {
-            font-size: 20px;
-            color: rgb(245, 229, 4);
-            font-weight: 600;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-
-        .out-saida {
-            font-size: 30px;
-            font-weight: 600;
-            color: rgb(4, 56, 116);
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        }
-
-        .dv-nome {
+        .margem {
+            margin-top: 5px;
             margin-left: 10px;
-
+            margin-right: 10px;
         }
 
-        .dv-sexo {
-            margin-left: 10px;
+        .line {
+            display: inline;
         }
 
-        .lb-salario {
-            color: rgb(185, 241, 94);
-            font-size: 25px;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-weight: 700;
+        .entrada {
+            width: 90%;
         }
 
-        .dv-salario {
-            margin-left: 10px;
+        .row {
+            display: flex;
         }
 
-        .dv-out {
-            margin-left: 10px;
+        .col40 {
+            width: 40vw;
         }
 
-        .btn {
-            width: 125px;
-            height: 25px;
-            background-color: coral;
-            border: none;
-            border-radius: 18px;
-            font-weight: 600;
+        .col20 {
+            width: 20vw;
         }
 
-        .dv-btn {
-            padding: 10px;
-            margin: 10px;
+        .col100 {
+            width: 100%;
         }
 
-
-        .btn:hover {
-            width: 125px;
-            height: 25px;
-            background-color: rgb(122, 34, 2);
-            border: none;
-            border-radius: 18px;
-            color: azure;
-            font-weight: 600;
+        .alerta {
+            color: red;
         }
     </style>
-
-
 </head>
 
 <body>
     <form action="" method="get">
+        <div class="row">
+            <div class="col40">
 
-        <div class="dv-nome">
-            <label class="lb" for="nmNome">Nome</label><br>
-            <input class="inp-nome" type="text" name="nmNome" id="idNome">
-        </div>
-        <div class="dv-sexo">
-            <input class="inp-radio" type="radio" name="nmSexo" id="idMasc">
-            <label class="lb-sexo" for="nmSexo">Masculino</label>
+            </div>
+            <div class="col20">
+                <fieldset>
+                    <legend>Folha de Pagamento Colaboradores</legend>
+                    <div>
+                        <input type="text" id="idNome" placeholder="Nome" class="entrada margens">
+                    </div>
+                    <div>
+                        <input type="number" id="idSalario" placeholder="Salario" class="entrada margens">
+                    </div>
+                    <div>
+                        <div class="line margens">
+                            <input type="radio" name="nmGenero" id="idFem" value="F" checked>
+                            <label for="idFem">Feminino</label>
+                        </div>
+                        <div class="line">
+                            <input type="radio" name="nmGenero" id="idMasc" value="M">
+                            <label for="idMasc">Masculino</label>
+                        </div>
+                    </div>
+                    <div class="col100">
+                        <button id="idBtCadastrar" class="margens">Cadastrar</button>
+                        <button id="idBtRelatorio" class="margens">Relatório</button>
+                    </div>
+                    <div>
+                        <output id="idOut"></output>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col40">
 
-            <input type="radio" name="nmSexo" id="idFem">
-            <label class="lb-sexo" for="nmSexo">Feminino</label>
-        </div>
-        <div class="dv-salario">
-            <label for="nmSalario" class="lb-salario"> Salário</label><br>
-            <input class="inp-salario" type="text" name="nmSalario" id="idSalario">
-        </div>
-        <div class="dv-out">
-            <output id="outSaida" class="out-saida">Saida</output>
-        </div>
-        <div class="dv-btn">
-            <input class="btn" type="button" value="Inserir" onclick="inserirDados()">
-            <input class="btn" type="button" value="Exibir Dados" onclick="exibirDados()">
+            </div>
         </div>
 
         <script>
-            //Variaveis Global
+            //Declaração de variaveis Global
+            const Salario = 1212.00
             var nomes = []
             var sexo = []
             var salarios = []
-            var txtSaida = ""
+            var btnCadastrar = []
+            var btnRelatorio = []
+            var Saida
 
-            document.getElementById("idNome").focus()
-            function inserirDados() {
+            inicio()
 
-                //Caputa dados dos campos
-                nome = document.getElementById("idNome").value
-                salario = document.getElementById("idSalario").value
-                masc = document.getElementById("idMasc").checked
-                fem = document.getElementById("idFem").checked
+            /**
+             * Tratamento e de Eventos
+             */
+
+             btnCadastrar.onclick = function(){
+
+             }
+
+             btnRelatorio.onclick = function(){
+                
+             }
 
 
-                nomes.push(nome)
-                salarios.push(salario)
-
-                if (masc) {
-                    sexo.push("M")
-                } else if (fem) {
-                    sexo.push("F")
-                }
-                limpaCampos()
-                document.getElementById("idNome").focus()
+            function inicio() {
+                btnCadastrar = document.getElementById("idBtCadastrar")
+                btnRelatorio = document.getElementById("idBtRelatorio")
+                saida = document.getElementById("idOut")
+                limparTela()
             }
-
-            function exibirDados() {
-                for (let i = 0; i < nomes.length; i++) {
-                    if ((sexo[i] == "F") && (salarios[i])) {
-                        txtSaida = txtSaida + " | " + nomes[i] + " R$" + salarios[i]
-                    }
-
-                }
-                document.getElementById("outSaida").value = "Mulheres que tem salário acima de R$5000,00 " + txtSaida + " - "
-            }
-
-            function limpaCampos() {
-
-                document.getElementById("idNome").value = ""
-                document.getElementById("idSalario").value = ""
-                document.getElementById("idMasc").checked
-            }
-
-
 
 
 
@@ -183,15 +122,7 @@
 
         </script>
 
-
-
-
-
     </form>
-
-
-
-
 </body>
 
 </html>

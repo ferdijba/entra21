@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Moeda</title>
+
+    <style>
+        body {
+            background: linear-gradient(90deg, rgb(64, 66, 66) 50%, rgb(55, 69, 80) 80%, rgb(16, 23, 32) 100%);
+        }
+
+        h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 700;
+            color: rgb(13, 178, 255);
+            text-align: center;
+        }
+
+        .dv-datalist {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(13, 178, 255);
+            font-weight: 500;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 30vw;
+            display: inline;
+        }
+
+        .dv-data {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(13, 178, 255);
+            font-weight: 500;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 30vw;
+            display: inline;
+        }
+
+        .dv-campos {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(13, 178, 255);
+            font-weight: 500;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 30vw;
+        }
+
+        .dv-btn {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(13, 178, 255);
+            font-weight: 500;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 30vw;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .btn {
+            width: 150px;
+            height: 28px;
+            margin-left: 5px;
+
+        }
+
+        .dv-out{
+            border: none;
+            color: rgb(13, 178, 255);
+            width: 60vw;
+            font-size: 18px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-left: 10px;
+            margin-top: 10px;
+            padding-left: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dv-title">
+        <h1>CONSULTA MOEDA NO BANCO CENTRAL DO BRASIL</h1>
+    </div>
+    <div class="dv-datalist">
+        <label for="moeda">Selecione a Moeda</label>
+        <input list="moeda" name="nmMoeda" id="idMoeda">
+        <datalist id="moeda">
+            <option value="USD">Dólar</option>
+            <option value="EUR">Euro</option>
+            <option value="CAD">Dólar Canadense</option>
+        </datalist>
+    </div>
+    <div class="dv-data">
+        <label for="nmData">Data</label>
+        <input type="text" name="nmData" id="idData" placeholder="MM-DD-YYYY" maxlength="10">
+    </div>
+    <div class="dv-campos">
+
+        <input type="checkbox" name="nmCampos" id="idParCompra">
+        <label for="nmParCompra">Paridade de compra</label><br>
+
+        <input type="checkbox" name="nmCampos" id="idParVenda">
+        <label for="nmParCompra">Paridade de venda</label><br>
+
+        <input type="checkbox" name="nmCampos" id="idCotCompra">
+        <label for="nmCotCompra">Cotação de compra</label>
+    </div>
+    <div class="dv-btn">
+        <input class="btn" type="button" value="Executar" id="idBtn">
+    </div>
+    <div class="dv-out">
+        <output id="idOutCotacaoCompra" class="out-saida">Cotação de Compra:</output><br>
+        <output id="idOutParidadeCompra" class="out-saida">Paridade de Compra:</output><br>
+        <output id="idOutParidadeVenda"  class="out-saida">Paridade de Venda:</output><br>
+    </div>
+
+
+    <script>
+
+        var btBuscaMoeda = document.getElementById("idBtn")
+
+        btBuscaMoeda.onclick = function () {
+            let  moeda = document.getElementById("idMoeda").value
+            let data = document.getElementById("idData").value
+            buscaMoedaBcb(moeda, data)
+            
+            console.log(moeda);
+            console.log(data);
+        }
+
+
+        function buscaMoedaBcb(moeda, data) {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='" + moeda + "'&@dataCotacao='" + data + "'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra")
+            
+            xhr.addEventListener("load", function () {
+                var resposta = xhr.responseText;
+                listarCotacao(resposta);
+
+            })
+            xhr.send()
+        }
+
+        function listarCotacao(resposta) {
+            let outParidadeCompra = document.getElementById("idOutParidadeCompra")
+            let outParidadeVenda = document.getElementById("idOutParidadeVenda")
+            let outCotacaoCompra = document.getElementById("idOutCotacaoCompra")
+            
+            //console.log(resposta);
+            let cotacaoCompra = []
+            let paridadeVenda = []
+            let paridadeCompra = []
+            let cotacaoOBJ = JSON.parse(resposta)
+
+            for (let i = 0; i < cotacaoOBJ.value.length; i++) {
+                //console.log(i)
+                //console.log(cotacaoOBJ.value[i])
+                cotacaoCompra  = cotacaoCompra  +" - "+ cotacaoOBJ.value[i].cotacaoCompra  + " " 
+                paridadeCompra = paridadeCompra +" - "+ cotacaoOBJ.value[i].paridadeCompra + " " 
+                paridadeVenda  = paridadeVenda  +" - "+ cotacaoOBJ.value[i].paridadeVenda  + " " 
+                
+            }
+            console.table(cotacaoCompra)
+            console.table(paridadeCompra)
+            console.table(paridadeVenda)
+
+            outCotacaoCompra.value  = "Cotação de Compra: "  + cotacaoCompra
+            outParidadeCompra.value = "Paridade de Compra: " + paridadeCompra
+            outParidadeVenda.value  = "Paridade de Venda: "  + paridadeVenda
+            //console.log(cotacaoOBJ)
+            //console.log(cotacaoOBJ.paridadeCompra);
+            //console.log(cotacaoOBJ.paridadeVenda);
+            //console.log(cotacaoOBJ.value.cotacaoCompra);
+            /*
+            cotacaoOBJ.value.forEach(element => {
+                //console.log(element)
+                
+                 console.log(cotacaoOBJ.value[element])
+                 console.log(element)
+                
+                
+            });*/
+            
+
+
+        }
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
