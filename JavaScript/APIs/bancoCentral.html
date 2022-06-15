@@ -74,7 +74,7 @@
 
         }
 
-        .dv-out{
+        .dv-out {
             border: none;
             color: rgb(13, 178, 255);
             width: 60vw;
@@ -91,7 +91,7 @@
 
 <body>
     <div class="dv-title">
-        <h1>CONSULTA MOEDA NO BANCO CENTRAL DO BRASIL</h1>
+        <h1>Dólar comercial (venda e compra) - cotações diárias e Taxas de Câmbio - todos os boletins diários - v1</h1>
     </div>
     <div class="dv-datalist">
         <label for="moeda">Selecione a Moeda</label>
@@ -108,82 +108,128 @@
     </div>
     <div class="dv-campos">
 
-        <input type="checkbox" name="nmCampos" id="idParCompra">
+        <input type="checkbox" name="nmCampos" id="idParCompra" checked>
         <label for="nmParCompra">Paridade de compra</label><br>
 
-        <input type="checkbox" name="nmCampos" id="idParVenda">
-        <label for="nmParCompra">Paridade de venda</label><br>
+        <input type="checkbox" name="nmCampos" id="idParVenda" checked>
+        <label for="nmParVenda">Paridade de venda</label><br>
 
-        <input type="checkbox" name="nmCampos" id="idCotCompra">
-        <label for="nmCotCompra">Cotação de compra</label>
+        <input type="checkbox" name="nmCampos" id="idCotCompra" checked>
+        <label for="nmCotCompra">Cotação de compra</label><br>
+
+        <input type="checkbox" name="nmCampos" id="idCotVenda">
+        <label for="nmCotVenda">Cotação de venda</label><br>
+
+        <input type="checkbox" name="nmCampos" id="idDataCotacao">
+        <label for="nmDatCotacao">Data e hora da cotação</label><br>
+
+        <input type="checkbox" name="nmCampos" id="idTpBoletim">
+        <label for="nmTpBoletim">Tipo do boletim</label>
+
+
     </div>
     <div class="dv-btn">
         <input class="btn" type="button" value="Executar" id="idBtn">
     </div>
     <div class="dv-out">
-        <output id="idOutCotacaoCompra" class="out-saida">Cotação de Compra:</output><br>
         <output id="idOutParidadeCompra" class="out-saida">Paridade de Compra:</output><br>
-        <output id="idOutParidadeVenda"  class="out-saida">Paridade de Venda:</output><br>
+        <output id="idOutParidadeVenda" class="out-saida">Paridade de Venda:</output><br>
+        <output id="idOutCotacaoCompra" class="out-saida">Cotação de Compra:</output><br>
+        <output id="idOutResultadoGeral" class="out-saida">Resultado Geral:</output><br>
     </div>
 
 
     <script>
-
         var btBuscaMoeda = document.getElementById("idBtn")
 
+        //Botão Busca Moeda usando função
         btBuscaMoeda.onclick = function () {
-            let  moeda = document.getElementById("idMoeda").value
+            let moeda = document.getElementById("idMoeda").value
             let data = document.getElementById("idData").value
             buscaMoedaBcb(moeda, data)
-            
-            console.log(moeda);
-            console.log(data);
         }
 
-
+        //Função busca moeda trata todo o processo da API
         function buscaMoedaBcb(moeda, data) {
+            let paridadeC = document.getElementById("idParCompra").checked
+            let paridadev = document.getElementById("idParVenda").checked
+            let cotacaoC = document.getElementById("idCotCompra").checked
+            let cotacaoV = document.getElementById("idCotVenda").checked
+            let dataCotacao = document.getElementById("idDataCotacao").checked
+            let tipoBoletim = document.getElementById("idTpBoletim").checked
 
             var xhr = new XMLHttpRequest();
 
-            xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='" + moeda + "'&@dataCotacao='" + data + "'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra")
-            
+            //Valida se todos os checkbox estão selecionados
+            if ((paridadeC) && (paridadev) && (cotacaoC) && (cotacaoV) && (dataCotacao) && (tipoBoletim)) {
+                paridadeC = "paridadeCompra"
+                paridadev = "paridadeVenda"
+                cotacaoC = "cotacaoCompra"
+                cotacaoV = "cotacaoVenda"
+                dataCotacao = "dataHoraCotacao"
+                tipoBoletim = "tipoBoletim"
+
+                xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='" + moeda + "'&@dataCotacao='" + data + "'&$top=100&$format=json&$select=" + paridadeC + "," + paridadev + "," + cotacaoC + "," + cotacaoV + "," + dataCotacao + "," + tipoBoletim)
+            } else if ((paridadeC) && (paridadev) && (cotacaoC)) {
+                paridadeC = "paridadeCompra"
+                paridadev = "paridadeVenda"
+                cotacaoC = "cotacaoCompra"
+                xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='" + moeda + "'&@dataCotacao='" + data + "'&$top=100&$format=json&$select=" + paridadeC + "," + paridadev + "," + cotacaoC)
+            }
+
+
+            //xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='" + moeda + "'&@dataCotacao='" + data + "'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra")
+
             xhr.addEventListener("load", function () {
                 var resposta = xhr.responseText;
                 listarCotacao(resposta);
+                console.log(resposta)
 
             })
             xhr.send()
         }
+        //"dataHoraCotacao":"2022-06-15 13:04:27.979","tipoBoletim":"Fechamento PTAX"
 
         function listarCotacao(resposta) {
             let outParidadeCompra = document.getElementById("idOutParidadeCompra")
             let outParidadeVenda = document.getElementById("idOutParidadeVenda")
             let outCotacaoCompra = document.getElementById("idOutCotacaoCompra")
-            
+            let outResultadoGeral = document.getElementById("idOutResultadoGeral")
+
             //console.log(resposta);
             let cotacaoCompra = []
             let paridadeVenda = []
             let paridadeCompra = []
-            let cotacaoOBJ = JSON.parse(resposta)
+            let resultadoAll = []
+            let dataHoracotacao = []
+            let tipoBoletims = []
 
+            //Aqui transforma o Objeto JSON em JS
+            let cotacaoOBJ = JSON.parse(resposta)
+            
+            //Laço para percorrer o Array que retornou no JSON
             for (let i = 0; i < cotacaoOBJ.value.length; i++) {
-                //console.log(i)
-                //console.log(cotacaoOBJ.value[i])
-                cotacaoCompra  = cotacaoCompra  +" - "+ cotacaoOBJ.value[i].cotacaoCompra  + " " 
-                paridadeCompra = paridadeCompra +" - "+ cotacaoOBJ.value[i].paridadeCompra + " " 
-                paridadeVenda  = paridadeVenda  +" - "+ cotacaoOBJ.value[i].paridadeVenda  + " " 
-                
+                console.log(cotacaoOBJ.value[i].dataHoracotacao)
+                cotacaoCompra = cotacaoCompra + " - " + cotacaoOBJ.value[i].cotacaoCompra + " "
+                paridadeCompra = paridadeCompra + " - " + cotacaoOBJ.value[i].paridadeCompra + " "
+                paridadeVenda = paridadeVenda + " - " + cotacaoOBJ.value[i].paridadeVenda + " "
+                resultadoAll = resultadoAll + " - " + cotacaoOBJ.value[i].cotacaoCompra + " - " + cotacaoOBJ.value[i].paridadeCompra + " - " + cotacaoOBJ.value[i].paridadeVenda +
+                String(cotacaoOBJ.value[i].dataHoracotacao) + " - " + cotacaoOBJ.value[i].tipoBoletim + " | "
+
             }
             console.table(cotacaoCompra)
             console.table(paridadeCompra)
             console.table(paridadeVenda)
+            console.table(resultadoAll)
 
-            outCotacaoCompra.value  = "Cotação de Compra: "  + cotacaoCompra
+            outCotacaoCompra.value = "Cotação de Compra: " + cotacaoCompra
             outParidadeCompra.value = "Paridade de Compra: " + paridadeCompra
-            outParidadeVenda.value  = "Paridade de Venda: "  + paridadeVenda
+            outParidadeVenda.value = "Paridade de Venda: " + paridadeVenda
+            outResultadoGeral.value = "Geral: " + resultadoAll
+
             //console.log(cotacaoOBJ)
             //console.log(cotacaoOBJ.paridadeCompra);
-            //console.log(cotacaoOBJ.paridadeVenda);
+            //console.log(cotacaoOBJ.paridadeVenda);    
             //console.log(cotacaoOBJ.value.cotacaoCompra);
             /*
             cotacaoOBJ.value.forEach(element => {
@@ -194,7 +240,7 @@
                 
                 
             });*/
-            
+
 
 
         }
