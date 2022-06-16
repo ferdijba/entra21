@@ -10,12 +10,13 @@
         body {
             background-color: rgb(71, 3, 62);
         }
-        h1{
-        text-align: center;    
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        color: aliceblue;
-        font-weight: 700;
-        font-size: 35px;
+
+        h1 {
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: aliceblue;
+            font-weight: 700;
+            font-size: 35px;
         }
 
         .lb {
@@ -37,7 +38,7 @@
             width: 400px;
             height: 25px;
             border: 3px solid;
-                       
+
         }
 
         .inp-salario {
@@ -113,6 +114,13 @@
             color: azure;
             font-weight: 600;
         }
+
+        .out-saida {
+            
+            padding: 10px;
+            color: darkgoldenrod;
+
+        }
     </style>
 
 
@@ -128,7 +136,7 @@
         </div>
         <div class="dv-salario">
             <label for="nmSalario" class="lb-salario"> Salário</label><br>
-            <input class="inp-salario" type="text" name="nmSalario" id="idSalario"  autocomplete="off">
+            <input class="inp-salario" type="text" name="nmSalario" id="idSalario" autocomplete="off">
         </div>
         <div class="dv-sexo">
             <input type="radio" name="nmSexo" id="idFem" checked>
@@ -138,7 +146,7 @@
             <label class="lb-sexo" for="nmSexo">Masculino</label>
         </div>
         <div class="dv-out">
-            <output id="outSaida" class="out-saida">Saida</output>
+            <output id="outSaida" class="out-saida">Mulheres que tem salário acima de R$5000,00</output>
         </div>
         <div class="dv-btn">
             <input class="btn" type="button" value="Inserir" onclick="inserirDados()">

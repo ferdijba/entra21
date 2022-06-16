@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Moeda</title>
+
+    <style>
+        .dv-geral {
+            border: 1px solid;
+            color: rgb(13, 178, 255);
+            width: 100%;
+        }
+
+        body {
+            background: linear-gradient(90deg, rgb(64, 66, 66) 50%, rgb(55, 69, 80) 80%, rgb(16, 23, 32) 100%);
+        }
+
+        h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .dv-selectMoeda {
+
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(13, 178, 255);
+            font-weight: 500;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 30vw;
+            display: inline;
+            height: 25px;
+        }
+
+        .dv-data {
+
+            border-color: blue;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(13, 178, 255);
+            font-weight: 500;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 30vw;
+            display: inline;
+        }
+
+        .dv-campos {
+            border: 1px solid;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(13, 178, 255);
+            font-weight: 500;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 30vw;
+        }
+
+        .dv-btn {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(13, 178, 255);
+            font-weight: 500;
+            border: none;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 30vw;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .btn {
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            background-color: rgb(13, 178, 255);
+            border-radius: 15px;
+            border: none;
+        }
+
+        .btn:hover {
+            width: 150px;
+            height: 30px;
+            margin-left: 5px;
+            border-radius: 15px;
+            border: none;
+            background-color: rgb(8, 137, 146);
+            color: aliceblue;
+            transform: scale(1.1);
+            transition: 500ms;
+        }
+
+        .dv-out {
+            border: none;
+            color: rgb(13, 178, 255);
+            width: 100vw;
+            font-size: 18px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-left: 10px;
+            margin-top: 10px;
+            padding-left: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .out-boletim {
+            color: rgb(242, 251, 255);
+            width: 100vw;
+            font-size: 18px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            display: inline;
+
+        }
+
+        .dv-conversao {
+            margin-top: 10px;
+            width: 100%;
+            border: 1px solid;
+            color: rgb(13, 178, 255);
+            height: 195px;
+        }
+
+        .dv-lb-title-moedas {
+            padding-left: 10px;
+            color: aliceblue;
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .dv-selectMoeda {
+            margin-bottom: 10px;
+            padding-left: 1px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+
+        .img-seta {
+            height: 25px;
+            padding-bottom: 0px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        #idVlrConverter {
+            width: 275px;
+            height: 25px;
+            margin-right: 30px;
+        }
+
+        #idMoeda1 {
+            width: 275px;
+            height: 30px;
+            margin-right: 30px;
+        }
+
+        #idMoeda2 {
+            width: 275px;
+            height: 30px;
+            margin-left: 30px;
+        }
+
+        #lb-converteDe {
+            margin-left: 40px;
+
+        }
+
+        #lb-convertePara {
+            margin-left: 285px;
+        }
+
+        .dv-btn-converte {
+            margin-left: 10px;
+            padding-top: 10px;
+        }
+
+        .btn-converte {
+            border: none;
+            width: 150px;
+            height: 30px;
+            background-color: rgb(13, 178, 255);
+            border-radius: 15px;
+        }
+
+        .btn-converte:hover {
+            border: none;
+            width: 150px;
+            height: 30px;
+            background-color: rgb(8, 137, 146);
+            border-radius: 15px;
+            color: aliceblue;
+            transform: scale(1.1);
+            transition: 500ms;
+        }
+
+        .dv-resultadoCotacao {
+            margin-top: 10px;
+            margin-left: 1px;
+            width: 100%;
+            border: 1px solid;
+            color: rgb(13, 178, 255);
+            height: 280px;
+        }
+
+        .dv-resultadoConversaoDe {
+            width: 45%;
+            margin-left: 60px;
+            border: 1px solid;
+            color: rgb(13, 178, 255);
+            height: 150px;
+        }
+
+        .dv-resultadoConversaoPara,
+        #lb-conversaoD {
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+
+        }
+
+        .dv-resultadoConversaoPara {
+            width: 45%;
+            margin-left: 755px;
+            margin-top: 0px;
+            border: 1px solid;
+            color: rgb(13, 178, 255);
+            height: 150px;
+            transform: translate(1%, -100%);
+        }
+
+
+
+        .dv-resultadoConversaoPara,
+        #lb-conversaoP {
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dv-geral">
+
+        <div class="dv-title">
+            <h1>Dólar comercial (venda e compra) - cotações diárias e Taxas de Câmbio - todos os boletins diários - v1
+            </h1>
+        </div>
+
+        <div class="dv-selectMoeda">
+            <label for="idMoeda">Selecione a Moeda</label>
+            <select id="idMoeda">
+                <option value="USD" title="Dólar">Dólar Americano</option>
+                <option value="EUR" title="Euro">Euro</option>
+                <option value="CAD" title="Dólar Canadense">Dólar Canadense</option>
+            </select>
+        </div>
+
+        <div class="dv-data">
+            <label for="nmData">Data</label>
+            <input type="text" name="nmData" id="idData" placeholder="MM-DD-YYYY" maxlength="10" value="06-15-2022">
+        </div>
+        <div class="dv-out">
+            <output id="idOutBoletim" class="out-boletim">Boletim diário:</output><br>
+        </div>
+
+        <div class="dv-btn">
+            <input class="btn" type="button" value="Executar" id="idBtn">
+        </div>
+    </div>
+
+    <div class="dv-conversao">
+        <div>
+            <h1>Conversor de Moedas</h1>
+        </div>
+        <div class="dv-lb-title-moedas">
+            <label id="lb-inforVlr" for="nmMoeda1">Informe o valor que deseja converter</label>
+            <label id="lb-converteDe" for="nmMoeda1">Converter de </label>
+            <label id="lb-convertePara" for="nmMoeda1">Converter para</label>
+        </div>
+        <div class="dv-selectMoeda">
+            <input type="number" name="nmVlrConverter" id="idVlrConverter" step="0.1" value="10"">
+            <select name="nmMoedaConverte1" id="idMoeda1">
+                <option value="USD">Dólar</option>
+                <option value="BRL">Real</option>
+                <option value="EUR">Euro</option>
+                <option value="CAD">Dólar Canadense</option>
+            </select>
+
+            <img src="./images/seta32x32.png" alt="seta" class="img-seta">
+
+            <select name="nmMoedaConverte1" id="idMoeda2">
+                <option value="EUR">Euro</option>
+                <option value="BRL">Real</option>
+                <option value="USD">Dólar</option>
+                <option value="CAD">Dólar Canadense</option>
+            </select>
+        </div>
+        <div class="dv-btn-converte">
+            <input type="button" value="Converter" class="btn-converte" id="idBtnConverte">
+        </div>
+    </div>
+
+    <div class="dv-resultadoCotacao">
+        <div class="dv-titleResultado">
+            <h1>Resultado da conversão</h1>
+        </div>
+        <div class="dv-resultadoConversaoDe">
+
+            <label for="nmConversao" id="lb-conversaoD">Conversão de:</label>
+            <output id="idOutConversaoDe"></output><br>
+            <br>
+
+            <label for="nmConversao" id="lb-VlrP">Valor a converter:</label>
+            <output id="idOutVlrConveter"></output><br>
+
+        </div>
+        <div class="dv-resultadoConversaoPara">
+
+            <label for="nmConversao" id="lb-conversaoP">Conversão para:</label>
+            <output id="idOutConversaoPara"></output>
+            <br>
+
+            <label for="nmConversao" id="lb-resultadoC">Resultado da Conversão:</label>
+            <output id="idOutResultaoConversao"></output>
+        </div>
+    </div>
+
+    <script>
+        var conversao = 0
+        var btBuscaMoeda = document.getElementById("idBtn")
+        var btnConverte = document.getElementById("idBtnConverte")
+
+        //Botão Busca Moeda usando função
+        btBuscaMoeda.onclick = function () {
+            let moeda = document.getElementById("idMoeda").value
+            let data = document.getElementById("idData").value
+            buscaMoedaBcb(moeda, data)
+        }
+
+        //Função busca moeda trata todo o processo da API
+        function buscaMoedaBcb(moeda, data) {
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='" + moeda + "'&@dataCotacao='" + data + "'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+            xhr.addEventListener("load", function () {
+                var resposta = xhr.responseText;
+                listarCotacao(resposta);
+                console.log(resposta)
+            })
+            xhr.send()
+        }
+
+        function listarCotacao(resposta) {
+            let boletim = document.getElementById("idOutBoletim")
+
+            let dataHoracotacao = []
+            let tipoBoletims = []
+            let boletimDiario = []
+
+            //Aqui transforma o Objeto JSON em JS
+            let cotacaoOBJ = JSON.parse(resposta)
+
+            //Laço para percorrer o Array que retornou no JSON
+            for (let i = 0; i < cotacaoOBJ.value.length; i++) {
+                console.log(cotacaoOBJ.value[i].dataHoracotacao)
+                boletimDiario = boletimDiario + " (" + cotacaoOBJ.value[i].tipoBoletim + ":" + cotacaoOBJ.value[i].cotacaoCompra + ")" + " - "
+            }
+            console.log(boletimDiario);
+
+            boletim.value = "Boletim diário: " + boletimDiario
+
+        }
+
+        //------------------------------------------------------------------------------------------------------------------------------
+        //                                              Conversor de Moedas
+        //------------------------------------------------------------------------------------------------------------------------------
+
+        //Botão Busca Moeda usando função
+        btnConverte.onclick = function () {
+            let moeda1 = document.getElementById("idMoeda1").value
+            let moeda2 = document.getElementById("idMoeda2").value
+            let data = document.getElementById("idData").value
+            let vlrConveter = Number(document.getElementById("idVlrConverter").value)
+            let outConversaoDe = document.getElementById("idOutConversaoDe")
+            let outConversaoP = document.getElementById("idOutConversaoPara")
+            let outVlrConversao = document.getElementById("idOutVlrConveter")
+
+            //Atribi para os output do resultado as moedas selecionadas
+            outConversaoDe.value = moeda1
+            outConversaoP.value = moeda2
+            outVlrConversao.value =  vlrConveter.toFixed(2)
+
+            buscaCotacaoDe(moeda1, data)
+            buscaCotacaoPara(moeda2, data)
+        }
+
+        //Função para buscar a primeira moeda selecionada
+        function buscaCotacaoDe(moeda1,data) {
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='" + moeda1 + "'&@dataCotacao='" + data + "'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+            xhr.addEventListener("load", function () {
+                var resposta1 = xhr.responseText;
+                listarMoeda1(resposta1);
+            })
+            xhr.send();
+        }
+
+        function listarMoeda1(resposta1) {
+            let cotacaoMoeda1 = []
+
+            //Aqui transforma o Objeto JSON em JS
+            let cotacaoMoeda1OBJ = JSON.parse(resposta1)
+
+            //Laço para percorrer o Array que retornou no JSON
+            for (let i = 0; i < cotacaoMoeda1OBJ.value.length; i++) {
+                cotacaoMoeda1 = cotacaoMoeda1OBJ.value[i].cotacaoCompra
+            }
+            console.log(cotacaoMoeda1);
+            
+        }
+
+        //Função para buscar a segunda moeda selecionada
+       function buscaCotacaoPara(moeda2, data) {
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='" + moeda2 + "'&@dataCotacao='" + data + "'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+            xhr.addEventListener("load", function () {
+                var resposta = xhr.responseText;
+                listarMoeda2(resposta);
+            })
+            xhr.send()
+        }
+
+        function listarMoeda2(resposta2) {
+            let cotacaoMoeda2 = []
+
+            //Aqui transforma o Objeto JSON em JS
+            let cotacaoMoeda2OBJ = JSON.parse(resposta2)
+
+            //Laço para percorrer o Array que retornou no JSON
+            for (let i = 0; i < cotacaoMoeda2OBJ.value.length; i++) {
+                cotacaoMoeda2 = cotacaoMoeda2OBJ.value[i].cotacaoCompra
+            }        
+            console.log(cotacaoMoeda2);
+        }
+
+    </script>
+
+</body>
+
+</html>
