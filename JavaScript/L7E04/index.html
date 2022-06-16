@@ -1,18 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio L7E04</title>
+
+    <style>
+        body {
+            background-color: rgba(235, 236, 236, 0.774);
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(22, 45, 255);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        .input {
+            border: 1px solid;
+            width: 100%;
+            height: 110px;
+        }
+
+        .lb {
+            margin-left: 5px;
+            margin-bottom: 5px;
+            font-size: 13pt;
+            font-weight: bold;
+            color: rgb(22, 45, 255);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .inp-temp {
+            padding-left: 5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: 200px;
+        }
+
+        #idTemp {
+            width: 100px;
+            height: 25px;
+        }
+
+        .btn {
+            padding-left: 5px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        #btn {
+            width: 100px;
+            height: 25px;
+        }
+
+        .ver-temp {
+            border: 1px solid;
+            width: 100%;
+            height: auto;
+            margin-top: 4px;
+            padding-bottom: 10px;
+        }
+
+        .lb-pesquisa {
+            margin-left: 5px;
+            margin-bottom: 5px;
+            font-size: 13pt;
+            font-weight: bold;
+            color: rgb(22, 45, 255);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .inp-pequisa {
+            margin-left: 5px;
+            
+        }
+
+        #idBtnPequisa{
+            height: 25px;
+            width: 100px;
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+        #idPesqTemp{
+            width: 100px;
+            height: 25px;
+        }
+    </style>
 </head>
+
 <body>
     <div>
         <h1>Crie um programa para armazenar informações meteorológicas.</h1>
     </div>
-<div>
-    
-</div>
+    <div class="input">
+        <div class="lb">
+            <label for="nmTemp">Digite uma temperatura</label>
+        </div>
+        <div class="inp-temp">
+            <input type="number" name="nmTemp" id="idTemp">
+        </div>
+        <div class="btn">
+            <input type="button" value="Gravar" id="btn">
+        </div>
+    </div>
+    <div class="ver-temp">
+        <div class="lb-pesquisa">
+            <label for="nmPesquisa">Digite a data para verificar a temperatura</label>
+        </div>
+        <div class="inp-pequisa">
+            <input type="number" name="nmPesqTemp" id="idPesqTemp">
+        </div>
+        <div class="btnPesquisa">
+            <input type="button" id="idBtnPequisa" value="Gravar">
+        </div>
+
+    </div>
 
 </body>
+
 </html>
