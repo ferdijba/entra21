@@ -76,22 +76,24 @@
 
         .inp-pequisa {
             margin-left: 5px;
-            
+
         }
 
-        #idBtnPequisa{
+        #idBtnPequisa {
             height: 25px;
             width: 100px;
             margin-left: 5px;
             margin-top: 5px;
         }
-        #idPesqTemp{
+
+        #idPesqTemp {
             width: 100px;
             height: 25px;
         }
-        .out-resultado{
+
+        .out-resultado {
             font-size: 20pt;
-            margin-left: 500px;
+            margin-left: 200px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-weight: bold;
             color: rgb(75, 77, 75);
@@ -112,7 +114,7 @@
             <input type="number" name="nmTemp" id="idTemp">
         </div>
         <div class="btn">
-            <input type="button" value="Gravar" id="btn">
+            <input type="button" value="Gravar" id="btn" onclick="inserirTemps()">
         </div>
     </div>
     <div class="ver-temp">
@@ -120,14 +122,54 @@
             <label for="nmPesquisa">Digite a data para verificar a temperatura</label>
         </div>
         <div class="inp-pequisa">
-            <input type="number" name="nmPesqTemp" id="idPesqTemp">
-            <output class="out-resultado">Aqui sera a saida</output>
+            <input type="number" name="nmPesqTemp" id="idDiaPesquisa">
+            <output class="out-resultado" id="idOutResultado"></output>
         </div>
         <div class="btnPesquisa">
-            <input type="button" id="idBtnPequisa" value="Gravar">
+            <input type="button" id="idBtnPequisa" value="Consultar" onclick="consultar()">
         </div>
-
     </div>
+
+    <script>
+        var temps = []
+        var outResultado = document.getElementById("idOutResultado")
+        var soma = 0
+
+        function inserirTemps() {
+            let temp =  Number(document.getElementById("idTemp").value)
+            temps.push(temp)
+            soma = soma + temp
+            document.getElementById("idTemp").value = ""
+            document.getElementById("idTemp").focus()
+        }
+
+        function consultar() {
+
+            let dia = Number(document.getElementById("idDiaPesquisa").value)
+            let media = soma / temps.length
+            let diaSelecionado = temps[(dia - 1)]
+            let valor
+
+            console.log(temps);
+            console.log(diaSelecionado);
+
+            for (let i = 0; i < temps.length; i++) {
+
+                if (diaSelecionado > media) {
+                    valor = "superior"
+                } else if (diaSelecionado < media) {
+                    valor = "inferior"
+                } else if (diaSelecionado == media) {
+                    valor = "igual"
+                }
+            }
+            outResultado.value = "A temperatura do dia "+ dia+ " ("+diaSelecionado+"º) " +" é " + valor +" do que a temperatura média ("+media+"º)"
+            
+        }
+
+
+    </script>
+
 
 </body>
 
