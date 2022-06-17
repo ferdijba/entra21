@@ -88,10 +88,23 @@
 
         .lb-resultado {
             padding: 5px;
-            color: rgb(255, 255, 255);
+            color: rgb(121, 2, 2);
             font-size: 17pt;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-weight: bold;
+        }
+
+
+        table,
+        th,
+        td {
+            border: 1px solid rgb(255, 255, 255);
+            border-collapse: collapse;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 12pt;
+            margin: auto;
+            padding: 8px;
+            color: aliceblue;
         }
     </style>
 </head>
@@ -141,26 +154,26 @@
             <legend class="lgd">Pesquisar</legend>
             <div class="dv-aluno">
                 <label class="lb-nomeAluno" for="idPesqAluno">Nome:</label>
-                <input type="text" id="idPesqAluno"><br><br>
-                <output id="outResultado" class="lb-resultado"></output><br>
-                <output id="outResultado2" class="lb-resultado"></output><br><br>
 
+                <input type="text" id="idPesqAluno"><br><br>
+
+                <output id="outResultado" class="lb-resultado"></output><br>                
+                
                 <input id="idBtnInseir" type="button" value="Buscar" onclick="pesquisarAlunos()">
         </fieldset>
 
-
-        <!-- tabela para mostrar resultados-->
-        <table id="idTabelaResultados">
+        <table id="idTabResultado">
             <tr>
-                <th>Nome do Aluno</th>
-                <th>Endereço do Aluno</th>
+                <th>Aluno</th>
+                <th>Endereço</th>
                 <th>Nome da Mãe</th>
                 <th>Nome do Pai</th>
                 <th>Telefone dos pais</th>
-                <th>Nota</th>
-                <th>Nota</th>
-                <th>Nota</th>
-                <th>Nota</th>
+                <th>Nota1</th>
+                <th>Nota2</th>
+                <th>Nota3</th>
+                <th>Nota4</th>
+                <th>Média</th>
                 <th>Situação</th>
             </tr>
         </table>
@@ -209,32 +222,76 @@
 
             // funcao para mostrar cadastro de alunos e situacao
             function pesquisarAlunos() {
-                let media
+                let media = 0
                 let texto
                 let pesquisar = document.querySelector("#idPesqAluno").value
                 let out = document.querySelector("#outResultado")
                 let out2 = document.querySelector("#outResultado2")
+                let tabelaResultados = document.getElementById("idTabResultado")
 
                 for (let i = 0; i < nomeAluno.length; i++) {
 
                     if (pesquisar == nomeAluno[i]) {
                         media = ((nota1[i] + nota2[i] + nota3[i] + nota4[i]) / 4).toFixed(1)
+
                         if (media >= 7) {
-                            texto = nomeAluno[i] + " Endereço: " + endereco[i] + " Mãe:" + nomeMae[i] + " Pai:" + nomePai[i] + "Fone:" + fone[i] + "Notas: (" + nota1[i] + ") (" + nota2[i] + ") (" +
-                                nota3[i] + ") (" + nota4[i] + "),  Aprovado com média " + media
+
+                            let tr = tabelaResultados.insertRow()
+                            let tdNome = tr.insertCell()
+                            let tdEnd = tr.insertCell()
+                            let tdNomePai = tr.insertCell()
+                            let tdNomeMae = tr.insertCell()
+                            let tdTel = tr.insertCell()
+                            let tdNota1 = tr.insertCell()
+                            let tdNota2 = tr.insertCell()
+                            let tdNota3 = tr.insertCell()
+                            let tdNota4 = tr.insertCell()
+                            let tdMedia = tr.insertCell()
+                            let tdSituacao = tr.insertCell()
+
+                            tdNome.innerText = this.nomeAluno[i]
+                            tdEnd.innerText = this.endereco[i]
+                            tdNomePai.innerText = this.nomePai[i]
+                            tdNomeMae.innerText = this.nomeMae[i]
+                            tdTel.innerText = this.fone[i]
+                            tdNota1.innerText = this.nota1[i]
+                            tdNota2.innerText = this.nota2[i]
+                            tdNota3.innerText = this.nota3[i]
+                            tdNota4.innerText = this.nota4[i]
+                            tdMedia.innerText = media
+                            tdSituacao.innerText = "Aprovado"
                         } else {
-                            out2.value = "Aluno " + nomeAluno[i] + "Está reprovado,sua média foi " + media
+
+                            let tr = tabelaResultados.insertRow()
+                            let tdNome = tr.insertCell()
+                            let tdEnd = tr.insertCell()
+                            let tdNomePai = tr.insertCell()
+                            let tdNomeMae = tr.insertCell()
+                            let tdTel = tr.insertCell()
+                            let tdNota1 = tr.insertCell()
+                            let tdNota2 = tr.insertCell()
+                            let tdNota3 = tr.insertCell()
+                            let tdNota4 = tr.insertCell()
+                            let tdMedia = tr.insertCell()
+                            let tdSituacao = tr.insertCell()
+
+                            tdNome.innerText = this.nomeAluno[i]
+                            tdEnd.innerText = this.endereco[i]
+                            tdNomePai.innerText = this.nomePai[i]
+                            tdNomeMae.innerText = this.nomeMae[i]
+                            tdTel.innerText = this.fone[i]
+                            tdNota1.innerText = this.nota1[i]
+                            tdNota2.innerText = this.nota2[i]
+                            tdNota3.innerText = this.nota3[i]
+                            tdNota4.innerText = this.nota4[i]
+                            tdMedia.innerText = this.media
+                            tdSituacao.innerText = "Reprovado"
                         }
                     } else {
-                        out2.value = "Aluno não encontrado!"
-
+                        out.value = "Aluno não encontrado!"
                     }
                 }
-                out.value = texto
             }
-
-
-
 
 
 
