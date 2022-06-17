@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio L7E06</title>
+    <style>
+        body {
+            background-color: rgb(133, 125, 120);
+        }
+
+        .lgd {
+            color: aliceblue;
+            font-size: 15pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .lb-nomeAluno {
+            padding: 5px;
+            color: aliceblue;
+            font-size: 13pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #idNomeAluno {
+            width: 523px;
+        }
+
+        .lb-end {
+            padding: 5px;
+            color: aliceblue;
+            font-size: 13pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #idEndereco {
+            width: 500px;
+        }
+
+        .lb-mae {
+            padding: 5px;
+            color: aliceblue;
+            font-size: 13pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #idMae {
+            width: 467px;
+        }
+
+        .lb-pai {
+            padding: 5px;
+            color: aliceblue;
+            font-size: 13pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #idPai {
+            width: 478px;
+        }
+
+        .lb-fone {
+            padding: 5px;
+            color: aliceblue;
+            font-size: 13pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #idFone {
+            width: 448px;
+        }
+
+        #idBtnInseir {
+            margin-top: 10px;
+            width: 100px;
+            height: 25px;
+            border-radius: 15px;
+            border: none;
+        }
+
+        #idPesqAluno {
+            width: 300px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="get">
+        <fieldset>
+            <legend class="lgd">Dados do Aluno</legend>
+            <div class="dv-aluno">
+
+                <label class="lb-nomeAluno" for="idNomeAluno"> Nome:</label>
+                <input type="text" id="idNomeAluno"><br>
+
+                <label class="lb-end" for="nmEnder">Endereço:</label>
+                <input type="text" id="idEndereco"><br>
+
+                <label class="lb-mae" for="idNomeMaeAluno">Nome da Mãe:</label>
+                <input type="text" id="idMae"><br>
+
+                <label class="lb-pai" for="idNomePaiAluno">Nome do Pai:</label>
+                <input type="text" id="idPai"><br>
+
+                <label class="lb-fone" for="idTelefone">Telefone dos Pais:</label>
+                <input type="number" id="idFone"><br>
+        </fieldset>
+
+        <fieldset>
+            <legend class="lgd">Notas do Aluno</legend>
+            <div class="dv-aluno">
+                <label class="lb-nomeAluno" for="idNota1"> Nota 1:</label>
+                <input type="text" id="idNota1"><br>
+
+                <label class="lb-nomeAluno" for="idNota2"> Nota 2:</label>
+                <input type="text" id="idNota2"><br>
+
+                <label class="lb-nomeAluno" for="idNota3"> Nota 3:</label>
+                <input type="text" id="idNota3"><br>
+
+                <label class="lb-nomeAluno" for="idNota4"> Nota 4:</label>
+                <input type="text" id="idNota4"><br>
+
+                <input id="idBtnInseir" type="button" value="Inserir" onclick="inserirDados()">
+        </fieldset>
+
+        <fieldset>
+            <legend class="lgd">Relatório dos Alunos</legend>
+            <legend class="lgd">Pesquisar</legend>
+            <div class="dv-aluno">
+                <label class="lb-nomeAluno" for="idNota1">Nome:</label>
+                <input type="text" id="idPesqAluno"><br>
+
+                <input id="idBtnInseir" type="button" value="Buscar" onclick="pesquisarAlunos()">
+        </fieldset>
+
+        <script>
+            // Vetores
+            var nomeAluno = []
+            var endereco = []
+            var nomePai = []
+            var nomeMae = []
+            var fone = []
+            var nota1 = []
+            var nota2 = []
+            var nota3 = []
+            var nota4 = []
+
+
+            //Função para inserir os dados no Vetor
+            function inserirDados() {
+                nomeAluno.push(document.getElementById("idNomeAluno").value)
+                endereco.push(document.getElementById("idEndereco").value)
+                nomeMae.push(document.getElementById("idMae").value)
+                nomePai.push(document.getElementById("idPai").value)
+                fone.push(document.getElementById("idFone").value)
+                nota1.push(Number(document.getElementById("idNota1").value))
+                nota2.push(Number(document.getElementById("idNota2").value))
+                nota3.push(Number(document.getElementById("idNota3").value))
+                nota4.push(Number(document.getElementById("idNota4").value))
+                console.log(nomeAluno, endereco, nomeMae, nomePai, fone)
+                limpaCampos()
+            }
+
+            //Função para limpar os campos
+            function limpaCampos() {
+                document.getElementById("idNomeAluno").value = ""
+                document.getElementById("idEndereco").value = ""
+                document.getElementById("idMae").value = ""
+                document.getElementById("idPai").value = ""
+                document.getElementById("idFone").value = ""
+                document.getElementById("idNota1").value = ""
+                document.getElementById("idNota2").value = ""
+                document.getElementById("idNota3").value = ""
+                document.getElementById("idNota4").value = ""
+            }
+
+
+        </script>
+
+    </form>
+
+</body>
+
+</html>
