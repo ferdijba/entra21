@@ -84,6 +84,15 @@
             width: 300px;
 
         }
+
+
+        .lb-resultado {
+            padding: 5px;
+            color: rgb(255, 255, 255);
+            font-size: 17pt;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -94,35 +103,35 @@
             <div class="dv-aluno">
 
                 <label class="lb-nomeAluno" for="idNomeAluno"> Nome:</label>
-                <input type="text" id="idNomeAluno"><br>
+                <input type="text" id="idNomeAluno" autocomplete="off"><br>
 
                 <label class="lb-end" for="nmEnder">Endereço:</label>
-                <input type="text" id="idEndereco"><br>
+                <input type="text" id="idEndereco" autocomplete="off"><br>
 
                 <label class="lb-mae" for="idNomeMaeAluno">Nome da Mãe:</label>
-                <input type="text" id="idMae"><br>
+                <input type="text" id="idMae" autocomplete="off"><br>
 
                 <label class="lb-pai" for="idNomePaiAluno">Nome do Pai:</label>
-                <input type="text" id="idPai"><br>
+                <input type="text" id="idPai" autocomplete="off"><br>
 
                 <label class="lb-fone" for="idTelefone">Telefone dos Pais:</label>
-                <input type="number" id="idFone"><br>
+                <input type="number" id="idFone" autocomplete="off" placeholder="(xx)9999-9999"><br>
         </fieldset>
 
         <fieldset>
             <legend class="lgd">Notas do Aluno</legend>
             <div class="dv-aluno">
                 <label class="lb-nomeAluno" for="idNota1"> Nota 1:</label>
-                <input type="text" id="idNota1"><br>
+                <input type="number" id="idNota1" autocomplete="off" maxlength="10"><br>
 
                 <label class="lb-nomeAluno" for="idNota2"> Nota 2:</label>
-                <input type="text" id="idNota2"><br>
+                <input type="number" id="idNota2" autocomplete="off"><br>
 
                 <label class="lb-nomeAluno" for="idNota3"> Nota 3:</label>
-                <input type="text" id="idNota3"><br>
+                <input type="number" id="idNota3" autocomplete="off"><br>
 
                 <label class="lb-nomeAluno" for="idNota4"> Nota 4:</label>
-                <input type="text" id="idNota4"><br>
+                <input type="number" id="idNota4" autocomplete="off"><br>
 
                 <input id="idBtnInseir" type="button" value="Inserir" onclick="inserirDados()">
         </fieldset>
@@ -131,11 +140,30 @@
             <legend class="lgd">Relatório dos Alunos</legend>
             <legend class="lgd">Pesquisar</legend>
             <div class="dv-aluno">
-                <label class="lb-nomeAluno" for="idNota1">Nome:</label>
-                <input type="text" id="idPesqAluno"><br>
+                <label class="lb-nomeAluno" for="idPesqAluno">Nome:</label>
+                <input type="text" id="idPesqAluno"><br><br>
+                <output id="outResultado" class="lb-resultado"></output><br>
+                <output id="outResultado2" class="lb-resultado"></output><br><br>
 
                 <input id="idBtnInseir" type="button" value="Buscar" onclick="pesquisarAlunos()">
         </fieldset>
+
+
+        <!-- tabela para mostrar resultados-->
+        <table id="idTabelaResultados">
+            <tr>
+                <th>Nome do Aluno</th>
+                <th>Endereço do Aluno</th>
+                <th>Nome da Mãe</th>
+                <th>Nome do Pai</th>
+                <th>Telefone dos pais</th>
+                <th>Nota</th>
+                <th>Nota</th>
+                <th>Nota</th>
+                <th>Nota</th>
+                <th>Situação</th>
+            </tr>
+        </table>
 
         <script>
             // Vetores
@@ -177,6 +205,37 @@
                 document.getElementById("idNota3").value = ""
                 document.getElementById("idNota4").value = ""
             }
+
+
+            // funcao para mostrar cadastro de alunos e situacao
+            function pesquisarAlunos() {
+                let media
+                let texto
+                let pesquisar = document.querySelector("#idPesqAluno").value
+                let out = document.querySelector("#outResultado")
+                let out2 = document.querySelector("#outResultado2")
+
+                for (let i = 0; i < nomeAluno.length; i++) {
+
+                    if (pesquisar == nomeAluno[i]) {
+                        media = ((nota1[i] + nota2[i] + nota3[i] + nota4[i]) / 4).toFixed(1)
+                        if (media >= 7) {
+                            texto = nomeAluno[i] + " Endereço: " + endereco[i] + " Mãe:" + nomeMae[i] + " Pai:" + nomePai[i] + "Fone:" + fone[i] + "Notas: (" + nota1[i] + ") (" + nota2[i] + ") (" +
+                                nota3[i] + ") (" + nota4[i] + "),  Aprovado com média " + media
+                        } else {
+                            out2.value = "Aluno " + nomeAluno[i] + "Está reprovado,sua média foi " + media
+                        }
+                    } else {
+                        out2.value = "Aluno não encontrado!"
+
+                    }
+                }
+                out.value = texto
+            }
+
+
+
+
 
 
         </script>
