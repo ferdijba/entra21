@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio L7E07</title>
+    <style>
+        body {
+            background: linear-gradient(90deg, rgb(245, 113, 5) 60%, rgb(255, 119, 7) 80%, rgb(255, 146, 4) 100%);
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 30pt;
+            font-weight: bold;
+            color: aliceblue;
+        }
+
+        p {
+            width: 400px;
+            height: 50px;
+            margin: 5px;
+            margin-left: 280px;
+            font-size: 25px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 5px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 22pt;
+            font-weight: bold;
+        }
+
+        .dv-sorteador {
+            border: 1px solid;
+            color: aliceblue;
+            margin-bottom: 5px;
+            margin-left: 330px;
+            width: 858px;
+        }
+
+        .dv-jogadores {
+            border: 1px solid;
+            color: aliceblue;
+            width: 100%;
+            height: 120px;
+            margin-top: 10px;
+        }
+
+        #idBtnSortear {
+            margin-left: 360px;
+            width: 150px;
+            height: 45px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 12pt;
+            font-weight: bold;
+            color: blue;
+            border-radius: 29px;
+            border-color: rgb(168, 181, 192);
+            margin-bottom: 5px;
+        }
+
+        #idBtnSortear:hover {
+            margin-left: 360px;
+            width: 150px;
+            height: 45px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 12pt;
+            font-weight: bold;
+            color: blue;
+            border-radius: 29px;
+            border-color: rgb(168, 181, 192);
+            margin-bottom: 5px;
+            transform: scale(1.1);
+            transition: 600ms;
+        }
+
+        .out-resultado {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 22pt;
+            font-weight: bold;
+            margin-left: 357px;
+
+
+        }
+
+        .dv-jogadores,
+        dv-joga {
+            margin-top: 5px;
+            padding-top: 10px;
+            margin-left: 200px;
+        }
+
+        .lb-jogadores {
+            margin-left: 70px;
+        }
+
+        .tb-jogadores {
+            border: 1px solid;
+            margin-left: 330px;
+            padding: 5px;
+            color: aliceblue;
+            font-size: large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 700;
+        }
+
+        input {
+            width: 200px;
+        }
+
+        .btn {
+            width: 100px;
+            border-radius: 19px;
+            border-color: rgb(204, 135, 7);
+            color: rgb(107, 103, 103);
+            font-size: 12pt;
+            background-color: rgb(255, 255, 255);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-left: 55px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            width: 100px;
+            border-radius: 19px;
+            border-color: rgb(128, 109, 75);
+            color: rgb(34, 31, 31);
+            font-size: 12pt;
+            background-color: rgb(187, 184, 184);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-left: 55px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .th-placa-title-placar {
+            border: 1px solid;
+            background-color: rgb(252, 97, 8);
+        }
+
+        .lb-placar {
+            text-align: center;
+            font-size: 19pt;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(61, 78, 88);
+        }
+
+        .out-placar {
+            margin-left: 3px;
+            color: rgb(61, 78, 88);
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <div>
+            <h1>JOGO DESCOBRIR A CAPITAL DO ESTADO</h1>
+        </div>
+        <div class="dv-sorteador">
+            <output class="out-resultado" id="idOutResultado">Resultado</output><br>
+
+            <input type="button" id="idBtnSortear" value="Sortear" onclick="sortearCapital()">
+        </div>
+        <table class="tb-jogadores">
+            <tr>
+                <td>
+                    <label class="lb-jogadores" for="">Jogador 1</label>
+                </td>
+                <td>
+                    <label class="lb-jogadores" for="">Jogador 2</label>
+                </td>
+                <td>
+                    <label class="lb-jogadores" for="">Jogador 3</label>
+                </td>
+                <td>
+                    <label class="lb-jogadores" for="">Jogador 4</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="nmJogador1" id="idJogador1">
+                </td>
+                <td>
+                    <input type="text" name="nmJogador2" id="idJogador2">
+                </td>
+                <td>
+                    <input type="text" name="nmJogador3" id="idJogador3">
+                </td>
+                <td>
+                    <input type="text" name="nmJogador4" id="idJogador4">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="btn" type="button" value="Jogar" id="idBtnJogador1">
+                </td>
+                <td>
+                    <input class="btn" type="button" value="Jogar" id="idBtnJogador2">
+                </td>
+                <td>
+                    <input class="btn" type="button" value="Jogar" id="idBtnJogador3">
+                </td>
+                <td>
+                    <input class="btn" type="button" value="Jogar" id="idBtnJogador4">
+                </td>
+            </tr>
+            <tr>
+                <th class="th-placa-title-placar">
+                    <label class="lb-placar" for="">Placar 1</label>
+                </th>
+                <th class="th-placa-title-placar">
+                    <label class="lb-placar" for="">Placar 2</label>
+                </th>
+                <th class="th-placa-title-placar">
+                    <label class="lb-placar" for="">Placar 3</label>
+                </th>
+                <th class="th-placa-title-placar">
+                    <label class="lb-placar" for="">Placar 4</label>
+                </th>
+            </tr>
+            <tr>
+                <td class="th-placa-title-placar">
+                    <output class="out-placar" id="idOutPlacarJ1">Pontuação:</output>
+                </td>
+                <td class="th-placa-title-placar">
+                    <output class="out-placar" id="idOutPlacarJ2">Pontuação:</output>
+                </td>
+                <td class="th-placa-title-placar">
+                    <output class="out-placar" id="idOutPlacarJ3">Pontuação:</output>
+                </td>
+                <td class="th-placa-title-placar">
+                    <output class="out-placar" id="idOutPlacarJ4">Pontuação:</output>
+                </td>
+            </tr>
+
+        </table>
+
+        <script>
+
+            var estados = ["Aracaju", "Pará", "Minas Gerais", "Roraima", "Brasília", "Mato Grosso do Sul", "Mato Grosso", "Paraná", "Santa Catarina", "Goiás", "Paraíba", "Amapá", "Alagoas", "Amazonas", "Rio Grande do Norte", "Fortaleza", "Tocantins", "Rio Grande do Sul", "Rondônia", "Pernambuco", "Acre", "Rio de Janeiro", "Bahia", "Maranhão", "São Paulo", "Piauí", "Espírito Santo"]
+            var capitais = ["Sergipe", "Belém", "Belo Horizonte", "Boa Vista", "Distrito Federal", "Campo Grande", "Cuiabá", "Curitiba", "Florianópolis", "Goiânia", "João Pessoa", "Macapá", "Maceió", "Manaus", "Natal", "Ceará", "Palmas", "Porto Alegre", "Porto Velho", "Recife", "Rio Branco", "Rio de Janeiro", "Salvador", "São Luís", "São Paulo", "Teresina", "Vitória"]
+            var OutEstadoSorteado = document.getElementById("idOutResultado")
+            var i = 0
+            var placarJ1 = 0
+            var placarJ2 = 0
+            var placarJ3 = 0
+            var placarJ4 = 0
+
+            function sortearCapital() {
+                i = Math.floor(Math.random() * estados.length)
+                EstadoSorteado = estados[i]
+                OutEstadoSorteado.value = EstadoSorteado
+                console.log(capitais[i])
+                document.getElementById("idJogador1").focus()
+            }
+
+
+            function repostasJogadores() {
+                var respotasJ1 = document.getElementById("idJogador1").value
+                var respotasJ2 = document.getElementById("idJogador2").value
+                var respotasJ3 = document.getElementById("idJogador3").value
+                var respotasJ4 = document.getElementById("idJogador4").value
+                var resposta = capitais[i]
+
+                if (respotasJ1 == resposta) {
+                    placarJ1++
+                }
+                if (respotasJ2 == resposta) {
+                    placarJ2++
+                }
+                if (respotasJ3 == resposta) {
+                    placarJ3++
+                }
+                if (respotasJ4 == resposta) {
+                    placarJ4++
+                }
+
+                document.getElementById("idJogador1").value = ""
+                document.getElementById("idJogador1").value = ""
+                document.getElementById("idJogador1").value = ""
+                document.getElementById("idJogador1").value = ""
+            }
+
+ 
+
+
+        </script>
+
+
+
+    </form>
+</body>
+
+</html>

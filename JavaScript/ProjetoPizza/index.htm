@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Precificação de Pizzas</title>
+        <style>
+            /*CSS Reset*/
+            html,
+            body,
+            p,
+            ol,
+            ul,
+            li,
+            dl,
+            dt,
+            dd,
+            blockquote,
+            figure,
+            fieldset,
+            legend,
+            textarea,
+            pre,
+            iframe,
+            hr,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+            margin: 0;
+            padding: 0;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+            font-size: 100%;
+            font-weight: normal;
+            }
+
+            ul {
+            list-style: none;
+            }
+
+            button,
+            input,
+            select {
+            margin: 0;
+            }
+
+            html {
+            box-sizing: border-box;
+            }
+
+            *, *::before, *::after {
+            box-sizing: inherit;
+            }
+
+            img,
+            video {
+            height: auto;
+            max-width: 100%;
+            }
+
+            iframe {
+            border: 0;
+            }
+
+            table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            }
+
+            td,
+            th {
+            padding: 0;
+            }
+
+            /*Formatação Visual da Página*/
+
+            body{
+                padding: 5px; 
+                background: top;
+                background-repeat: no-repeat;
+                background-image: url(imagem.jpg);
+                background-size: auto;
+                background-attachment: fixed;
+            }
+
+            form{
+               justify-content: center;
+               align-items: center;
+               text-align: center;
+               padding-top: 160px;
+            }
+
+            fieldset{
+                display: inline;
+                width: 232px;
+                background-color: rgba(255, 255, 255, 0.699);  
+                border-color: black;
+                border-style: dotted;        
+                border-radius: 10px;
+                padding-top: 5px;
+                padding-left: 2px;
+                padding-right: 2px;
+                padding-bottom: 5px;
+            }
+
+            div{
+                display: block;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                margin: 5px;
+                margin-bottom: 15px;
+            }
+
+            .clBotoes{
+                display: inline;
+                margin: 2px;
+                border: 2px;
+                margin-bottom: 5px;
+                border-color: rgb(85, 81, 81);
+                border-style: solid;
+                border-radius: 5px;
+                padding: 2px;
+            }
+
+            .clBotoes:hover{
+                background-color: rgba(78, 171, 252, 0.418);
+            }
+
+            .clAtivado{
+                background-color: rgba(78, 252, 194, 0.418);;
+            }
+
+            #idSeçaoBotoes{
+                margin: 2px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <form action="">
+            <fieldset>
+                <div>
+                    <!--Campo de Captura do Nome da Pizza-->
+                    <label for="idNome">Inisira o Nome da Pizza</label>
+                    <input type="text" id="idNome" placeholder="Nome..." autocomplete="off">
+                </div>
+                <div>
+                    <!--Campo de Seleção da Forma da Pizza-->
+                    <div class="clBotoes" id="idBotaoCirculo">Círculo</div>
+                    <div class="clBotoes" id="idBotaoRetangulo">Retângulo</div>
+                </div>
+                <div>
+                    <!--Campo de Captura da Largura da Pizza-->
+                    <label for="idTamanho">Inisira o Tamanho da Pizza</label>
+                    <input type="number" id="idTamanho" step="0.01" placeholder="Largura (cm)...">
+                </div>
+                <div>
+                    <!--Campo de Captura da Altura da Pizza-->
+                    <input type="number" id="idTamanho2" step="0.01" placeholder="Altura (cm)...">
+                </div>
+                <div>
+                    <!--Campo de Captura do Preço da Pizza-->
+                    <label for="idPreço">Inisira o Preço da Pizza</label>
+                    <input type="number" id="idPreço" step="0.01" placeholder="Preço...">
+                </div>
+                <section id="idSeçaoBotoes">
+                    <!--Botao de Leitura de Dados-->
+                    <div class="clBotoes" id="idBotaoLer">Ler Dados</div>                        
+                    
+                     <!--Botao de Leitura de Dados-->
+                    <div class="clBotoes" id="idBotaoComparar">Comparar Pizzas</div>                    
+                </section>
+            </fieldset>
+            <div>
+                <!--Output de Tabela de Comparação-->
+                <output id="idOut"></output>
+            </div>
+        </form>
+    </body>
+    <script>
+        //Declaração de Variáveis Globais
+        var nome
+        var tamanho
+        var tamanho2
+        var preço
+        var btLer = document.querySelector("#idBotaoLer")
+        var btComparar = document.querySelector("#idBotaoComparar")
+        var out = document.querySelector("#idOut")
+        var btCirculo = document.querySelector("#idBotaoCirculo")
+        var btRetangulo = document.querySelector("#idBotaoRetangulo")
+        var isRetangulo = false
+
+        var nomes = []
+        var tamanhos = []
+        var tamanhos2 = []
+        var tamanhosFinais = []
+        var preços = []
+        var areas = []
+        var custosBeneficio = []
+        var diferençasCustoBene = ["Melhor CB"]
+
+        //Ocultação do Campo Altura da Pizza
+        document.querySelector("#idTamanho2").hidden = true
+        
+        //Adicionamento do Botão Círculo à classe Ativado
+        btCirculo.classList.add("clAtivado")
+
+        //Decisão de formato de pizza
+
+        btCirculo.onclick = function () {
+            document.querySelector("#idTamanho2").hidden = true
+            document.querySelector("#idTamanho2").value = ""
+            btRetangulo.classList.remove("clAtivado")
+            btCirculo.classList.add("clAtivado")
+            isRetangulo = false
+        }
+
+        btRetangulo.onclick = function () {
+            document.querySelector("#idTamanho2").hidden = false
+            btRetangulo.classList.add("clAtivado")
+            btCirculo.classList.remove("clAtivado")
+            isRetangulo = true
+        }
+        
+        //------------- Leitura dos campos da tela -------------
+
+        btLer.onclick = function () {
+            nome = document.querySelector("#idNome").value
+            tamanho = Number(document.querySelector("#idTamanho").value)
+            tamanho2 = Number(document.querySelector("#idTamanho2").value)
+            preço = Number(document.querySelector("#idPreço").value)
+
+            let isNomeValido = validarNome(nome)
+            let isTamanhoValido = validarTamanho(tamanho)
+            let isTamanho2Valido = true
+            if (isRetangulo) {
+                isTamanho2Valido = validarTamanho2(tamanho2)
+            }
+            let isPreçoValido = validarPreço(preço)
+
+            if (isNomeValido && isTamanhoValido && isPreçoValido && isTamanho2Valido) {
+
+                nomes.push(nome)
+                tamanhos.push(tamanho)
+                preços.push(preço)
+                tamanhos2.push(tamanho2)
+
+                document.querySelector("#idNome").value = ""
+                document.querySelector("#idTamanho").value = ""
+                document.querySelector("#idPreço").value = ""
+                document.querySelector("#idTamanho2").value = ""
+            }
+        }
+
+        //--------------- Comparação de Dados ---------------
+
+        btComparar.onclick = function () {
+
+            //variáveis auxiliares
+            let placeHolderPreços = 0
+            let placeHolderTamanhos = 0
+            let placeHolderTamanhos2 = 0
+            let placeHolderNomes = ""
+            let placeholderArea = 0
+            let placeholderCustoBene = 0
+            let placeholderTamanhosFinais = 0
+
+            limpezaVariaveis()
+
+            //chamada de função para calcular area
+
+            areas = calcularAreas(tamanhos, tamanhos2)
+
+            //chamada de função para calcular custo-benefício
+
+            custosBeneficio = calcularCustosBeneficio(areas, preços)
+
+            //---- Organização de Dados em Ordem Crescente ----
+
+            for (let i = 0; i < custosBeneficio.length; i++) { // dado analisado
+                for (let index = 0; index < custosBeneficio.length; index++) { // dado comparado
+                    
+                    if (custosBeneficio[i] > custosBeneficio[index]){
+                        placeholderCustoBene = custosBeneficio[i]
+                        custosBeneficio.splice(i, 1)
+                        custosBeneficio.splice(index, 0, placeholderCustoBene)
+
+                        placeHolderPreços = preços[i]
+                        preços.splice(i, 1)
+                        preços.splice(index, 0, placeHolderPreços)
+
+                        placeHolderTamanhos = tamanhos[i]
+                        tamanhos.splice(i, 1)
+                        tamanhos.splice(index, 0, placeHolderTamanhos)
+
+                        placeHolderNomes = nomes[i]
+                        nomes.splice(i, 1)
+                        nomes.splice(index, 0, placeHolderNomes)
+
+                        placeholderArea = areas[i]
+                        areas.splice(i, 1)
+                        areas.splice(index, 0, placeholderArea)
+
+                        if (isRetangulo) {
+                            placeHolderTamanhos2 = tamanhos2[i]
+                            tamanhos2.splice(i, 1)
+                            tamanhos2.splice(index, 0, placeHolderTamanhos2)
+                        }
+
+                        placeholderTamanhosFinais = tamanhosFinais[i]
+                        tamanhosFinais.splice(i, 1)
+                        tamanhosFinais.splice(index, 0, placeholderTamanhosFinais)
+
+                        index = preços.length
+                    }
+                }  
+            }
+            //chamada de função para calcular diferença custo-benefício
+
+            diferençasCustoBene = calcularDiferCustoBene(custosBeneficio)
+            
+            console.log("Nomes: " + nomes);
+            console.log("Tamanhos: " + tamanhosFinais);
+            console.log("Custos-Benefício: " + custosBeneficio);
+            console.log("Diferenças: " + diferençasCustoBene);           
+        }
+
+        //validação de campos
+
+        function validarNome(nome) {
+            if (nome == "" || nome == "") {
+                alert("Nome Inválido")
+                document.querySelector("#idNome").value = ""
+                document.querySelector("#idNome").focus()
+                return false
+            }
+            return true
+        }
+
+        function validarTamanho(tamanho) {
+            if (tamanho <= 0) {
+                alert("Largura Inválida")
+                document.querySelector("#idTamanho").value = ""
+                document.querySelector("#idTamanho").focus()
+                return false
+            }
+            return true
+        }
+
+        function validarTamanho2(tamanho2) {
+            if (tamanho2 <= 0) {
+                alert("Altura Inválida")
+                document.querySelector("#idTamanho2").value = ""
+                document.querySelector("#idTamanho2").focus()
+                return false
+            }
+            return true
+        }
+
+        function validarPreço(preço) {
+            if (preço <= 0) {
+                alert("Preço Inválido")
+                document.querySelector("#idPreço").value = ""
+                document.querySelector("#idPreço").focus()
+                return false
+            }
+            return true
+        }
+        
+        // calculo de áreas das pizzas
+        function calcularAreas() {
+            for (let x = 0; x < tamanhos.length; x++) {
+                if (tamanhos2[x] !== 0) {
+                    let area = tamanhos[x] * tamanhos2[x]
+                    tamanhosFinais.push(tamanhos[x] + "x" + tamanhos2[x])
+                    areas.push(area.toFixed(2))  
+                } else {
+                    let area = (Math.PI)*(((tamanhos[x])/2)**2) 
+                    tamanhosFinais.push(tamanhos[x])
+                    areas.push(area.toFixed(2))   
+                }        
+            }
+            return areas
+        }
+
+        // calculo de custo-benefício
+        function calcularCustosBeneficio(areas, preços) {
+            for (let y = 0; y < preços.length; y++) {
+                let custoBeneficio = areas[y]/preços[y]
+                custosBeneficio.push(custoBeneficio.toFixed(2))
+            }
+            return custosBeneficio
+        }
+
+        //calculo de diferença de custo-benefício em porcentagem
+        function calcularDiferCustoBene(custosBeneficio) {
+            for (let z = 1; z < custosBeneficio.length; z++) {
+                let diferença = ((custosBeneficio[z-1]*100)/custosBeneficio[z]) - 100
+                diferençasCustoBene.push(diferença.toFixed(0) + "%")
+            }
+            return diferençasCustoBene
+        }   
+
+        function limpezaVariaveis() {
+            areas = []
+            custosBeneficio = []
+            diferençasCustoBene = ["Melhor CB"]
+            tamanhosFinais = []
+        }
+
+    </script>
+</html>
