@@ -125,8 +125,14 @@
         .td-relatorio {
             border: 1px solid;
         }
-        .alerta{
-            
+
+        .alerta {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Signika Negative', sans-serif;
+            color: rgb(255, 255, 255);
+            margin-left: 10px;
+            background-color: rgb(182, 8, 8);
         }
     </style>
 </head>
@@ -167,6 +173,9 @@
                         <input class="btn-inserir" type="button" value="Inserir" onclick="inseriDados()">
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="3"><output id="idOutAlerta"></output></td>
+                </tr>
             </table>
         </div>
         <div class="dv-relatorio">
@@ -200,14 +209,37 @@
             let tamanho = document.getElementById("idTamanho").value
             let valor = document.getElementById("idValor").value
 
-            validaCampos()            
+            validaCampos()
 
         }
 
-        function validaCampos(){
-            if ((document.getElementById("idNomePizza").value == "") || (document.getElementById("idNomePizza").value == " ")) {
-                alert("Campo nome pizza é obrigatório!")
+        function validaCampos() {
+            let pizza = document.getElementById("idNomePizza").value
+            let tamanho = document.getElementById("idTamanho").value
+            let valor = document.getElementById("idValor").value
+            let outAlerta = document.getElementById("idOutAlerta")
+
+            if ((pizza == "") || (pizza == " ")) {
+                outAlerta.value = "Campo Nome é Obrigatório!"
+                outAlerta.classList.add("alerta");
+                document.getElementById("idNomePizza").focus();
+                return false
             }
+
+            if ((tamanho == "") || (tamanho == " ")) {
+                outAlerta.value = "Campo Tamanho é Obrigatório!"
+                outAlerta.classList.add("alerta");
+                document.getElementById("idTamanho").focus();
+                return false
+            }
+
+            if ((valor == "") || (valor == " ")) {
+                outAlerta.value = "Campo Valor é Obrigatório!"
+                outAlerta.classList.add("alerta");
+                document.getElementById("idValor").focus();
+                return false
+            }
+
         }
 
         function mostraRelatorio() {
