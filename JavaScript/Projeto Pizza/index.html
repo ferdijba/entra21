@@ -125,6 +125,9 @@
         .td-relatorio {
             border: 1px solid;
         }
+        .alerta{
+            
+        }
     </style>
 </head>
 
@@ -161,7 +164,7 @@
                             placeholder="Digite apenas números">
                     </td>
                     <td>
-                        <input class="btn-inserir" type="button" value="Inserir">
+                        <input class="btn-inserir" type="button" value="Inserir" onclick="inseriDados()">
                     </td>
                 </tr>
             </table>
@@ -186,6 +189,31 @@
     </div>
 
     <script>
+        //Variaveis globais
+        let pizzas = []
+        let tamanhos = []
+        let valores = []
+
+
+        function inseriDados() {
+            let pizza = document.getElementById("idNomePizza").value
+            let tamanho = document.getElementById("idTamanho").value
+            let valor = document.getElementById("idValor").value
+
+            validaCampos()            
+
+        }
+
+        function validaCampos(){
+            if ((document.getElementById("idNomePizza").value == "") || (document.getElementById("idNomePizza").value == " ")) {
+                alert("Campo nome pizza é obrigatório!")
+            }
+        }
+
+        function mostraRelatorio() {
+
+
+        }
 
     </script>
 
