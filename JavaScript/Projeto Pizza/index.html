@@ -81,6 +81,31 @@
             transition: 700ms;
         }
 
+        .btn-relatorio {
+            margin-bottom: 5px;
+            margin-left: 5px;
+            width: 80px;
+            height: 42px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 12pt;
+            font-weight: bold;
+            color: green;
+        }
+
+        .btn-relatorio:hover {
+            margin-bottom: 5px;
+            margin-left: 5px;
+            width: 80px;
+            height: 42px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 12pt;
+            font-weight: bold;
+            color: green;
+            transform: scale(1.1);
+            transition: 700ms;
+        }
+
+
         .dv-relatorio {
             display: block, inline;
             margin-top: 5px;
@@ -96,6 +121,7 @@
         .th-relatorio {
             border: 1px solid;
         }
+
         .td-relatorio {
             border: 1px solid;
         }
@@ -147,6 +173,7 @@
                 <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Preço</label></th>
                 <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">R$ p/cm²</label></th>
                 <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Diferença%</label></th>
+                <th><input class="btn-relatorio" type="button" value="Relatório"></th>
                 <tr>
                     <td class="td-relatorio"><output id="idOutNomePizza">Saida do Nome</output></td>
                     <td class="td-relatorio"><output id="idOutTamanho">Saida do Tamanho</output></td>
@@ -156,9 +183,13 @@
                 </tr>
             </table>
         </div>
-
-
     </div>
+
+    <script>
+
+    </script>
+
+
 </body>
 
 </html>
