@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Pizza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Lobster&family=Signika+Negative:wght@700&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        body {
+            background: linear-gradient(90deg, rgb(0, 190, 0), rgb(255, 255, 255), rgb(255, 2, 2));
+        }
+
+        .fundo {
+            position: absolute;
+            margin-left: 950px;
+            width: 550px;
+            border-radius: 30%;
+            opacity: 0.5;
+
+        }
+
+        h1 {
+            font-family: 'Signika Negative', sans-serif;
+            font-size: 40pt;
+            text-align: center;
+            text-shadow: 5px 7px 6px rgb(56, 56, 56);
+            color: rgb(255, 0, 0);
+            display: block, inline;
+        }
+
+        .dv-campos {
+            display: block;
+
+        }
+
+        .lb-pizza {
+            font-family: 'Signika Negative', sans-serif;
+            font-size: 15pt;
+            color: darkgreen;
+            text-shadow: 3px 1px rgb(255, 255, 255);
+        }
+
+        .inp-pizza {
+            width: 200px;
+            height: 25px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            opacity: 0.6;
+            border-color: rgb(76, 78, 78);
+        }
+
+        .btn-inserir {
+            margin-bottom: 10px;
+            margin-left: 5px;
+            width: 80px;
+            height: 32px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 12pt;
+            font-weight: bold;
+            color: green;
+        }
+
+        .btn-inserir:hover {
+            margin-bottom: 10px;
+            margin-left: 5px;
+            width: 80px;
+            height: 32px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 12pt;
+            font-weight: bold;
+            color: green;
+            transform: scale(1.1);
+            transition: 700ms;
+        }
+
+        .dv-relatorio {
+            display: block, inline;
+            margin-top: 5px;
+        }
+
+        .lb-relatorio {
+            font-size: 15pt;
+            color: darkgreen;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+        }
+
+        .th-relatorio {
+            border: 1px solid;
+        }
+        .td-relatorio {
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dv-geral">
+        <div class="dv-h1">
+            <h1>Melhor custo benefício de Pizzas</h1>
+        </div>
+        <div class="dv-fundo">
+            <img class="fundo" src="images/pizzas (3).gif" alt="fundo">
+        </div>
+        <div class="dv-campos">
+            <table id="table-pizzas">
+                <th>
+                    <label class="lb-pizza" for="nmPizza">Nome da pizza</label>
+                </th>
+                <th>
+                    <label class="lb-pizza" for="nmTamanho"> Tamanho</label>
+                </th>
+                <th>
+                    <label class="lb-pizza" for="nmValor"> Valor</label>
+                </th>
+                <tr>
+                    <td>
+                        <input class="inp-pizza" type="text" name="nmPizza" id="idNomePizza"
+                            placeholder="Ex: Pequena, Média, Grande">
+                    </td>
+                    <td>
+                        <input class="inp-pizza" type="number" name="nmTamanho" id="idTamanho"
+                            placeholder="Tamanho em cm">
+                    </td>
+                    <td>
+                        <input class="inp-pizza" type="number" name="nmValor" id="idValor"
+                            placeholder="Digite apenas números">
+                    </td>
+                    <td>
+                        <input class="btn-inserir" type="button" value="Inserir">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="dv-relatorio">
+            <table id="table-relatorio">
+                <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Nome</label></th>
+                <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Tam.(cm)</label></th>
+                <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Preço</label></th>
+                <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">R$ p/cm²</label></th>
+                <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Diferença%</label></th>
+                <tr>
+                    <td class="td-relatorio"><output id="idOutNomePizza">Saida do Nome</output></td>
+                    <td class="td-relatorio"><output id="idOutTamanho">Saida do Tamanho</output></td>
+                    <td class="td-relatorio"><output id="idOutPreco">Saida do Preço</output></td>
+                    <td class="td-relatorio"><output id="idOutValorCm">Saida do Valor por Cm²</output></td>
+                    <td class="td-relatorio"><output id="idOutDiferenca">Saida da Diferença</output></td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
