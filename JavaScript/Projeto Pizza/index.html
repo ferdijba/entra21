@@ -82,7 +82,7 @@
         }
 
         .btn-relatorio {
-            margin-bottom: 5px;
+            margin-top: 20px;
             margin-left: 5px;
             width: 80px;
             height: 42px;
@@ -134,6 +134,17 @@
             margin-left: 10px;
             background-color: rgb(182, 8, 8);
         }
+
+
+        #table-relatorio {
+            border: 1px solid darkgreen;
+            border-collapse: collapse;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 12pt;           
+            color: darkgreen;
+            margin-left: 5px;  
+            
+        }
     </style>
 </head>
 
@@ -146,15 +157,15 @@
             <img class="fundo" src="images/pizzas (3).gif" alt="fundo">
         </div>
         <div class="dv-campos">
-            <table id="table-pizzas">
+            <table id="tablepizzas">
                 <th>
                     <label class="lb-pizza" for="nmPizza">Nome da pizza</label>
                 </th>
                 <th>
-                    <label class="lb-pizza" for="nmTamanho"> Tamanho</label>
+                    <label class="lb-pizza" for="nmTamanho"> Tamanho em cm²</label>
                 </th>
                 <th>
-                    <label class="lb-pizza" for="nmValor"> Valor</label>
+                    <label class="lb-pizza" for="nmValor"> Valor R$</label>
                 </th>
                 <tr>
                     <td>
@@ -178,22 +189,15 @@
                 </tr>
             </table>
         </div>
-        <div class="dv-relatorio">
+        <div>
             <table id="table-relatorio">
                 <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Nome</label></th>
                 <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Tam.(cm)</label></th>
                 <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Preço</label></th>
                 <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">R$ p/cm²</label></th>
-                <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Diferença%</label></th>
-                <th><input class="btn-relatorio" type="button" value="Relatório"></th>
-                <tr>
-                    <td class="td-relatorio"><output id="idOutNomePizza">Saida do Nome</output></td>
-                    <td class="td-relatorio"><output id="idOutTamanho">Saida do Tamanho</output></td>
-                    <td class="td-relatorio"><output id="idOutPreco">Saida do Preço</output></td>
-                    <td class="td-relatorio"><output id="idOutValorCm">Saida do Valor por Cm²</output></td>
-                    <td class="td-relatorio"><output id="idOutDiferenca">Saida da Diferença</output></td>
-                </tr>
+                <th class="th-relatorio"><label class="lb-relatorio" for="nmNome">Diferença%</label></th>                
             </table>
+            <th><input class="btn-relatorio" type="button" value="Relatório" onclick="mostraRelatorio()"></th>
         </div>
     </div>
 
@@ -202,22 +206,35 @@
         let pizzas = []
         let tamanhos = []
         let valores = []
+        let diametroPizzas = []
 
 
+        //Função para inserir dados
         function inseriDados() {
             let pizza = document.getElementById("idNomePizza").value
-            let tamanho = document.getElementById("idTamanho").value
-            let valor = document.getElementById("idValor").value
+            let tamanho = Number(document.getElementById("idTamanho").value)
+            let valor = Number(document.getElementById("idValor").value)
+            let outAlerta = document.getElementById("idOutAlerta")
 
+            //Função de validação do campos
             validaCampos()
 
+            //Adiciona os dados nos arrays
+            pizzas.push(pizza)
+            tamanhos.push(tamanho)
+            valores.push(valor)
+
+            //função para limpar os campos da tela
+            limpaTela()
         }
+
 
         function validaCampos() {
             let pizza = document.getElementById("idNomePizza").value
             let tamanho = document.getElementById("idTamanho").value
             let valor = document.getElementById("idValor").value
             let outAlerta = document.getElementById("idOutAlerta")
+
 
             if ((pizza == "") || (pizza == " ")) {
                 outAlerta.value = "Campo Nome é Obrigatório!"
@@ -240,12 +257,64 @@
                 return false
             }
 
+            if (tamanho <= 0) {
+                outAlerta.value = "Campo tamanho deve ser maior que zero!"
+                outAlerta.classList.add("alerta");
+                document.getElementById("idTamanho").focus();
+                return false
+            }
+
+            if (valor <= 0) {
+                outAlerta.value = "Campo Valor deve ser maior que zero!"
+                outAlerta.classList.add("alerta");
+                document.getElementById("idValor").focus();
+                return false
+            }
+            return true
+            outAlerta.classList.remove("alerta")
+
+
         }
 
         function mostraRelatorio() {
+            let tabelaRelatorioPizza = document.getElementById("table-relatorio")
+            
+            for (let i = 0; i < pizzas.length; i++) {
+                calculaDiametroPizza(tamanhos[i])
 
+                //console.log(pizzas[i]);
+                let td = tabelaRelatorioPizza.insertRow()
+                let tdNomePizza = td.insertCell()
+                let tdTamanho = td.insertCell()
+                let tdValor = td.insertCell()
+                let tdDiametro = td.insertCell()
+                let tdDiferenca = td.insertCell()
+
+                tdNomePizza.innerHTML = pizzas[i]
+                tdTamanho.innerHTML = tamanhos[i]
+                tdValor.innerHTML = valores[i]
+
+            }
 
         }
+
+        //Função para limpar os campos da tela
+        function limpaTela() {
+            document.getElementById("idNomePizza").value = ""
+            document.getElementById("idTamanho").value = ""
+            document.getElementById("idValor").value = ""
+        }
+
+
+        function calculaDiametroPizza() {
+            for (let i = 0; i < tamanhos.length; i++) {
+                let diametroPizza = Math.PI * (((tamanhos[i]) / 2) ** 2)
+                diametroPizzas.push(diametroPizza)
+                console.log(diametroPizzas);
+            }
+            
+        }
+
 
     </script>
 
